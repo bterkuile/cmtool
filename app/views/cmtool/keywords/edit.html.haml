@@ -4,5 +4,5 @@
 - content_for :page_links do
   %ul
     %li= link_to link_to_show_content(@keyword), cmtool.keyword_path(@keyword)
-    %li= link_separator
+
     %li= link_to link_to_index_content(Cmtool::Keyword), cmtool.keywords_path

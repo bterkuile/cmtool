@@ -18,5 +18,5 @@
 - content_for :page_links do
   %ul
     %li= link_to link_to_edit_content(@contact_form), cmtool.edit_contact_form_path(@contact_form)
-    %li= link_separator
+
     %li= link_to link_to_index_content(Cmtool::ContactForm), cmtool.contact_forms_path

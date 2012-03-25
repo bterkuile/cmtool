@@ -1,4 +1,4 @@
-- title :new, Cmtool::News
+- title :show, Cmtool::News
 - if @news.image?
   #news-image-container
     = link_to image_tag(@news.image.url(:thumb)), @news.image.url
@@ -25,5 +25,5 @@
 - content_for :page_links do
   %ul
     %li= link_to link_to_edit_content(@news), cmtool.edit_news_path(@news)
-    %li= link_separator
+
     %li= link_to link_to_index_content(Cmtool::News), cmtool.news_index_path

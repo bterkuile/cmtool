@@ -9,5 +9,5 @@
 - content_for :page_links do
   %ul
     %li= link_to link_to_edit_content(@faq), cmtool.edit_faq_path(@faq)
-    %li= link_separator
+
     %li= link_to link_to_index_content(Cmtool::Faq), cmtool.faqs_path

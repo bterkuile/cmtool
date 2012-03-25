@@ -27,9 +27,9 @@
   %ul
     - if @directory.parent
       %li= link_to '..', cmtool.directory_path(@directory.parent)
-      %li= link_separator
+
     %li= link_to link_to_edit_content(@directory), cmtool.edit_directory_path(@directory)
-    %li= link_separator
+
     %li= link_to link_to_index_content(Cmtool::Directory), cmtool.directories_path
-    %li= link_separator
+
     %li= link_to_function t('cmtool.directoy.add_file'), %|$('.add-image-container').dialog('open')|
