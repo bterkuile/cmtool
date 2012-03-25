@@ -20,8 +20,8 @@
           %td= image.file_content_type
           %td= human_size image.file_file_size
           %td= l image.file_updated_at #, :format => :short
-          %td= link_to link_to_edit_content(image), cmtool.edit_image_path(image)
-          %td= link_to link_to_destroy_content(image), cmtool.image_path(image), :confirm => are_you_sure(image), :method => :delete
+          = edit_td image
+          = destroy_td image
 - else
   = empty_result(Cmtool::Image)
 

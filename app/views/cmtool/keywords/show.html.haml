@@ -1,4 +1,4 @@
-- title t('cmtool.action.show.title', :model => Cmtool::Keyword.model_name.human)
+- title :show, Cmtool::Keyword
 .show_field
   %strong= Cmtool::Keyword.human_attribute_name(:name)
   = @keyword.name

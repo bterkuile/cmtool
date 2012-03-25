@@ -1,4 +1,4 @@
-- title t('action.edit.title', :model => Cmtool::News.model_name.human)
+- title :edit, Cmtool::News
 - if @news.image?
   = link_to image_tag(@news.image.url(:thumb)), @news.image.url
 = render 'form', :submit => update_button_text(@news)

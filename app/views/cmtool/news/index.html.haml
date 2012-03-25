@@ -1,4 +1,4 @@
-- title t('action.index.title', :model => Cmtool::News.model_name.human.pluralize)
+- title :index, Cmtool::News
 - if @news.any?
   %table.index-table
     %thead
@@ -14,8 +14,8 @@
           %td= link_to news.title, cmtool.news_path(news)
           %td= boolean_text news.active?
           %td=l news.date
-          %td= link_to link_to_edit_content(news), cmtool.edit_news_path(news)
-          %td= link_to link_to_destroy_content(news), cmtool.news_path(news), :confirm => are_you_sure(news), :method => :delete
+          = edit_td news
+          = destroy_td news
 - else
   = empty_result(Cmtool::News)
 

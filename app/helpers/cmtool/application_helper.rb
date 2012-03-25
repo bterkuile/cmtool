@@ -14,6 +14,7 @@ module Cmtool
             t("cmtool.action.#{args.first}.title", model: model.model_name.human)
           end
         else
+          raise 'Imporoper title declaration'
           args.first
         end
       end
@@ -80,6 +81,21 @@ module Cmtool
         count += 1
       end
       format("%.2f",n) + %w(B KB MB GB TB)[count]
+    end
+
+    def edit_td(obj)
+      content_tag(
+        :td, 
+        link_to((content_tag(:span, 'edit', class: ['ui-icon', 'ui-icon-pencil'])), cmtool.url_for([:edit, obj]), class: [:edit]), 
+        class: [:action, :edit]
+      )
+    end
+    def destroy_td(obj)
+      content_tag(
+        :td, 
+        link_to(content_tag(:span, 'delete', class: ['ui-icon', 'ui-icon-trash']), cmtool.url_for(obj), method: :delete, confirm: are_you_sure(obj), class: [:destroy]),
+        class: [:action, :destroy]
+      )
     end
   end
 end

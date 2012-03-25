@@ -1,5 +1,5 @@
 module Cmtool
   class SessionsController < ::Devise::SessionsController
-    layout 'cmtool/application'
+    layout 'cmtool/sessions'
   end
 end

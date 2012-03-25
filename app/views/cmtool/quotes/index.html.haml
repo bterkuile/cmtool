@@ -16,8 +16,8 @@
           %td= quote.function
           %td= boolean_text quote.active
           %td= quote.state
-          %td= link_to link_to_edit_content(quote), cmtool.edit_quote_path(quote)
-          %td= link_to link_to_destroy_content(quote), cmtool.quote_path(quote), :confirm => are_you_sure(quote), :method => :delete
+          = edit_td quote
+          = destroy_td quote
 - else
   = empty_result(Cmtool::Quote)
 

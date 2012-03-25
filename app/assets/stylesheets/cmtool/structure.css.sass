@@ -29,36 +29,29 @@ a
       border: 1px solid red
 #page-wrapper
   width: 972px
-  margin: 10px auto
-  background-color: white
-#menu-container
-  @include linear-gradient(#1e5799, #2989d8)
-  clear: both
-  padding: 10px
-  ul
-    margin: 0
-    padding: 0
-    list-style: none
-    li
-      float: left
-      margin-right: 9px
-      padding: 5px 4px
-      background-color: white
-      &.parent:hover> ul
-        display: block
-      .child-menu
-        display: none
-        position: absolute
-        z-index: 10000
-        margin-left: -5px
-        margin-top: 4px
-        li
-          float: none
-      &.ui-state-active .child-menu li.ui-state-default a
-        color: #1C94C4
-#sub-navigation-container
-  ul
-    list-style: none
-    li
-      float: left
-      margin-right: 10px
+  margin: 40px auto 10px auto
+  #sub-navigation-container
+    ul
+      list-style: none
+      margin: 0
+      padding: 0
+      li
+        @include linear-gradient(#2989d8, #1e5799)
+        float: left
+        margin-right: 10px
+        padding: 3px 6px
+        +border-bottom-radius(5px)
+  #title-container
+    @include linear-gradient(#aaa, #fff)
+    padding: 10px
+    +border-top-radius(15px)
+    +box-shadow(5px 5px 5px #555)
+    h1
+      margin: 0
+      padding: 0
+  #content-container
+    background-color: white
+    +border-bottom-radius(15px)
+    +box-shadow(5px 5px 5px #555)
+    #content
+      padding: 10px

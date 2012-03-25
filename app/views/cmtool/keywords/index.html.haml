@@ -1,4 +1,4 @@
-- title t('action.index.title', :model => Cmtool::Keyword.model_name.human.pluralize)
+- title :index, Cmtool::Keyword
 - if @keywords.any?
   %table.index-table
     %thead
@@ -10,8 +10,8 @@
       - @keywords.each do |keyword|
         %tr
           %td= link_to keyword.name, cmtool.keyword_path(keyword)
-          %td= link_to link_to_edit_content(keyword), cmtool.edit_keyword_path(keyword)
-          %td= link_to link_to_destroy_content(keyword), cmtool.keyword_path(keyword), :confirm => are_you_sure(keyword), :method => :delete
+          = edit_td keyword
+          = destroy_td keyword
 - else
   = empty_result(Cmtool::Keyword)
 

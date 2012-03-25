@@ -1,0 +1,73 @@
+@import jquery-ui
+@import bourbon
+.clear
+  clear: both
+body, html
+  font-size: 16px
+  font-family: $lucida-grande
+
+#page-wrapper
+  @extend .ui-widget
+  margin: 80px auto
+  width: 600px
+  a
+    color: black
+    text-decoration: none
+    &:hover
+      text-decoration: underline
+  ul#devise-links
+    list-style: none
+    margin: 20px 0
+    padding: 0
+    li
+      float: left
+      margin-right: 10px
+    #login-home
+      @extend .ui-icon
+      //@extend .ui-icon-arrowreturnthick-1-w
+      @extend .ui-icon-home
+  .field_with_errors
+    display: inline
+    input
+      border: 1px solid #a00
+    label
+      color: #a00
+  #error_explanation
+    @extend .ui-state-error
+    padding: 18px
+    h2
+      padding: 0
+      margin: 0
+    ul
+      margin: 10px 0 0 0 
+  #new-session-button
+    float: right
+    margin-right: 148px
+    width: 100px
+  #content-container
+    @extend .ui-widget-content
+    +border-radius(15px)
+    +box-shadow(5px 5px 5px #555)
+    .message
+      padding: 10px
+      .text
+        margin-left: 32px
+      &.error .icon
+        @extend .ui-icon
+        @extend .ui-icon-alert
+        background-image: url(/assets/ui/ui-icons_ffd27a_256x240.png)
+        float: left
+    #content
+      h2
+        margin: 10px 0
+      background-image: image-url("sessions/logo.png")
+      background-repeat: no-repeat
+      background-position: right bottom
+      padding: 18px
+      .button
+        +button(shiny, #aaa) 
+      .field
+        padding-top: 6px
+        label
+          float: left
+          width: 152px

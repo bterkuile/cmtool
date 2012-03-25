@@ -1,4 +1,4 @@
-- title t('action.show.title', :model => Cmtool::Image.model_name.human)
+- title :show Cmtool::Image
 .show_field
   - if @image.file?
     = image_tag @image.file.url(:page)

@@ -1,8 +1,0 @@
-- title t('action.edit.title', :model => Customer.model_name.human)
-= render 'form', :submit => update_button_text
-
-- content_for :page_links do
-  %ul
-    %li= link_to link_to_show_content(@customer), [:admin, @customer]
-    %li= link_separator
-    %li= link_to link_to_index_content(:customer), admin_customers_path

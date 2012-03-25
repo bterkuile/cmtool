@@ -14,8 +14,8 @@
           %td= newsletter_subscription.email
           %td= newsletter_subscription.deactivation_token
           %td= boolean_text newsletter_subscription.active
-          %td= link_to link_to_edit_content(newsletter_subscription), cmtool.edit_newsletter_subscription_path(newsletter_subscription)
-          %td= link_to link_to_destroy_content(newsletter_subscription), cmtool.newsletter_subscription_path(newsletter_subscription), :confirm => are_you_sure(newsletter_subscription), :method => :delete
+          = edit_td newsletter_subscription
+          = destroy_td newsletter_subscription
 - else
   = empty_result(Cmtool::NewsletterSubscription)
 

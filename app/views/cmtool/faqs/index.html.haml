@@ -1,4 +1,4 @@
-- title t('cmtool.action.index.title', :models => Cmtool::Faq.model_name.human.pluralize)
+- title :index, Cmtool::Faq
 - if @faqs.any?
   %table.index-table
     %thead
@@ -12,8 +12,8 @@
         %tr
           %td= link_to raw(truncate(faq.question, :length => 40)), cmtool.faq_path(faq)
           %td= link_to raw(truncate(faq.answer, :length => 40)), cmtool.faq_path(faq)
-          %td= link_to link_to_edit_content(faq), cmtool.edit_faq_path(faq)
-          %td= link_to link_to_destroy_content(faq), cmtool.faq_path(faq), :confirm => are_you_sure(faq), :method => :delete
+          = edit_td faq
+          = destroy_td faq
 - else
   = empty_result(Cmtool::Faq)
 

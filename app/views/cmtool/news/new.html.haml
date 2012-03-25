@@ -1,5 +1,4 @@
-- title t('action.new.title', :model => Cmtool::News.model_name.human)
-
+- title :new, Cmtool::News
 = render 'form', :submit => create_button_text(@news)
 
 - content_for :page_links do

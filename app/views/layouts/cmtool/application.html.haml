@@ -32,10 +32,11 @@
               %li{:class => controller_name == 'images' ? 'ui-state-active' : 'ui-state-default'}=link_to Cmtool::Image.model_name.human_plural, cmtool.images_path
               %li{:class => controller_name == 'directories' ? 'ui-state-active' : 'ui-state-default'}=link_to Cmtool::Directory.model_name.human_plural, cmtool.directories_path
             .clear
-        %h1#title= yield :title
         #sub-navigation-container
           = yield :page_links
           .clear
+      #title-container
+        %h1#title= yield :title
       #content-container
         = render 'alerts'
         #content

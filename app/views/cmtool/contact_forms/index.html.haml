@@ -16,8 +16,8 @@
           %td= link_to contact_form.name, cmtool.contact_form_path(contact_form)
           %td= contact_form.email
           %td= contact_form.phone
-          %td= link_to link_to_edit_content(contact_form), cmtool.edit_contact_form_path(contact_form)
-          %td= link_to link_to_destroy_content(contact_form), cmtool.contact_form_path(contact_form), :confirm => are_you_sure(contact_form), :method => :delete
+          = edit_td contact_form
+          = destroy_td contact_form
 - else
   = empty_result(Cmtool::ContactForm)
 

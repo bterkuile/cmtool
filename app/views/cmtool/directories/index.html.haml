@@ -10,8 +10,8 @@
       - @directories.each do |directory|
         %tr
           %td= link_to directory.name, cmtool.directory_path(directory)
-          %td= link_to link_to_edit_content(directory), cmtool.edit_directory_path(directory)
-          %td= link_to link_to_destroy_content(directory), cmtool.directory_path(directory), :confirm => are_you_sure(directory), :method => :delete
+          = edit_td directory
+          = destroy_td directory
 - else
   = empty_result(Cmtool::Directory)
 

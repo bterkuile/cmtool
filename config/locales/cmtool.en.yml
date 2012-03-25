@@ -28,6 +28,12 @@ en:
       add_file: Add file
       add_image:
         label: Add %{image}
+    news:
+      remove_image: Remove image
+    sessions:
+      new:
+        label: Login
+        title: Acces the administration section
   activemodel:
     models:
       page: Page
