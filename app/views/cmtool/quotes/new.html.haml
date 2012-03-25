@@ -1,0 +1,6 @@
+- title :new, Cmtool::Quote
+= render 'form', :submit => create_button_text(@quote)
+
+- content_for :page_links do
+  %ul
+    %li= link_to link_to_index_content(Cmtool::Quote), cmtool.quotes_path

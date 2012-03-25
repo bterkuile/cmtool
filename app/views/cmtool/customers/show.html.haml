@@ -1,0 +1,10 @@
+- title t('action.show.title', :model => Customer.model_name.human)
+.show_field
+  %strong= Customer.human_attribute_name(:email)
+  = @customer.email
+
+- content_for :page_links do
+  %ul
+    %li= link_to link_to_edit_content(@customer), [:edit, :admin, @customer]
+    %li= link_separator
+    %li= link_to link_to_index_content(:customer), admin_customers_path

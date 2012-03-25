@@ -1,0 +1,55 @@
+en:
+  cmtool:
+    general:
+      yes: Yes
+      no: No
+      are_you_sure: 'Are you sure?'
+      are_you_sure_with_name: 'Are you sure you want to delete %{model} %{name}?'
+      empty_result: No %{models} found
+    action:
+      index:
+        title: List %{models}
+      new:
+        title: New %{model}
+      create:
+        label: Create
+        successful: '%{model} successfully created'
+      edit:
+        title: Edit %{model}
+      update:
+        label: Save
+        successful: '%{model} successfully updated'
+      show:
+        title: Show %{model}
+      destroy:
+        title: Destroy %{model}
+        successful: '%{model} successfully deleted'
+    directory:
+      add_file: Add file
+      add_image:
+        label: Add %{image}
+  activemodel:
+    models:
+      page: Page
+      user: User
+      cmtool:
+        quote: Quote
+        news: News
+        keyword: Keyword
+        faq: Faq
+        contact_form: Contact request
+        newsletter_subscription: Newsletter subscription
+        image: Image
+        directory: Directory
+      plural:
+        page: Pages
+        user: Users
+        cmtool:
+          quote: Quotes
+          news: News
+          keyword: Keywords
+          faq: Faqs
+          contact_form: Contact requests
+          newsletter_subscription: Newsletter subscriptions
+          image: Images
+          directory: Directories

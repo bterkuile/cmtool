@@ -1,0 +1,26 @@
+- title :show, Cmtool::Quote
+- if @quote.image?
+  #quote-image-container
+    = link_to image_tag(@quote.image.url(:thumb)), @quote.image.url
+    = link_to 'Verwijder', remove_image_admin_quote_path(@quote), :method => :delete, :confirm => are_you_sure, :remote => true
+.show_field
+  %strong= Cmtool::Quote.human_attribute_name(:owner)
+  = @quote.owner
+.show_field
+  %strong= Cmtool::Quote.human_attribute_name(:function)
+  = @quote.function
+.show_field
+  %strong= Cmtool::Quote.human_attribute_name(:state)
+  = @quote.state
+.show_field
+  %strong= Cmtool::Quote.human_attribute_name(:body)
+  =raw @quote.body
+.show_field
+  %strong= Cmtool::Quote.human_attribute_name(:active)
+  = boolean_text @quote.active
+
+- content_for :page_links do
+  %ul
+    %li= link_to link_to_edit_content(@quote), cmtool.edit_quote_path(@quote)
+    %li= link_separator
+    %li= link_to link_to_index_content(Cmtool::Quote), cmtool.quotes_path

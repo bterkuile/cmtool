@@ -1,0 +1,35 @@
+- title :show, Cmtool::Directory
+- content_for :onload_javascript do
+  $('.add-image-container').dialog({modal: true, autoOpen: false, width: 400})
+.add-image-container
+  = form_for [cmtool, Cmtool::Image.new(directory_id: @directory.id)], :html => { :multipart => true } do |f|
+    = f.hidden_field :directory_id
+    = f.file_field :file
+    = f.submit t('cmtool.directory.add_image.label', image: Cmtool::Image.model_name.human)
+.directory.caption= "/#{@directory.tree_path.map{|d| link_to(d.name, cmtool.directory_path(d))}.join('/')}".html_safe
+%table#directory-view
+  %thead
+  %tbody
+    %tr
+      %td.directory.parent= link_to '..', (@directory.parent ? cmtool.directory_path(@directory.parent) : cmtool.directories_path)
+      %td
+      %td
+      %td
+    - for child in @directory.children
+      %tr
+        %td.directory.child= link_to child.name, cmtool.directory_path(child)
+        %td
+        %td
+        %td.action.destroy.directory= link_to link_to_destroy_content(child), cmtool.directory_path(child), :method => :delete, :confirm => are_you_sure(child)
+    - for image in @directory.images
+      = render 'image', :image => image
+- content_for :page_links do
+  %ul
+    - if @directory.parent
+      %li= link_to '..', cmtool.directory_path(@directory.parent)
+      %li= link_separator
+    %li= link_to link_to_edit_content(@directory), cmtool.edit_directory_path(@directory)
+    %li= link_separator
+    %li= link_to link_to_index_content(Cmtool::Directory), cmtool.directories_path
+    %li= link_separator
+    %li= link_to_function t('cmtool.directoy.add_file'), %|$('.add-image-container').dialog('open')|

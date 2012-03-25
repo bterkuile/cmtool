@@ -1,0 +1,20 @@
+- title :index, Cmtool::Directory
+- if @directories.any?
+  %table.index-table
+    %thead
+      %tr
+        %th= Cmtool::Directory.human_attribute_name(:name)
+        %th
+        %th
+    %tbody
+      - @directories.each do |directory|
+        %tr
+          %td= link_to directory.name, cmtool.directory_path(directory)
+          %td= link_to link_to_edit_content(directory), cmtool.edit_directory_path(directory)
+          %td= link_to link_to_destroy_content(directory), cmtool.directory_path(directory), :confirm => are_you_sure(directory), :method => :delete
+- else
+  = empty_result(Cmtool::Directory)
+
+- content_for :page_links do
+  %ul
+    %li= link_to link_to_new_content(Cmtool::Directory), cmtool.new_directory_path

@@ -1,0 +1,20 @@
+- title t('action.index.title', :model => Customer.model_name.human.pluralize)
+- if @customers.any?
+  %table.index-table
+    %thead
+      %tr
+        %th= Customer.human_attribute_name(:email)
+        %th
+        %th
+    %tbody
+      - @customers.each do |customer|
+        %tr
+          %td= link_to customer.email, [:admin, customer]
+          %td= link_to link_to_edit_content(customer), [:edit, :admin, customer]
+          %td= link_to link_to_destroy_content(customer), [:admin, customer], :confirm => are_you_sure(customer), :method => :delete
+- else
+  = empty_result(Customer)
+
+- content_for :page_links do
+  %ul
+    %li= link_to link_to_new_content(:customer), new_admin_customer_path

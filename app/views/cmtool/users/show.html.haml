@@ -1,0 +1,38 @@
+- title :show, User
+.show_field
+  %span.show_label= User.human_attribute_name(:email)
+  %span.show_separator
+  %span.show_value= @user.email
+.show_field
+  %span.show_label= User.human_attribute_name(:sign_in_count)
+  %span.show_separator
+  %span.show_value.link= @user.sign_in_count
+.show_field
+  %span.show_label= User.human_attribute_name(:current_sign_in_at)
+  %span.show_separator
+  %span.show_value.link= @user.current_sign_in_at
+.show_field
+  %span.show_label= User.human_attribute_name(:last_sign_in_at)
+  %span.show_separator
+  %span.show_value.link= @user.last_sign_in_at
+.show_field
+  %span.show_label= User.human_attribute_name(:current_sign_in_ip)
+  %span.show_separator
+  %span.show_value.link= @user.current_sign_in_ip
+.show_field
+  %span.show_label= User.human_attribute_name(:last_sign_in_ip)
+  %span.show_separator
+  %span.show_value.link= @user.last_sign_in_ip
+.show_field
+  %span.show_label= User.human_attribute_name(:is_admin)
+  %span.show_separator
+  %span.show_value.boolean= boolean_text(@user.is_admin?)
+.show_field
+  %span.show_label= User.human_attribute_name(:active)
+  %span.show_separator
+  %span.show_value.boolean= boolean_text(@user.active?)
+- content_for :page_links do
+  %ul
+    %li= link_to link_to_edit_content(@user), cmtool.edit_user_path(@user)
+    %li= link_separator
+    %li= link_to link_to_index_content(User), cmtool.users_path

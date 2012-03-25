@@ -1,0 +1,20 @@
+- title t('action.index.title', :model => Cmtool::Keyword.model_name.human.pluralize)
+- if @keywords.any?
+  %table.index-table
+    %thead
+      %tr
+        %th= Cmtool::Keyword.human_attribute_name(:name)
+        %th
+        %th
+    %tbody
+      - @keywords.each do |keyword|
+        %tr
+          %td= link_to keyword.name, cmtool.keyword_path(keyword)
+          %td= link_to link_to_edit_content(keyword), cmtool.edit_keyword_path(keyword)
+          %td= link_to link_to_destroy_content(keyword), cmtool.keyword_path(keyword), :confirm => are_you_sure(keyword), :method => :delete
+- else
+  = empty_result(Cmtool::Keyword)
+
+- content_for :page_links do
+  %ul
+    %li= link_to link_to_new_content(Cmtool::Keyword), cmtool.new_keyword_path

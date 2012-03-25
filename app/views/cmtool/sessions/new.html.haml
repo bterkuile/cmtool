@@ -1,0 +1,16 @@
+%h2 Inloggen voor toegang tot extra diensten
+= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+  .field
+    = f.label :email
+    = f.email_field :email
+  .field
+    = f.label :password
+    = f.password_field :password
+
+  - if devise_mapping.rememberable?
+    .field
+      = f.check_box :remember_me
+      = f.label :remember_me
+  .field
+    = f.submit "Inloggen"
+= render :partial => "devise/shared/links"

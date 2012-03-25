@@ -1,0 +1,11 @@
+= form_for [cmtool, @faq] do |f|
+  = render 'error_messages', :target => @faq
+
+  .field
+    = f.label :question
+    = f.text_area :question, :rows => 3, :class => 'editor_basic'
+  .field
+    = f.label :answer
+    = f.text_area :answer, :rows => 6, :class => 'editor_basic'
+  .actions
+    = f.submit @submit || update_button_text(@faq)

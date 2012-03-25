@@ -1,0 +1,10 @@
+= form_for [cmtool, @directory], :html => {:multipart => true} do |f|
+  = render 'error_messages', :target => @directory
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :parent_id, Cmtool::Directory.model_name.human
+    = f.select :parent_id, tree_options_for_select(Cmtool::Directory.full_tree, exclude: @directory.id, selected: @directory.parent_id), include_blank: ''
+  .actions
+    = f.submit @submit || update_button_text(@directory)

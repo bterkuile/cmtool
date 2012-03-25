@@ -1,0 +1,20 @@
+- title :index, User
+- if @users.any?
+  %table.index-table
+    %thead
+      %tr
+        %th= User.human_attribute_name(:email)
+        %th
+        %th
+    %tbody
+      - @users.each do |user|
+        %tr
+          %td= link_to user.email, cmtool.user_path(user)
+          %td= link_to link_to_edit_content(user), cmtool.edit_user_path(user)
+          %td= link_to link_to_destroy_content(user), cmtool.user_path(user), :confirm => are_you_sure(user), :method => :delete
+- else
+  = empty_result(User)
+
+- content_for :page_links do
+  %ul
+    %li= link_to link_to_new_content(User), cmtool.new_user_path

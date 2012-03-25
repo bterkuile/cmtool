@@ -1,0 +1,6 @@
+%h4= Cmtool::Keyword.model_name.human.pluralize
+= hidden_field_tag "#{subject.class.name.underscore.sub(/.*\//, '')}[keyword_ids][]", nil
+- for keyword in Cmtool::Keyword.all
+  .keyword_container
+    = check_box_tag "#{subject.class.name.underscore.sub(/.*\//, '')}[keyword_ids][]", keyword.id, subject.keywords.include?(keyword), :id => "keyword-checkbox-#{keyword.id}"
+    = label_tag "keyword-checkbox-#{keyword.id}", keyword.name

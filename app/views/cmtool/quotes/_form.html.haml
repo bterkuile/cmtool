@@ -1,0 +1,22 @@
+= form_for [cmtool, @quote], :html => {:multipart => true} do |f|
+  = render 'error_messages', :target => @quote
+  .field
+    = f.label :owner
+    = f.text_field :owner
+  .field
+    = f.label :function
+    = f.text_field :function
+  .field
+    = f.label :state
+    = f.select :state, Cmtool::Quote.states
+  .field
+    = f.label :image
+    = f.file_field :image
+  .field
+    = f.label :body
+    = f.text_area :body, :rows => 8, :class => 'mceEditor'
+  .field
+    = f.label :active
+    = f.check_box :active
+  .actions
+    = f.submit @submit || update_button_text(@quote)

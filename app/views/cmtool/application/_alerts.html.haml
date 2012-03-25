@@ -1,0 +1,10 @@
+- if alert
+  .message.error.ui-state-error
+    .icon
+    .text
+      =raw flash[:alert]
+- if notice
+  .message.notice.ui-state-highlight
+    .icon
+    .text
+      =raw flash[:notice]

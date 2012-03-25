@@ -1,0 +1,24 @@
+- title :index, Cmtool::NewsletterSubscription
+- if @newsletter_subscriptions.any?
+  %table.index-table
+    %thead
+      %tr
+        %th= Cmtool::NewsletterSubscription.human_attribute_name(:email)
+        %th= Cmtool::NewsletterSubscription.human_attribute_name(:deactivation_token)
+        %th= Cmtool::NewsletterSubscription.human_attribute_name(:active)
+        %th
+        %th
+    %tbody
+      - @newsletter_subscriptions.each do |newsletter_subscription|
+        %tr
+          %td= newsletter_subscription.email
+          %td= newsletter_subscription.deactivation_token
+          %td= boolean_text newsletter_subscription.active
+          %td= link_to link_to_edit_content(newsletter_subscription), cmtool.edit_newsletter_subscription_path(newsletter_subscription)
+          %td= link_to link_to_destroy_content(newsletter_subscription), cmtool.newsletter_subscription_path(newsletter_subscription), :confirm => are_you_sure(newsletter_subscription), :method => :delete
+- else
+  = empty_result(Cmtool::NewsletterSubscription)
+
+- content_for :page_links do
+  %ul
+    %li= link_to link_to_new_content(Cmtool::NewsletterSubscription), cmtool.new_newsletter_subscription_path

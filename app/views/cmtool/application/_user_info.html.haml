@@ -1,0 +1,7 @@
+#user-info
+  #user-info-email= current_user.email
+  #user-info-sign-in-out{class: user_signed_in? ? 'signed-in' : 'signed-out'}
+    - if user_signed_in?
+      = link_to t('devise.sessions.sign_out'), cmtool.destroy_user_session_path
+    - else
+      = link_to t('devise.sessions.sign_in'), new_user_session_path

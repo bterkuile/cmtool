@@ -1,0 +1,11 @@
+= form_for [cmtool, @newsletter_subscription] do |f|
+  = render 'error_messages', :target => @newsletter_subscription
+
+  .field
+    = f.label :email
+    = f.text_field :email
+  .field
+    = f.label :active
+    = f.check_box :active
+  .actions
+    = f.submit @submit || update_button_text(@newsletter_subscription)

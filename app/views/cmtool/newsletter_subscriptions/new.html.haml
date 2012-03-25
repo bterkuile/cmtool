@@ -1,0 +1,6 @@
+- title :new, Cmtool::NewsletterSubscription
+= render 'form', :submit => create_button_text(@newsletter_subscription)
+
+- content_for :page_links do
+  %ul
+    %li= link_to link_to_index_content(Cmtool::NewsletterSubscription), cmtool.newsletter_subscriptions_path

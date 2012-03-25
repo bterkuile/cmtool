@@ -1,0 +1,51 @@
+= form_for [cmtool, @page] do |f|
+  = render 'error_messages', :target => @page
+
+  .field
+    = f.label :name
+    = f.text_field :name
+    %span Te zien in de url
+    - if @page.new_record?
+      = link_to_function 'Genereer vanuit titel', %{$.get('#{cmtool.generate_name_pages_path}', {name: $('#page_title').val()})}
+    - else
+      = link_to_function 'Genereer vanuit titel', %{$.get('#{cmtool.generate_name_page_path(@page)}', {name: $('#page_title').val()})}
+  .field
+    = f.label :menu_text
+    = f.text_field :menu_text
+    %span Weergave in menu
+  .field
+    = f.label :title
+    = f.text_field :title
+    %span Titel op de pagina
+  .field
+    = f.label :locale
+    = f.select :locale, ['nl', 'en', 'de']
+  .field
+    = f.label :body
+    = f.text_area :body, :rows => 30, :cols => 80, :class => 'editor_full'
+  .field
+    = f.label :footer
+    = f.text_area :footer, :rows => 15, :cols => 80, :class => 'editor_full'
+  .field
+    = f.label :sidebar
+    = f.text_area :sidebar, :rows => 15, :cols => 80, :class => 'editor_full'
+  .field
+    = f.label :parent_id
+    = f.select :parent_id, tree_options_for_select(Page.full_tree(@page.locale), exclude: @page), include_blank: ' -- '
+  .field
+    = f.label :default
+    = f.check_box :default
+  .field
+    = f.label :position
+    = f.select :position, (0..20).to_a
+  .field
+    = f.label :layout
+    = f.select :layout, Page::LAYOUTS
+  .field
+    = f.label :in_menu
+    = f.check_box :in_menu
+  .field
+    = render "cmtool/keywords/habtm", :subject => @page
+  .actions
+    = f.submit @submit || update_button_text(f.object)
+    = button_to_function 'Preview (unsupported)', %{$('form').attr('action', '/' + $('#page_name').val()).submit();}

@@ -1,0 +1,16 @@
+- title :show, Cmtool::NewsletterSubscription
+.show_field
+  %strong= Cmtool::NewsletterSubscription.human_attribute_name(:email)
+  = @newsletter_subscription.email
+.show_field
+  %strong= Cmtool::NewsletterSubscription.human_attribute_name(:deactivation_token)
+  = @newsletter_subscription.deactivation_token
+.show_field
+  %strong= Cmtool::NewsletterSubscription.human_attribute_name(:active)
+  = boolean_text @newsletter_subscription.active
+
+- content_for :page_links do
+  %ul
+    %li= link_to link_to_edit_content(@newsletter_subscription), cmtool.edit_newsletter_subscription_path(@newsletter_subscription)
+    %li= link_separator
+    %li= link_to link_to_index_content(Cmtool::NewsletterSubscription), cmtool.newsletter_subscriptions_path

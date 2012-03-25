@@ -1,0 +1,14 @@
+= form_for [:admin, @partner] do |f|
+  = render 'error_messages', :target => @partner
+
+  .field
+    = f.label :email
+    = f.text_field :email
+  .field
+    = f.label :password
+    = f.password_field :password
+  .field
+    = f.label :password_confirmation
+    = f.password_field :password_confirmation
+  .actions
+    = f.submit @submit || update_button_text

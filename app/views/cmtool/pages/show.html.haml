@@ -1,0 +1,42 @@
+- title t('action.show.title', :model => Page.model_name.human)
+.show_field
+  %strong= Page.human_attribute_name(:name)
+  = @page.name
+.show_field
+  %strong= Page.human_attribute_name(:menu_text)
+  = @page.menu_text
+.show_field
+  %strong= Page.human_attribute_name(:title)
+  = @page.title
+.show_field
+  %strong= Page.human_attribute_name(:body)
+  =raw @page.body
+.show_field
+  %strong= Page.human_attribute_name(:footer)
+  =raw @page.footer
+.show_field
+  %strong= Page.human_attribute_name(:sidebar)
+  =raw @page.sidebar
+.show_field
+  %strong= Page.human_attribute_name(:parent)
+  = @page.parent
+.show_field
+  %strong= Page.human_attribute_name(:position)
+  = @page.position
+.show_field
+  %strong= Page.human_attribute_name(:layout)
+  = @page.layout
+.show_field
+  %strong= Page.human_attribute_name(:default)
+  = boolean_text @page.default
+.show_field
+  %strong= Page.human_attribute_name(:has_view)
+  =# boolean_text template_exist?("pages/#{@page.name}")
+.show_field
+  %strong= Page.human_attribute_name(:in_menu)
+  = boolean_text @page.in_menu?
+
+- content_for :page_links do
+  %ul
+    %li= link_to link_to_index_content(Page), cmtool.pages_path
+    %li= link_to link_to_edit_content(@page), cmtool.edit_page_path(@page)

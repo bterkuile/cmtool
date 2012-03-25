@@ -1,0 +1,8 @@
+- title :edit, User
+= render 'form', :submit => update_button_text(@user)
+
+- content_for :page_links do
+  %ul
+    %li= link_to link_to_show_content(@user), cmtool.user_path(@user)
+    %li= link_separator
+    %li= link_to link_to_index_content(User), cmtool.users_path

@@ -1,0 +1,21 @@
+= form_for [cmtool, @user] do |f|
+  = render 'error_messages', :target => @user
+
+  .field
+    = f.label :email
+    = f.text_field :email
+  .field
+    = f.label :password
+    = f.password_field :password
+  .field
+    = f.label :password_confirmation
+    = f.password_field :password_confirmation
+  - if @user != current_user
+    .field
+      = f.label :active
+      = f.check_box :active
+    .field
+      = f.label :is_admin
+      = f.check_box :is_admin
+  .actions
+    = f.submit @submit || update_button_text(@user)

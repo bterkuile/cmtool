@@ -1,0 +1,11 @@
+<%- if @has_template -%>
+$('<div title="View exist">Er bestaat een speciale pagina met een design specifiek voor deze pagina. Deze is gekoppeld aan de naam. Deze koppeling gaat verloren als u de naam verandert. Wilt u dit toch doen?</div>').dialog({
+  modal: true,
+  buttons: {
+    OK: function(){$('#page_name').val('<%= @generated_name %>'); $(this).dialog('close');},
+    Annuleren: function(){$(this).dialog('close');}
+  }
+});
+<%- else -%>
+$('#page_name').val('<%= @generated_name %>');
+<%- end -%>

@@ -1,0 +1,7 @@
+- title :new, Cmtool::Directory
+
+= render 'form', :submit => create_button_text(@directory)
+
+- content_for :page_links do
+  %ul
+    %li= link_to link_to_index_content(Cmtool::Directory), cmtool.directories_path

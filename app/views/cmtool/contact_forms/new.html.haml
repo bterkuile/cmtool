@@ -1,0 +1,5 @@
+- title :new, Cmtool::ContactForm
+= render 'form', :submit => create_button_text(@contact_form)
+- content_for :page_links do
+  %ul
+    %li= link_to link_to_index_content(Cmtool::ContactForm), cmtool.contact_forms_path
