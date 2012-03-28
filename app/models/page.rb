@@ -1,3 +1,3 @@
 class Page
-  include Cmtool::Page
+  include Cmtool::Includes::Page
 end

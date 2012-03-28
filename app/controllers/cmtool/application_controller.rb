@@ -6,7 +6,7 @@ module Cmtool
 
     def set_locale
       if respond_to? :cmtool_locale
-        I18n.locale = :cmtool_locale
+        I18n.locale = cmtool_locale
       else
         I18n.locale = :en
       end

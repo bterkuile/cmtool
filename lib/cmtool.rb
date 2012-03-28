@@ -1,6 +1,7 @@
 require "cmtool/engine"
-require 'cmtool/user'
-require 'cmtool/page'
+require 'cmtool/includes/user'
+require 'cmtool/includes/page'
+require 'cmtool/includes/pages_controller'
 
 module Cmtool
 end

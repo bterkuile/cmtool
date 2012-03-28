@@ -1,3 +1,3 @@
 class User
-  include Cmtool::User
+  include Cmtool::Includes::User
 end

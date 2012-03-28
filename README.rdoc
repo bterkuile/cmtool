@@ -53,6 +53,7 @@ The page model allows you to control some interesting things. To create it (app/
 
     # Define the layouts you want to use in your website. Be sure to create them in
     # app/views/layouts/...
+    # The first specified layout will become the default
     def self.layouts
       [:application, :home, :contact]
     end
@@ -75,3 +76,17 @@ Cmtool will take this value:
       I18n.locale
     end
   end
+=== Customize a page
+All pages by default are rendered using the view: app/pages/show. So adding and changing this file will
+change all displayed pages without their own specific page. To create a specific page, create a page
+with the name of the page you created in the Admin section. If for example you have created a page
+with the name: about
+Then you can give this page a custom look using the view:
+<tt>app/views/about.html.haml</tt>
+You can also use erb, slim or your choice of templating engine
+
+=== Customize your 404
+You can customize what is shown when a page cannot be found. There is a standard view app/pages/404.html.erb with the following content:
+ <%= render template: 'pages/show' %>
+Overwrite this to get another page as show. To controll the content of the 404 page, create a page in the Admin area having the name: 404. 
+You can make a 404 page for every language in this manner. Here you can also give a custom layout if you do not want to use the default layout.
