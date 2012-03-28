@@ -19,7 +19,7 @@
     %span Titel op de pagina
   .field
     = f.label :locale
-    = f.select :locale, ['nl', 'en', 'de']
+    = f.select :locale, Page.locales
   .field
     = f.label :body
     = f.text_area :body, :rows => 30, :cols => 80, :class => 'editor_full'
@@ -31,7 +31,7 @@
     = f.text_area :sidebar, :rows => 15, :cols => 80, :class => 'editor_full'
   .field
     = f.label :parent_id
-    = f.select :parent_id, tree_options_for_select(Page.full_tree(@page.locale), exclude: @page), include_blank: ' -- '
+    = f.select :parent_id, tree_options_for_select(Page.full_tree(@page.locale), exclude: @page.id, selected: @page.parent_id), include_blank: ' -- '
   .field
     = f.label :default
     = f.check_box :default
@@ -40,7 +40,7 @@
     = f.select :position, (0..20).to_a
   .field
     = f.label :layout
-    = f.select :layout, Page::LAYOUTS
+    = f.select :layout, Page.layouts
   .field
     = f.label :in_menu
     = f.check_box :in_menu

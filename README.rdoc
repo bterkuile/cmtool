@@ -1,3 +1,77 @@
 = Cmtool
 
 This project rocks and uses MIT-LICENSE.
+== About
+Cmtool is a CMS to give you a quickstart for a website using CouchDB as database
+backend. It is in developing stage, but already used in production.
+It is designed as an engine. The thought behind is that you will have to
+create your own rails website, but get a lot of stuff for free. These things are:
+
+* User management
+* Page management
+* Faq
+* News
+* Newsletter subscriptions
+* Directory manager
+* Image manager
+
+== Setup
+To start using Cmtool as website CMS add it to your Gemfile. Since it 
+depends on github gems and gem dependencies do not support those you
+have to explicitly add two dependencies to your Gemfile:
+  gem 'couch_potato' , :git => 'git://github.com/bterkuile/couch_potato.git'
+  gem 'simply_stored' , :git => 'git://github.com/bterkuile/simply_stored.git'
+  gem 'cmtool'
+This will add some gems you might like anyway, here a list:
+
+* bourbon
+* jquery-rails
+* tinymce-rails
+* sass-rails
+* haml-rails
+* paperclip
+* email_validator (validates :email, email: true)
+
+=== User model
+The user model is important. We recommend you to create your own user model:
+  class User
+    include Cmtool::User
+
+  end
+This is enough to start using Cmtool. But probably you want to add some goodies of your own.
+Remember that this is a SimplyStored model with almost all the ActiveModel features.
+
+=== Page model
+The page model allows you to control some interesting things. To create it (app/models/page.rb):
+  class Page
+    include Cmtool::Page
+
+    # Define the locales you want to use in your website
+    def self.locales
+      [:en]
+    end
+
+    # Define the layouts you want to use in your website. Be sure to create them in
+    # app/views/layouts/...
+    def self.layouts
+      [:application, :home, :contact]
+    end
+  end
+ 
+=== Controlling the language of the system
+If you add a method <tt>cmtool_locale</tt> to your application controller
+Cmtool will take this value:
+  class ApplicationController
+    before_filter :set_locale
+
+    private
+    
+    def set_locale
+      # Do some magic
+      I18n.locale = :en
+    end
+
+    def cmtool_locale
+      I18n.locale
+    end
+  end

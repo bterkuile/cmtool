@@ -3,6 +3,8 @@
   %head
     %title= site_title
     = csrf_meta_tag
+    :javascript
+      var tinymce_language = '#{I18n.locale}';
     = stylesheet_link_tag 'cmtool/application'
     = javascript_include_tag 'cmtool/application'
     = yield(:head)

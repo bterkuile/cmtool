@@ -10,7 +10,7 @@ gem "jquery-rails"
 
 gem 'couch_potato' , :git => 'git://github.com/bterkuile/couch_potato.git'
 gem 'simply_stored' , :git => 'git://github.com/bterkuile/simply_stored.git'
-gem 'devise'#, '1.4.0'
+gem 'devise'
 gem 'devise_simply_stored'
 gem 'tinymce-rails'
 gem 'haml-rails'

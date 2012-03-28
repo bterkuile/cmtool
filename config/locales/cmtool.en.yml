@@ -30,10 +30,15 @@ en:
         label: Add %{image}
     news:
       remove_image: Remove image
+    quote:
+      remove_image: Remove image
     sessions:
       new:
         label: Login
         title: Acces the administration section
+    errors:
+      form:
+        title: 'The action could not be completed because of %{count} reasons'
   activemodel:
     models:
       page: Page
