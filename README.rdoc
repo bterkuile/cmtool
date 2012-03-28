@@ -32,6 +32,15 @@ This will add some gems you might like anyway, here a list:
 * paperclip
 * email_validator (validates :email, email: true)
 
+=== Routing
+
+Add the following routes:
+  devise_for :users, :controllers => {:sessions => 'cmtool/sessions', :passwords => 'cmtool/passwords'}
+  mount Cmtool::Engine => '/cmtool'
+  match "/:name" => "pages#show"
+  match "/*url" => "pages#not_found"
+  root :to => 'pages#home'
+
 === User model
 The user model is important. We recommend you to create your own user model:
   class User
