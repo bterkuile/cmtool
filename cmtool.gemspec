@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = Cmtool::VERSION
   s.authors     = ["Benjamin ter Kuile"]
   s.email       = ["bterkuile@gmail.com"]
-  s.homepage    = "http://www.companytools.nl/"
+  s.homepage    = "https://github.com/bterkuile/cmtool"
   s.summary     = "A rails 3.2+ CMS as engine for a CouchDB backend"
   s.description = "A rails 3.2+ CMS as engine for a CouchDB backend"
 
