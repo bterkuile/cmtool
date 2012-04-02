@@ -1,6 +1,5 @@
 = Cmtool
-
-This project rocks and uses MIT-LICENSE.
+{<img src="https://secure.travis-ci.org/bterkuile/cmtool.png?branch=master" alt="Build Status" />}[http://travis-ci.org/bterkuile/cmtool]
 == About
 Cmtool is a CMS to give you a quickstart for a website using CouchDB as database
 backend. It is in developing stage, but already used in production.
