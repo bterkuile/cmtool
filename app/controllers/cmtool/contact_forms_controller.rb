@@ -1,5 +1,7 @@
 module Cmtool
   class Cmtool::ContactFormsController < Cmtool::ApplicationController
+    skip_before_filter :authenticate_user!, :authorize_user, only: :add
+
     # GET /contact_forms
     # GET /contact_forms.xml
     def index
@@ -79,6 +81,15 @@ module Cmtool
       respond_to do |format|
         format.html { redirect_to(cmtool.contact_forms_url) }
         format.xml  { head :ok }
+      end
+    end
+
+    def add
+      @contact_form = Cmtool::ContactForm.new(params[:contact_form])
+      if @contact_form.save
+        redirect_to :back, notice: I18n.t('cmtool.contact_form.submitted')
+      else
+        redirect_to :back, alert: I18n.t('cmtool.contact_form.submission_failed', reason: @contact_form.errors.full_messages.join(', '))
       end
     end
   end

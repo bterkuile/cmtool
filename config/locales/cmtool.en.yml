@@ -6,6 +6,9 @@ en:
       are_you_sure: 'Are you sure?'
       are_you_sure_with_name: 'Are you sure you want to delete %{model} %{name}?'
       empty_result: No %{models} found
+    menu:
+      forms:
+        title: Form
     action:
       index:
         title: List %{models}
@@ -30,6 +33,12 @@ en:
         label: Add %{image}
     news:
       remove_image: Remove image
+    newsletter_subscription:
+      subscribed: You subscribed successfully to the newsletter
+      subscription_failed: 'There was a problem with your subscription<br/>%{reason}'
+    contact_form:
+      submitted: You successfully submitted the contact form
+      submission_failed: 'There was a problem with the contact form submission<br/>%{reason}'
     quote:
       remove_image: Remove image
     sessions:
@@ -39,6 +48,8 @@ en:
     errors:
       form:
         title: 'The action could not be completed because of %{count} reasons'
+    warnings:
+      no_host_specified: 'You did not specify a host in config/environments/:env (config.action_mailer.default_url_options = { :host => "example.com" })'
   activemodel:
     models:
       page: Page

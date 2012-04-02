@@ -2,12 +2,11 @@ module Cmtool
   module Includes
     module User
       def self.included(klass)
-        klass.extend Devise::Models
         klass.send :include, SimplyStored::Couch
         klass.send :include, Devise::Orm::SimplyStored
         klass.send :include, InstanceMethods
+        klass.send :extend, ClassMethods
 
-        klass.property :employee_email
         klass.property :is_admin, type: :boolean
         klass.property :active, type: :boolean, default: true
 
@@ -36,10 +35,15 @@ module Cmtool
         end
 
         def generate_password!
-          @password_haystack ||= (:a..:z).to_a + (:A..:Z).to_a + (0..9).to_a
-          @generated_password = @password_haystack.sample(8).join
+          @generated_password = self.class.password_haystack.sample(8).join
           self.password = @generated_password
           self.password_confirmation = @generated_password
+        end
+      end
+
+      module ClassMethods
+        def password_haystack
+          @password_haystack ||= (:a..:z).to_a + (:A..:Z).to_a + (0..9).to_a
         end
       end
     end

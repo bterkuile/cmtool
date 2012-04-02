@@ -26,7 +26,7 @@
               %li{:class => controller_name == 'faqs' ? 'ui-state-active' : 'ui-state-default'}=link_to Cmtool::Faq.model_name.human_plural, cmtool.faqs_path
               %li{:class => controller_name == 'quotes' ? 'ui-state-active' : 'ui-state-default'}=link_to Cmtool::Quote.model_name.human_plural, cmtool.quotes_path
               %li{:class => %w[contact_forms demo_requests call_requests newsletter_subscriptions].include?(controller_name) ? ['ui-state-active', 'parent'] : ['ui-state-default', 'parent']}
-                %span.title Formulieren
+                %span.title= t('cmtool.menu.forms.title')
                 %ul.child-menu
                   %li{:class => controller_name == 'contact_forms' ? 'ui-state-active' : 'ui-state-default'}=link_to Cmtool::ContactForm.model_name.human_plural, cmtool.contact_forms_path
                   %li{:class => controller_name == 'newsletter_subscriptions' ? 'ui-state-active' : 'ui-state-default'}=link_to Cmtool::NewsletterSubscription.model_name.human_plural, cmtool.newsletter_subscriptions_path

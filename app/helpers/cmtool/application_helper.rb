@@ -28,6 +28,10 @@ module Cmtool
     end
     alias are_you_sure? are_you_sure
 
+    def warnings
+      @cmtool_warnings
+    end
+
     def boolean_text(yes)
       yes.present? ? t('cmtool.general.yes') : t('cmtool.general.no')
     end

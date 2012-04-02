@@ -30,6 +30,8 @@ end
 group :test do
   gem 'ruby-debug19', :require => 'ruby-debug'
   gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'capybara'
 end
 group :development do
   gem 'ruby-debug19', :require => 'ruby-debug'

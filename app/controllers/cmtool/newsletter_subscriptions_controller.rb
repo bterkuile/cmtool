@@ -1,5 +1,7 @@
 module Cmtool
   class Cmtool::NewsletterSubscriptionsController < Cmtool::ApplicationController
+    skip_before_filter :authenticate_user!, :authorize_user, only: :add
+
     # GET /newsletter_subscriptions
     # GET /newsletter_subscriptions.xml
     def index
@@ -79,6 +81,15 @@ module Cmtool
       respond_to do |format|
         format.html { redirect_to(cmtool.newsletter_subscriptions_url) }
         format.xml  { head :ok }
+      end
+    end
+
+    def add
+      @newsletter_subscription = Cmtool::NewsletterSubscription.new(params[:newsletter_subscription])
+      if @newsletter_subscription.save
+        redirect_to :back, notice: I18n.t('cmtool.newsletter_subscription.subscribed')
+      else
+        redirect_to :back, alert: I18n.t('cmtool.newsletter_subscription.subscription_failed', reason: @newsletter_subscription.errors.full_messages.join(', '))
       end
     end
   end
