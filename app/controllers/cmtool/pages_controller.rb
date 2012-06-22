@@ -3,7 +3,7 @@ module Cmtool
     # GET /pages
     # GET /pages.xml
     def index
-      @pages = ::Page.all.sort_by{|p| "#{p.parent.presence.try(:reverse) || p.name}#{p.position.to_s.rjust(6, "0")}" }
+      #@pages = ::Page.all.sort_by{|p| "#{p.parent.presence.try(:reverse) || p.name}#{p.position.to_s.rjust(6, "0")}" }
 
       respond_to do |format|
         format.html # index.html.erb

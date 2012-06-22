@@ -15,7 +15,7 @@ module Cmtool
 
         #== VALIDATIONS
         klass.validates_presence_of :email
-        klass.validates_uniqueness_of :email
+        klass.validates_uniqueness_of :email, if: lambda{ |u| u.email.present? }
         klass.validates_presence_of :encrypted_password, if: lambda{ |u| u.email.present? }
         klass.validates_confirmation_of :password, if: lambda{ |u| u.password.present? }
     

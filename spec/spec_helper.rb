@@ -50,6 +50,14 @@ RSpec.configure do |config|
     fill_in 'user[password]', with: @user.password
     click_on 'Sign in'
   end
+
+  def create_pages_tree
+    root1 = Page.create(name: 'root1', locale: 'en')
+    root2 = Page.create(name: 'root2', locale: 'en')
+    child1_1 = Page.create( name: 'child1.1', locale: 'en', parent: root1 )
+    child2_1 = Page.create( name: 'child2.1', locale: 'en', parent: root2 )
+    child2_2 = Page.create( name: 'child2.2', locale: 'en', parent: root2 )
+  end
   # ## Mock Framework
   #
   # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
