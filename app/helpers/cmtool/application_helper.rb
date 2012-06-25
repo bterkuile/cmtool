@@ -29,7 +29,7 @@ module Cmtool
     alias are_you_sure? are_you_sure
 
     def warnings
-      @cmtool_warnings
+      @cmtool_warnings || []
     end
 
     def boolean_text(yes)

@@ -10,7 +10,7 @@ gem "jquery-rails"
 
 gem 'couch_potato' , :git => 'git://github.com/bterkuile/couch_potato.git'
 gem 'simply_stored' , :git => 'git://github.com/bterkuile/simply_stored.git'
-gem 'devise'
+gem 'devise', '2.0.4'
 gem 'devise_simply_stored'
 gem 'tinymce-rails'
 gem 'haml-rails'
@@ -31,7 +31,10 @@ group :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'capybara'
+  gem 'pry'
 end
 group :development do
-  gem 'ruby-debug19', :require => 'ruby-debug'
+  gem 'pry'
+  gem 'thin'
+  #gem 'ruby-debug19', :require => 'ruby-debug'
 end

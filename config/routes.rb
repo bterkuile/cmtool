@@ -27,10 +27,14 @@ Cmtool::Engine.routes.draw do
 
   # ADMIN FORMS
   resources :contact_forms do
-    post :add
+    collection do
+      post :add
+    end
   end
   resources :newsletter_subscriptions do
-    post :add
+    collection do
+      post :add
+    end
   end
 
   # USER MANAGEMENT

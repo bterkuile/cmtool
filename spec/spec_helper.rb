@@ -19,6 +19,7 @@ Capybara.default_driver = :selenium
 RSpec.configure do |config|
   config.mock_with :rspec
   config.include FactoryGirl::Syntax::Methods
+  #config.application = Cmtool::Engine
   #config.include CompanyFactory
   config.include Cmtool::Engine.routes.url_helpers
   config.include Devise::TestHelpers, :type => :controller
@@ -33,6 +34,10 @@ RSpec.configure do |config|
 
   config.before :all, type: :controller do
     #render_views 
+  end
+
+  config.before :each do
+    @routes = Cmtool::Engine.routes
   end
 
   config.before :all do

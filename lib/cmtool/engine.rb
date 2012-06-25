@@ -1,3 +1,4 @@
+=begin
 require 'couch_potato'
 require 'simply_stored'
 require 'email_validator'
@@ -9,8 +10,14 @@ require 'tinymce-rails'
 require 'paperclip'
 require 'jquery-rails'
 require 'bourbon'
+=end
 module Cmtool
   class Engine < ::Rails::Engine
     isolate_namespace Cmtool
+    initializer "cmtool" do
+    end
+    ActiveSupport.on_load(:action_view) do
+      ::ActionView::Base.send :include, Cmtool::ApplicationHelper
+    end
   end
 end
