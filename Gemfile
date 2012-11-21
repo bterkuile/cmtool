@@ -14,12 +14,12 @@ gem 'devise', '2.0.4'
 gem 'devise_simply_stored'
 gem 'tinymce-rails'
 gem 'haml-rails'
-gem 'sass-rails'
-gem 'bourbon'
 gem 'paperclip'
-gem 'coffee-script'
 gem 'email_validator'
 group :assets do
+  gem 'sass-rails'
+  gem 'bourbon'
+  gem 'coffee-script'
 end
 # Declare any dependencies that are still in development here instead of in
 # your gemspec. These might include edge Rails or gems from your path or
@@ -28,9 +28,8 @@ end
 
 # To use debugger
 group :test do
-  gem 'rspec-rails'
+  gem 'steak'
   gem 'factory_girl_rails'
-  gem 'capybara'
   gem 'pry'
 end
 group :development do
