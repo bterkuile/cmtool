@@ -1,9 +1,35 @@
 module Cmtool
   module ApplicationHelper
 
+    # Return the title of the application
+    def application_title
+      'Cmtool'
+    end
+
+
+    # Standard return content when empty listing is found
+    # called with the model as argument
+    #   = no_content_given Album
+    def no_content_given(model)
+      t('helpers.no_content_given', models: model.model_name.human_plural)
+    end
+
+    # overwrite i18n l, to handle nil values
+    def l(*args)
+      return '' unless args.first
+      super(*args)
+    end
+
     def site_title
       'Cmtool'
     end
+
+    # Set the page title, allow setting a resource title like:
+    #   - title :index, Album
+    # or 
+    #   - title :show, Album
+    # or normal text behaviour:
+    #   - title "Home"
     def title(*args)
       content_for :title do
         if args.first.is_a?(Symbol) && (args[1].respond_to?(:model_name) || args[1].class.respond_to?(:model_name))
