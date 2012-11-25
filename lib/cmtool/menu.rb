@@ -103,6 +103,7 @@ module Cmtool
       end
 
       def engine
+        return @options[:engine] if @options[:engine].present?
         base = @options[:scope].presence
         base ||= @resource.name.split('::').first if @resource.name.index('::')
         return Rails.application unless base

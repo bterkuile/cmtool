@@ -80,11 +80,11 @@ module Cmtool
       t('cmtool.action.destroy.title', model: obj.class.model_name.human)
     end
 
-    def create_button_text(obj)
-      t('cmtool.action.create.label', model: obj.class.model_name.human)
+    def create_button_text(obj = nil)
+      t('cmtool.action.create.label', model: obj ? obj.class.model_name.human : '')
     end
-    def update_button_text(obj)
-      t('cmtool.action.update.label', model: obj.class.model_name.human)
+    def update_button_text(obj = nil)
+      t('cmtool.action.update.label', model: obj ? obj.class.model_name.human : '')
     end
     def link_separator
       ' | '
