@@ -1,6 +1,6 @@
 - title :index, Cmtool::News
 - if @news.any?
-  %table.index-table
+  %table.index-table.table.table-striped.table-hover
     %thead
       %tr
         %th= Cmtool::News.human_attribute_name(:title)
@@ -21,4 +21,4 @@
 
 - content_for :page_links do
   %ul
-    %li= link_to link_to_new_content(Cmtool::News), cmtool.new_news_path
+    %li= link_to link_to_new_content(Cmtool::News), cmtool.new_news_path, class: ['btn', 'btn-primary']

@@ -21,6 +21,5 @@
 
 - content_for :page_links do
   %ul
-    %li= link_to link_to_edit_content(@quote), cmtool.edit_quote_path(@quote)
-
-    %li= link_to link_to_index_content(Cmtool::Quote), cmtool.quotes_path
+    %li= link_to link_to_edit_content(@quote), cmtool.edit_quote_path(@quote), class: ['btn', 'btn-warning']
+    %li= link_to link_to_index_content(Cmtool::Quote), cmtool.quotes_path, class: [:btn]

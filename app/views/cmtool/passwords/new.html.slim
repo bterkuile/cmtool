@@ -1,0 +1,10 @@
+h2= t('devise.passwords.title')
+= form_for(resource, :as => resource_name, :url => password_path(resource_name), html: {class: 'form-horizontal'}) do |f| 
+  = devise_error_messages!
+  .control-group
+     = f.label :email, class: 'control-label'
+     .controls= f.email_field :email
+  .control-group
+    .controls
+      = f.submit t('devise.passwords.button'), class: 'btn btn-primary'
+= render "devise_links"

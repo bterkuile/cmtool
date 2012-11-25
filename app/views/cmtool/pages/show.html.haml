@@ -27,9 +27,6 @@
   %strong= Page.human_attribute_name(:layout)
   = @page.layout
 .show_field
-  %strong= Page.human_attribute_name(:default)
-  = boolean_text @page.default
-.show_field
   %strong= Page.human_attribute_name(:has_view)
   =# boolean_text template_exist?("pages/#{@page.name}")
 .show_field
@@ -38,5 +35,5 @@
 
 - content_for :page_links do
   %ul
-    %li= link_to link_to_index_content(Page), cmtool.pages_path
-    %li= link_to link_to_edit_content(@page), cmtool.edit_page_path(@page)
+    %li= link_to link_to_index_content(Page), cmtool.pages_path, class: [:btn]
+    %li= link_to link_to_edit_content(@page), cmtool.edit_page_path(@page), class: ['btn', 'btn-warning']

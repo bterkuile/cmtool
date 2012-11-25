@@ -7,7 +7,7 @@ gemspec
 
 group :assets do
   gem 'sass-rails'
-  #gem 'bourbon'
+  gem 'bourbon'
   gem 'coffee-script'
   gem 'therubyracer', :platforms => :ruby
   gem 'less-rails'

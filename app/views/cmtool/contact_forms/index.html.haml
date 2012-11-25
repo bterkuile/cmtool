@@ -1,6 +1,6 @@
 - title :index, Cmtool::ContactForm
 - if @contact_forms.any?
-  %table.index-table
+  %table.index-table.table.table-striped.table-hover
     %thead
       %tr
         %th= Cmtool::ContactForm.human_attribute_name(:gender)
@@ -23,4 +23,4 @@
 
 - content_for :page_links do
   %ul
-    %li= link_to link_to_new_content(Cmtool::ContactForm), cmtool.new_contact_form_path
+    %li= link_to link_to_new_content(Cmtool::ContactForm), cmtool.new_contact_form_path, class: ['btn', 'btn-primary']

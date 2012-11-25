@@ -17,8 +17,6 @@
 
 - content_for :page_links do
   %ul
-    %li= link_to link_to_edit_content(@image), cmtool.edit_image_path(@image)
-
-    %li= link_to link_to_new_content(Cmtool::Image), cmtool.new_image_path, :class => %w[new image]
-
-    %li= link_to link_to_index_content(Cmtool::Image), cmtool.images_path
+    %li= link_to link_to_edit_content(@image), cmtool.edit_image_path(@image), class: ['btn', 'btn-warning']
+    %li= link_to link_to_new_content(Cmtool::Image), cmtool.new_image_path, class: ['btn', 'btn-primary']
+    %li= link_to link_to_index_content(Cmtool::Image), cmtool.images_path, class: [:btn]

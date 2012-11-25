@@ -245,6 +245,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bourbon
   cmtool!
   coffee-script
   couch_potato!

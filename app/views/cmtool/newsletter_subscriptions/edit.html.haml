@@ -3,6 +3,5 @@
 
 - content_for :page_links do
   %ul
-    %li= link_to link_to_show_content(@newsletter_subscription), cmtool.newsletter_subscription_path(@newsletter_subscription)
-
-    %li= link_to link_to_index_content(Cmtool::NewsletterSubscription), cmtool.newsletter_subscriptions_path
+    %li= link_to link_to_show_content(@newsletter_subscription), cmtool.newsletter_subscription_path(@newsletter_subscription), class: ['btn', 'btn-info']
+    %li= link_to link_to_index_content(Cmtool::NewsletterSubscription), cmtool.newsletter_subscriptions_path, class: [:btn]

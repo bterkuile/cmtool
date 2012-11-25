@@ -55,6 +55,9 @@ describe Cmtool::Menu do
         end
       end
     end
+    it "should have 7 items now" do
+      Cmtool::Menu.items.size.should == 7
+    end
     it "should have pages as second last items argument" do
       second_last = Cmtool::Menu.items[-2]
       second_last.should be_a Cmtool::Menu::ResourceLink

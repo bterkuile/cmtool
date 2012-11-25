@@ -3,7 +3,7 @@
 
 - content_for :page_links do
   %ul
-    %li= link_to link_to_index_content(Page), cmtool.pages_path
-    %li= link_to link_to_show_content(@page), cmtool.page_path(@page)
-    %li= link_to link_to_edit_content(@page), cmtool.edit_page_path(@page)
-    %li= link_to link_to_destroy_content(@page), cmtool.page_path(@page), :confirm => are_you_sure?(@page), :method => :delete
+    %li= link_to link_to_index_content(Page), cmtool.pages_path, class: [:btn]
+    %li= link_to link_to_show_content(@page), cmtool.page_path(@page), class: ['btn', 'btn-info']
+    %li= link_to link_to_edit_content(@page), cmtool.edit_page_path(@page), class: ['btn', 'btn-warning']
+    %li= link_to link_to_destroy_content(@page), cmtool.page_path(@page), :confirm => are_you_sure?(@page), :method => :delete, class: ['btn', 'btn-danger']

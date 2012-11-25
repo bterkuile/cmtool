@@ -1,6 +1,6 @@
 - title :index, Cmtool::Keyword
 - if @keywords.any?
-  %table.index-table
+  %table.index-table.table.table-striped.table-hover
     %thead
       %tr
         %th= Cmtool::Keyword.human_attribute_name(:name)
@@ -17,4 +17,4 @@
 
 - content_for :page_links do
   %ul
-    %li= link_to link_to_new_content(Cmtool::Keyword), cmtool.new_keyword_path
+    %li= link_to link_to_new_content(Cmtool::Keyword), cmtool.new_keyword_path, class: ['btn', 'btn-primary']

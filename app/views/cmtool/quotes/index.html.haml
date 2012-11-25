@@ -1,6 +1,6 @@
 - title :index, Cmtool::Quote
 - if @quotes.any?
-  %table.index-table
+  %table.index-table.table.table-striped.table-hover
     %thead
       %tr
         %th= Cmtool::Quote.human_attribute_name(:owner)
@@ -23,4 +23,4 @@
 
 - content_for :page_links do
   %ul
-    %li= link_to link_to_new_content(Cmtool::Quote), cmtool.new_quote_path
+    %li= link_to link_to_new_content(Cmtool::Quote), cmtool.new_quote_path, class: ['btn', 'btn-primary']

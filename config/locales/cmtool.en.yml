@@ -31,12 +31,16 @@ en:
       show:
         title: Show %{model}
       destroy:
-        title: Destroy %{model}
+        title: Delete %{model}
         successful: '%{model} successfully deleted'
     directory:
       add_file: Add file
       add_image:
         label: Add %{image}
+    table:
+      index:
+        edit: ''
+        destroy: ''
     news:
       remove_image: Remove image
     newsletter_subscription:
