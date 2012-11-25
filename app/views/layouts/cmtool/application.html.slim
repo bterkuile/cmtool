@@ -46,7 +46,7 @@ html lang="en"
                             li.divider
                           - else
                             li[ class=(controller_name == child_item.controller_name ? 'active' : '') ] = link_to child_item.title, child_item.path
-                  - elsif false && menu_item.resource_link?
+                  - elsif menu_item.resource_link?
                     li[ class=(menu_item.controller_name == controller_name ? 'active' : '')]= link_to menu_item.title, menu_item.path
               .btn-group.pull-right
                 a.btn.dropdown-toggle[data-toggle="dropdown" href="#"]

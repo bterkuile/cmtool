@@ -99,7 +99,7 @@ module Cmtool
         @resource.model_name.human_plural
       end
       def path
-        engine.routes.url_helpers.url_for(controller: nested_controller_name, action: 'index', only_path: true)
+        engine.routes.url_helpers.url_for({controller: nested_controller_name, action: 'index', only_path: true}.merge(@options[:path] || {}))
       end
 
       def engine
@@ -115,7 +115,7 @@ module Cmtool
       end
       def nested_controller_name
         if @options[:scope].present?
-          "#{@options[:scope]}::#{@resource.name}".underscore.pluralize
+          "#{@options[:scope]}::#{@resource.name.split('::').last}".underscore.pluralize
         else
           @resource.name.underscore.pluralize
         end
