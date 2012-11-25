@@ -7,8 +7,14 @@ en:
       are_you_sure_with_name: 'Are you sure you want to delete %{model} %{name}?'
       empty_result: No %{models} found
     menu:
+      site:
+        title: Site
       forms:
-        title: Form
+        title: Forms
+      publications:
+        title: Publications
+      files:
+        title: Files
     action:
       index:
         title: List %{models}
