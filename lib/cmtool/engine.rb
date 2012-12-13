@@ -17,7 +17,7 @@ module Cmtool
     initializer "cmtool" do
     end
     ActiveSupport.on_load(:action_view) do
-      require '../app/helpers/cmtool/application_helper'
+      require File.expand_path('../../../app/helpers/cmtool/application_helper', __FILE__)
       ::ActionView::Base.send :include, Cmtool::ApplicationHelper
     end
   end
