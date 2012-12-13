@@ -11,7 +11,7 @@ group :assets do
   gem 'coffee-script'
   gem 'therubyracer', :platforms => :ruby
   gem 'less-rails'
-  gem 'twitter-bootstrap-rails'
+  gem 'bootstrap-sass'
 end
 
 gem 'couch_potato' , :git => 'git://github.com/bterkuile/couch_potato.git'
