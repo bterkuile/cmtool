@@ -31,7 +31,7 @@
     = f.text_area :sidebar, :rows => 15, :cols => 80, :class => 'editor_full'
   .field
     = f.label :parent_id
-    = f.select :parent_id, tree_options_for_select(Page.full_tree(@page.locale), exclude: @page.id, selected: @page.parent_id), include_blank: ' -- '
+    = f.select :parent_id, tree_options_for_select(Page.full_tree(@page.locale || Page.locales.first), exclude: @page.id, selected: @page.parent_id), include_blank: ' -- '
   .field
     = f.label :position
     = f.select :position, (0..20).to_a

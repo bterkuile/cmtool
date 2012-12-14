@@ -22,6 +22,7 @@ module Cmtool
 
         klass.validates :name, presence: true
         klass.validates :locale, presence: true
+        klass.validate :parent_locale_match
 
         # RELATIONS
         klass.has_and_belongs_to_many :keywords, storing_keys: true, class_name: 'Cmtool::Keyword'
@@ -35,6 +36,12 @@ module Cmtool
 
         def generate_name
           name = self.class.generate_name(title)
+        end
+      private
+        def parent_locale_match
+          if parent.present?
+            errors.add(:locale, 'must be the same as the parent') unless parent.locale == locale
+          end
         end
       end
 

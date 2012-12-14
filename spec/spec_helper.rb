@@ -15,7 +15,7 @@ Dir[File.join(ENGINE_RAILS_ROOT, "spec/factories/**/*.rb")].each {|f| require f 
 
 I18n.locale = :en
 Devise.stretches = 1
-Capybara.default_driver = :selenium
+#Capybara.default_driver = :selenium
 RSpec.configure do |config|
   config.mock_with :rspec
   config.include FactoryGirl::Syntax::Methods
@@ -41,19 +41,6 @@ RSpec.configure do |config|
   end
 
   config.before :all do
-  end
-  config.before :each, type: :request do
-    #Capybara.current_driver = :selenium
-    sign_in_user_through_request
-  end
-  config.after :each, type: :request do
-    visit "/users/sign_out"
-  end
-  def sign_in_user_through_request
-    visit "/users/sign_in"
-    fill_in 'user[email]', with: @user.email
-    fill_in 'user[password]', with: @user.password
-    click_on 'Sign in'
   end
 
   def create_pages_tree

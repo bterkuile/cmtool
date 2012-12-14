@@ -63,5 +63,15 @@ describe Cmtool::Menu do
       second_last.should be_a Cmtool::Menu::ResourceLink
       second_last.resource.should == Page
     end
+
+    it "should fall back to normal behaviour when no menu item specified is found" do
+      Cmtool::Menu.reset!
+      Cmtool::Menu.register do
+        append_to :publications do
+          resource_link Cmtool::Directory
+        end
+      end
+      Cmtool::Menu.items.size.should == 1
+    end
   end
 end
