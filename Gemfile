@@ -9,8 +9,8 @@ group :assets do
   gem 'sass-rails'
   gem 'bourbon'
   gem 'coffee-script'
-  gem 'therubyracer', :platforms => :ruby
-  gem 'less-rails'
+  #gem 'therubyracer', :platforms => :ruby
+  #gem 'less-rails'
   gem 'bootstrap-sass'
 end
 
@@ -34,10 +34,8 @@ gem "jquery-rails"
 group :test do
   gem 'steak'
   gem 'factory_girl_rails'
-  gem 'pry'
 end
 group :development do
-  gem 'pry'
   gem 'thin'
   #gem 'ruby-debug19', :require => 'ruby-debug'
 end

@@ -19,7 +19,7 @@ GIT
 PATH
   remote: .
   specs:
-    cmtool (0.4.0)
+    cmtool (0.5.0)
       bourbon
       coffee-script
       devise
