@@ -15,6 +15,7 @@ module Cmtool
   class Engine < ::Rails::Engine
     isolate_namespace Cmtool
     initializer "cmtool.build_menu" do
+      require 'email_validator'
       Cmtool::Menu.register do
         group label: :site do
           title t('cmtool.menu.site.title')
