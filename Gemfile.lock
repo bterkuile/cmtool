@@ -22,7 +22,7 @@ PATH
     cmtool (0.5.0)
       bourbon
       coffee-script
-      devise
+      devise (= 2.0.4)
       devise_simply_stored
       email_validator
       haml-rails
@@ -30,6 +30,7 @@ PATH
       paperclip
       rails (~> 3.2.2)
       sass-rails
+      slim-rails
       tinymce-rails
 
 GEM

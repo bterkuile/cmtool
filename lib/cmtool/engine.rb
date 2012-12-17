@@ -16,6 +16,9 @@ module Cmtool
     isolate_namespace Cmtool
     initializer "cmtool.build_menu" do
       require 'email_validator'
+      require 'bourbon'
+      require 'slim-rails'
+      require 'haml-rails'
       Cmtool::Menu.register do
         group label: :site do
           title t('cmtool.menu.site.title')

@@ -38,6 +38,14 @@ describe Cmtool::Menu do
       Cmtool::Menu.items.size.should == 5
     end
 
+    it "should have publications as second item" do
+      Cmtool::Menu.items[1].options[:label].should == :publications
+    end
+
+    it "should have three publications item by default" do
+      Cmtool::Menu.items[1].items.size.should == 3
+    end
+
   end
 
   describe 'New register block' do
@@ -72,6 +80,21 @@ describe Cmtool::Menu do
         end
       end
       Cmtool::Menu.items.size.should == 1
+    end
+
+    it "should have added a divider and a link to publications" do
+      Cmtool::Menu.items[1].items.size.should == 5
+    end
+
+    it "should not add a divider when skip_divider option is given" do
+      Cmtool::Menu.reset!
+      Cmtool::Menu.register &@base_block
+      Cmtool::Menu.register do
+        append_to :publications, skip_divider: true do
+          resource_link Cmtool::Directory
+        end
+      end
+      Cmtool::Menu.items[1].items.size.should == 4
     end
   end
 end

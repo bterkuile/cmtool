@@ -20,12 +20,13 @@ Gem::Specification.new do |s|
   s.add_dependency 'email_validator'
   s.add_dependency 'bourbon'
   s.add_dependency 'haml-rails'
+  s.add_dependency 'slim-rails'
   s.add_dependency 'sass-rails'
   s.add_dependency 'tinymce-rails'
   s.add_dependency 'paperclip'
   s.add_dependency 'coffee-script'
   s.add_dependency "jquery-rails"
-  s.add_dependency 'devise'
+  s.add_dependency 'devise', '2.0.4'
   s.add_dependency 'devise_simply_stored'
 
   #s.add_development_dependency "sqlite3"

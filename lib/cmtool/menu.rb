@@ -169,12 +169,12 @@ module Cmtool
         @items = @before + @items + @after
       end
 
-      def append_to(label, &block)
+      def append_to(label, options = {}, &block)
         item = items.find{|i| i.options[:label] == label}
         if item
           register = item.instance_variable_get('@register')
           if register
-            register.instance_variable_get('@items') << Cmtool::Menu::Divider.new
+            register.instance_variable_get('@items') << Cmtool::Menu::Divider.new unless options[:skip_divider].present?
             register.instance_eval(&block)
           end
         else
