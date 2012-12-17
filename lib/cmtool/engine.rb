@@ -19,6 +19,11 @@ module Cmtool
       require 'bourbon'
       require 'slim-rails'
       require 'haml-rails'
+      require 'devise'
+      require 'devise_simply_stored'
+      require 'paperclip'
+      require 'jquery-rails'
+      require 'tinymce-rails'
       Cmtool::Menu.register do
         group label: :site do
           title t('cmtool.menu.site.title')

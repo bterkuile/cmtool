@@ -13,7 +13,11 @@ module Cmtool
     end
 
     def authorize_user
-
+      if respond_to? :authorize_cmtool, true
+        authorize_cmtool
+      else
+        render text: 'Please define authorize_cmtool in your application controller. This area needs to be secured!', status: 403
+      end
     end
 
     def check_environment
