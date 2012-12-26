@@ -181,7 +181,7 @@ module Cmtool
       end
 
       def engine_link(engine, options = {})
-        @items << EngineLink.new(resource, options)
+        @items << EngineLink.new(engine, options)
       end
 
       def resource_links

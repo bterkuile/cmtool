@@ -97,4 +97,25 @@ describe Cmtool::Menu do
       Cmtool::Menu.items[1].items.size.should == 4
     end
   end
+
+  describe 'Engine Link' do
+    before do
+      Cmtool::Menu.register do
+        engine_link Cmtool::Engine
+      end
+    end
+    it 'Should add a engine link' do
+      Cmtool::Menu.items.last.engine_link?.should be_true
+    end
+    it 'Should not identify as a resource link' do
+      Cmtool::Menu.items.last.resource_link?.should be_false
+    end
+
+    it 'should set the path when given as symbol' do
+      Cmtool::Menu.register do
+        engine_link Cmtool::Engine, path: :news_index
+      end
+      Cmtool::Menu.items.last.path.should == '/cmtool/news'
+    end
+  end
 end
