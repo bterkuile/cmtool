@@ -48,6 +48,15 @@ module Cmtool
         return false if args.first.to_s.last == '?'
         @register.send(*args)
       end
+
+      def engine_link?
+        false
+      end
+
+      def resource_link?
+        false
+      end
+
     end
 
     ##
@@ -76,6 +85,33 @@ module Cmtool
       end
       def group?
         true
+      end
+    end
+
+    ##
+    # Engine link, links to an engine. Root by default
+    ##
+    class EngineLink < ElementBase
+      attr_reader :engine
+      def initialize(engine, options = {})
+        @engine, @options = engine, options
+      end
+
+      def engine_link?
+        true
+      end
+
+
+      def title
+        options[:title] || engine.name.split('::').first
+      end
+
+      def path
+        case options[:path]
+          when Symbol then engine.routes.url_helpers.send(:"#{options[:path]}_path")
+          when String then options[:path]
+          else engine.routes.url_helpers.root_path
+          end
       end
     end
 
@@ -143,6 +179,11 @@ module Cmtool
       def resource_link(resource, options = {})
         @items << ResourceLink.new(resource, options)
       end
+
+      def engine_link(engine, options = {})
+        @items << EngineLink.new(resource, options)
+      end
+
       def resource_links
         @items.select{|i| i.is_a?(ResourceLink)}
       end
