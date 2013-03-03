@@ -16,7 +16,7 @@ module Cmtool
         klass.property :priority, type: Float, default: 0.5
         klass.property :active, type: :boolean, default: true
         klass.property :layout
-        klass.property :in_menu, type: :boolean
+        klass.property :in_menu, type: :boolean, default: true
 
         klass.has_ancestry :by_property => :locale
 
@@ -65,6 +65,10 @@ module Cmtool
         end
         def default_locale
           :en
+        end
+
+        def top_menu
+          Page.roots(I18n.locale).select(&:in_menu?)
         end
       end
     end

@@ -31,12 +31,43 @@ This will add some gems you might like anyway, here a list:
 * paperclip
 * email_validator (validates :email, email: true)
 
+=== Controllers
+
+in <tt>app/controllers/pages_controller.rb</tt>:
+  class PagesController
+    include Cmtool::Includes::PagesController
+  end
+
+in <tt>app/models/page.rb</tt>:
+  class Page
+    include Cmtool::Includes::Page
+
+    def self.layouts
+      %w[home application contact]
+    end
+  end
+
+=== Securing
+
+Cmtool is looking for an authorize_cmtool method present in the application controller. Something like:
+  class ApplicationController
+    ...
+
+    private
+
+    def authorize_cmtool
+      redirect_to root_path, alert: t('general.unauthorized'), status: 403 unless current_user.present? && current_user.admin?
+    end
+  end
+
 === Routing
 
 Add the following routes:
   devise_for :users, :controllers => {:sessions => 'cmtool/sessions', :passwords => 'cmtool/passwords'}
   mount Cmtool::Engine => '/cmtool'
-  match "/:name" => "pages#show"
+  scope '(/:locale)', constraints: {locale: /nl|be|de|fr|en/}, defaults: { locale: :nl } do
+    get "/:name" => "pages#show", constraints: {name: /.*/},  as: :page
+   end
   match "/*url" => "pages#not_found"
   root :to => 'pages#home'
 
