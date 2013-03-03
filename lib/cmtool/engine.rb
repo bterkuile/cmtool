@@ -8,9 +8,9 @@ require 'haml-rails'
 require 'sass-rails'
 require 'tinymce-rails'
 require 'paperclip'
-require 'jquery-rails'
 require 'bourbon'
 =end
+require 'jquery-rails'
 module Cmtool
   class Engine < ::Rails::Engine
     isolate_namespace Cmtool
