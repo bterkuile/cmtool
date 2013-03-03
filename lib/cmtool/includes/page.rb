@@ -68,7 +68,7 @@ module Cmtool
         end
 
         def top_menu
-          Page.roots(I18n.locale).select(&:in_menu?)
+          ::Page.roots(I18n.locale).select(&:in_menu?)
         end
       end
     end
