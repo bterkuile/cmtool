@@ -14,9 +14,10 @@ group :assets do
   gem 'bootstrap-sass'
 end
 
-gem 'couch_potato' , :git => 'git://github.com/bterkuile/couch_potato.git'
-gem 'simply_stored' , :git => 'git://github.com/bterkuile/simply_stored.git'
-gem 'devise', '2.0.4'
+gem 'couch_potato' , github: 'bterkuile/couch_potato'
+gem 'simply_stored' , github: 'bterkuile/simply_stored'
+gem 'orm_adapter', github: 'bterkuile/orm_adapter'
+gem 'devise'
 gem 'devise_simply_stored'
 gem 'tinymce-rails'
 gem 'haml-rails'
