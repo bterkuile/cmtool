@@ -40,7 +40,6 @@ html lang="en"
             = content_for?(:content) ? yield(:content) : yield
             - if content_for?(:page_links)
               #sub-navigation-container.form-actions = yield(:page_links)
-               
           .span3
             .well.sidebar-nav
               h3= content_for?(:page_title) ? yield(:page_title) : application_title
@@ -49,8 +48,7 @@ html lang="en"
                 li= link_to "Home", root_path
                 li= link_to 'Wiki', 'https://github.com/bterkuile/cmtool/wiki', target: :_blank
             = yield :sidebar
-    
       footer
-        p &copy; Cmtool 2012
+        p &copy; Cmtool 2013
     = yield :footer
     #hidden-html.hide= yield :hidden_html

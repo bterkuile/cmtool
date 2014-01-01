@@ -19,7 +19,7 @@ module Cmtool
     end
 
     def create
-      @user = ::User.new(params[:user])
+      @user = ::User.new(user_params)
       if @user.save
         redirect_to cmtool.users_path, :notice => I18n.t('cmtool.action.create.successful', :model => ::User.model_name.human)
       else
@@ -28,7 +28,7 @@ module Cmtool
     end
 
     def update
-      user = params[:user]
+      user = user_params
       unless user['password'].present?
         user.delete('password')
         user.delete('password_confirmation')
@@ -49,6 +49,12 @@ module Cmtool
       @user = ::User.find(params[:id])
       @user.destroy
       redirect_to cmtool.users_path, :notice => I18n.t('cmtool.action.destroy.successful', :model => ::User.model_name.human)
+    end
+
+    private
+
+    def user_params
+      params.require(:user).permit!
     end
   end
 end

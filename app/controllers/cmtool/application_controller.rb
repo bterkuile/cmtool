@@ -1,6 +1,7 @@
 module Cmtool
   class ApplicationController < ::ApplicationController
     before_filter :authenticate_user!, :authorize_user, :check_environment, :set_locale
+    layout 'cmtool/application'
 
     private
 

@@ -41,7 +41,7 @@ module Cmtool
     # POST /pages
     # POST /pages.xml
     def create
-      @page = ::Page.new(params[:page])
+      @page = ::Page.new(page_params)
 
       respond_to do |format|
         if @page.save
@@ -60,7 +60,7 @@ module Cmtool
       @page = ::Page.find(params[:id])
 
       respond_to do |format|
-        if @page.update_attributes(params[:page])
+        if @page.update_attributes(page_params)
           format.html { redirect_to(cmtool.pages_path, :notice => I18n.t('cmtool.action.update.successful', :model => ::Page.model_name.human)) }
           format.xml  { head :ok }
         else
@@ -96,6 +96,11 @@ module Cmtool
 
     end
 
+    private
+
+    def page_params
+      params.require(:page).permit!
+    end
 
   end
 end

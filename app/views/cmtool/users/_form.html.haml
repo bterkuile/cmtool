@@ -11,11 +11,17 @@
     = f.label :password_confirmation
     = f.password_field :password_confirmation
   - if @user != current_user
-    .field
-      = f.label :active
-      = f.check_box :active
-    .field
-      = f.label :is_admin
-      = f.check_box :is_admin
+    - if @user.respond_to?(:active=)
+      .field
+        = f.label :active
+        = f.check_box :active
+    - if @user.respond_to?(:is_admin=)
+      .field
+        = f.label :is_admin
+        = f.check_box :is_admin
+    - if @user.respond_to?(:admin=)
+      .field
+        = f.label :admin
+        = f.check_box :admin
   .actions
     = f.submit @submit || update_button_text(@user)
