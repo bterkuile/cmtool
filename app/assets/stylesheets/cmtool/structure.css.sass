@@ -4,7 +4,7 @@ html, body
   background-color: #eee
   font-family: $lucida-grande
 .button
-  @include button(shiny, #777)
+  +button(#777)
 a
   color: #333
   font-weight: bold
@@ -39,17 +39,19 @@ a
         float: left
         margin-right: 10px
   #title-container
+    +linear-gradient(#aaa, #fff)
     margin-top: 12px
-    @include linear-gradient(#aaa, #fff)
     padding: 10px
-    +border-top-radius(15px)
-    +box-shadow(5px 5px 5px #555)
+    border-top-left-radius: 15px
+    border-top-right-radius: 15px
+    box-shadow: 5px 5px 5px #555
     h1
       margin: 0
       padding: 0
   #content-container
     background-color: white
-    +border-bottom-radius(15px)
-    +box-shadow(5px 5px 5px #555)
+    border-bottom-left-radius: 15px
+    border-bottom-right-radius: 15px
+    box-shadow: 5px 5px 5px #555
     #content
       padding: 10px

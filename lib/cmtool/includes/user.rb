@@ -3,7 +3,7 @@ module Cmtool
     module User
       def self.included(klass)
         klass.send :include, SimplyStored::Couch
-        klass.send :include, Devise::Orm::SimplyStored
+        #klass.send :include, Devise::Orm::SimplyStored
         klass.send :include, InstanceMethods
         klass.send :extend, ClassMethods
 
@@ -18,10 +18,10 @@ module Cmtool
         klass.validates_uniqueness_of :email, if: lambda{ |u| u.email.present? }
         klass.validates_presence_of :encrypted_password, if: lambda{ |u| u.email.present? }
         klass.validates_confirmation_of :password, if: lambda{ |u| u.password.present? }
-    
 
         klass.view :by_email, key: :email
       end
+
       module InstanceMethods
         def google?
           false
