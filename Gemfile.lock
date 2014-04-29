@@ -8,6 +8,13 @@ GIT
       json (~> 1.6)
 
 GIT
+  remote: git://github.com/bterkuile/devise_simply_stored.git
+  revision: 8fdaed396a7e9566fe6cb59b64d950953c8506a6
+  specs:
+    devise_simply_stored (0.1.0)
+      devise
+
+GIT
   remote: git://github.com/bterkuile/orm_adapter.git
   revision: e0b5f652c8d1eda8c0f6636f3b3d17d598603450
   specs:
@@ -25,17 +32,22 @@ GIT
 PATH
   remote: .
   specs:
-    cmtool (0.5.0)
+    cmtool (1.0.0)
       bourbon
       email_validator
       haml-rails
       jquery-rails
+      rails (>= 4.1.0)
       slim-rails
       tinymce-rails
 
 GEM
   remote: http://rubygems.org/
   specs:
+    actionmailer (4.1.0)
+      actionpack (= 4.1.0)
+      actionview (= 4.1.0)
+      mail (~> 2.5.4)
     actionpack (4.1.0)
       actionview (= 4.1.0)
       activesupport (= 4.1.0)
@@ -48,16 +60,21 @@ GEM
     activemodel (4.1.0)
       activesupport (= 4.1.0)
       builder (~> 3.1)
+    activerecord (4.1.0)
+      activemodel (= 4.1.0)
+      activesupport (= 4.1.0)
+      arel (~> 5.0.0)
     activesupport (4.1.0)
       i18n (~> 0.6, >= 0.6.9)
       json (~> 1.7, >= 1.7.7)
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    arel (5.0.1.20140414130214)
     bcrypt (3.1.7)
-    bootstrap-sass (3.1.1.1)
+    bootstrap-sass (2.3.2.2)
       sass (~> 3.2)
-    bourbon (3.2.0)
+    bourbon (3.2.1)
       sass (~> 3.2)
       thor
     builder (3.2.2)
@@ -71,6 +88,7 @@ GEM
       activesupport (>= 3.0)
     cocaine (0.5.4)
       climate_control (>= 0.0.3, < 1.0)
+    coderay (1.1.0)
     coffee-script (2.2.0)
       coffee-script-source
       execjs
@@ -86,8 +104,6 @@ GEM
       railties (>= 3.2.6, < 5)
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
-    devise_simply_stored (0.0.3)
-      devise
     diff-lcs (1.2.5)
     email_validator (1.4.0)
       activemodel
@@ -111,21 +127,44 @@ GEM
     jquery-rails (3.1.0)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
+    jquery-ui-rails (4.2.1)
+      railties (>= 3.2.16)
     json (1.8.1)
+    mail (2.5.4)
+      mime-types (~> 1.16)
+      treetop (~> 1.4.8)
+    method_source (0.8.2)
     mime-types (1.25.1)
     mini_portile (0.5.3)
     minitest (5.3.3)
-    multi_json (1.9.2)
+    multi_json (1.9.3)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
-    paperclip (4.1.1)
+    paperclip (3.5.2)
       activemodel (>= 3.0.0)
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
+    polyglot (0.3.4)
+    pry (0.9.12.6)
+      coderay (~> 1.0)
+      method_source (~> 0.8)
+      slop (~> 3.4)
+    pry-rails (0.3.2)
+      pry (>= 0.9.10)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
+    rails (4.1.0)
+      actionmailer (= 4.1.0)
+      actionpack (= 4.1.0)
+      actionview (= 4.1.0)
+      activemodel (= 4.1.0)
+      activerecord (= 4.1.0)
+      activesupport (= 4.1.0)
+      bundler (>= 1.3.0, < 2.0)
+      railties (= 4.1.0)
+      sprockets-rails (~> 2.0)
     railties (4.1.0)
       actionpack (= 4.1.0)
       activesupport (= 4.1.0)
@@ -160,6 +199,7 @@ GEM
       activesupport (>= 3.0, < 4.2)
       railties (>= 3.0, < 4.2)
       slim (~> 2.0)
+    slop (3.5.0)
     sprockets (2.11.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -182,6 +222,9 @@ GEM
     tilt (1.4.1)
     tinymce-rails (4.0.19)
       railties (>= 3.1.1)
+    treetop (1.4.15)
+      polyglot
+      polyglot (>= 0.3.1)
     tzinfo (1.1.0)
       thread_safe (~> 0.1)
     warden (1.2.3)
@@ -193,19 +236,21 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bootstrap-sass
+  bootstrap-sass (~> 2.3)
   bourbon
   cmtool!
   coffee-script
   couch_potato!
   devise
-  devise_simply_stored
+  devise_simply_stored!
   email_validator
   factory_girl_rails
   haml-rails
   jquery-rails
+  jquery-ui-rails
   orm_adapter!
-  paperclip
+  paperclip (= 3.5.2)
+  pry-rails
   sass-rails
   simply_stored!
   slim-rails

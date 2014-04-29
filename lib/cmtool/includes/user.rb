@@ -10,8 +10,6 @@ module Cmtool
         klass.property :is_admin, type: :boolean
         klass.property :active, type: :boolean, default: true
 
-        klass.devise :database_authenticatable, :recoverable, :rememberable, :trackable
-
 
         #== VALIDATIONS
         klass.validates_presence_of :email

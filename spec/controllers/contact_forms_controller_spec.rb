@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Cmtool::ContactFormsController do
+  routes { Cmtool::Engine.routes }
   before :each do
     sign_in @user
   end
@@ -73,22 +74,6 @@ describe Cmtool::ContactFormsController do
         response.should redirect_to(Cmtool::ContactForm.last)
       end
     end
-
-    describe "with invalid params" do
-      it "assigns a newly created but unsaved contact_form as @contact_form" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        Cmtool::ContactForm.any_instance.stub(:save).and_return(false)
-        post :create, :contact_form => {}
-        assigns(:contact_form).should be_a_new(Cmtool::ContactForm)
-      end
-
-      it "re-renders the 'new' template" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        Cmtool::ContactForm.any_instance.stub(:save).and_return(false)
-        post :create, :contact_form => {}
-        response.should render_template("new")
-      end
-    end
   end
 
   describe "PUT update" do
@@ -99,8 +84,8 @@ describe Cmtool::ContactFormsController do
         # specifies that the Cmtool::ContactForm created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Cmtool::ContactForm.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, :id => contact_form.id, :contact_form => {'these' => 'params'}
+        Cmtool::ContactForm.any_instance.should_receive(:update_attributes).with({'name' => 'Zeikurt'})
+        put :update, :id => contact_form.id, :contact_form => {'name' => 'Zeikurt'}
       end
 
       it "assigns the requested contact_form as @contact_form" do
@@ -116,23 +101,6 @@ describe Cmtool::ContactFormsController do
       end
     end
 
-    describe "with invalid params" do
-      it "assigns the contact_form as @contact_form" do
-        contact_form = create(:contact_form)
-        # Trigger the behavior that occurs when invalid params are submitted
-        Cmtool::ContactForm.any_instance.stub(:save).and_return(false)
-        put :update, :id => contact_form.id, :contact_form => {}
-        assigns(:contact_form).should eq(contact_form)
-      end
-
-      it "re-renders the 'edit' template" do
-        contact_form = create(:contact_form)
-        # Trigger the behavior that occurs when invalid params are submitted
-        Cmtool::ContactForm.any_instance.stub(:save).and_return(false)
-        put :update, :id => contact_form.id, :contact_form => {}
-        response.should render_template("edit")
-      end
-    end
   end
 
   describe "DELETE destroy" do

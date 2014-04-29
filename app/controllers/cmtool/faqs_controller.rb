@@ -41,7 +41,7 @@ module Cmtool
     # POST /faqs
     # POST /faqs.xml
     def create
-      @faq = Cmtool::Faq.new(params[:faq])
+      @faq = Cmtool::Faq.new(faq_params)
 
       respond_to do |format|
         if @faq.save
@@ -60,7 +60,7 @@ module Cmtool
       @faq = Cmtool::Faq.find(params[:id])
 
       respond_to do |format|
-        if @faq.update_attributes(params[:faq])
+        if @faq.update_attributes(faq_params)
           format.html { redirect_to([cmtool, @faq], :notice => I18n.t('cmtool.action.create.successful', :model => Cmtool::Faq.model_name.human)) }
           format.xml  { head :ok }
         else
@@ -80,6 +80,12 @@ module Cmtool
         format.html { redirect_to(cmtool.faqs_url) }
         format.xml  { head :ok }
       end
+    end
+
+    private
+
+    def faq_params
+      params.require(:faq).permit(:question, :answer, :active)
     end
   end
 end

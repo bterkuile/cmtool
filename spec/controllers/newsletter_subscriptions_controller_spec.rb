@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Cmtool::NewsletterSubscriptionsController do
+  routes { Cmtool::Engine.routes }
   before :each do
     sign_in @user
   end
@@ -78,14 +79,14 @@ describe Cmtool::NewsletterSubscriptionsController do
       it "assigns a newly created but unsaved newsletter_subscription as @newsletter_subscription" do
         # Trigger the behavior that occurs when invalid params are submitted
         Cmtool::NewsletterSubscription.any_instance.stub(:save).and_return(false)
-        post :create, :newsletter_subscription => {}
+        post :create, :newsletter_subscription => {email: ''}
         assigns(:newsletter_subscription).should be_a_new(Cmtool::NewsletterSubscription)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         Cmtool::NewsletterSubscription.any_instance.stub(:save).and_return(false)
-        post :create, :newsletter_subscription => {}
+        post :create, :newsletter_subscription => {email: ''}
         response.should render_template("new")
       end
     end
@@ -99,8 +100,8 @@ describe Cmtool::NewsletterSubscriptionsController do
         # specifies that the Cmtool::NewsletterSubscription created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Cmtool::NewsletterSubscription.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, :id => newsletter_subscription.id, :newsletter_subscription => {'these' => 'params'}
+        Cmtool::NewsletterSubscription.any_instance.should_receive(:update_attributes).with({'email' => 'test44@cmtool.nl'})
+        put :update, :id => newsletter_subscription.id, :newsletter_subscription => {'email' => 'test44@cmtool.nl'}
       end
 
       it "assigns the requested newsletter_subscription as @newsletter_subscription" do
@@ -121,7 +122,7 @@ describe Cmtool::NewsletterSubscriptionsController do
         newsletter_subscription = create(:newsletter_subscription)
         # Trigger the behavior that occurs when invalid params are submitted
         Cmtool::NewsletterSubscription.any_instance.stub(:save).and_return(false)
-        put :update, :id => newsletter_subscription.id, :newsletter_subscription => {}
+        put :update, :id => newsletter_subscription.id, :newsletter_subscription => {email: ''}
         assigns(:newsletter_subscription).should eq(newsletter_subscription)
       end
 
@@ -129,7 +130,7 @@ describe Cmtool::NewsletterSubscriptionsController do
         newsletter_subscription = create(:newsletter_subscription)
         # Trigger the behavior that occurs when invalid params are submitted
         Cmtool::NewsletterSubscription.any_instance.stub(:save).and_return(false)
-        put :update, :id => newsletter_subscription.id, :newsletter_subscription => {}
+        put :update, :id => newsletter_subscription.id, :newsletter_subscription => {email: ''}
         response.should render_template("edit")
       end
     end

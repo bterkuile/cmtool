@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Cmtool::FaqsController do
+  routes { Cmtool::Engine.routes }
   before :each do
     sign_in @user
   end
@@ -67,21 +68,6 @@ describe Cmtool::FaqsController do
       end
     end
 
-    describe "with invalid params" do
-      it "assigns a newly created but unsaved faq as @faq" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        Cmtool::Faq.any_instance.stub(:save).and_return(false)
-        post :create, :faq => {}
-        assigns(:faq).should be_a_new(Cmtool::Faq)
-      end
-
-      it "re-renders the 'new' template" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        Cmtool::Faq.any_instance.stub(:save).and_return(false)
-        post :create, :faq => {}
-        response.should render_template("new")
-      end
-    end
   end
 
   describe "PUT update" do
@@ -92,8 +78,8 @@ describe Cmtool::FaqsController do
         # specifies that the Cmtool::Faq created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Cmtool::Faq.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, :id => faq.id, :faq => {'these' => 'params'}
+        Cmtool::Faq.any_instance.should_receive(:update_attributes).with({'question' => 'meaning of life'})
+        put :update, :id => faq.id, :faq => {'question' => 'meaning of life'}
       end
 
       it "assigns the requested faq as @faq" do
@@ -109,23 +95,6 @@ describe Cmtool::FaqsController do
       end
     end
 
-    describe "with invalid params" do
-      it "assigns the faq as @faq" do
-        faq = create(:faq)
-        # Trigger the behavior that occurs when invalid params are submitted
-        Cmtool::Faq.any_instance.stub(:save).and_return(false)
-        put :update, :id => faq.id, :faq => {}
-        assigns(:faq).should eq(faq)
-      end
-
-      it "re-renders the 'edit' template" do
-        faq = create(:faq)
-        # Trigger the behavior that occurs when invalid params are submitted
-        Cmtool::Faq.any_instance.stub(:save).and_return(false)
-        put :update, :id => faq.id, :faq => {}
-        response.should render_template("edit")
-      end
-    end
   end
 
   describe "DELETE destroy" do

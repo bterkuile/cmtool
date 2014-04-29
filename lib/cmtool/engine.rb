@@ -19,9 +19,9 @@ module Cmtool
       require 'bourbon'
       require 'slim-rails'
       require 'haml-rails'
+      require 'paperclip'
       require 'devise'
       require 'devise_simply_stored'
-      require 'paperclip'
       require 'jquery-rails'
       require 'tinymce-rails'
       Cmtool::Menu.register do

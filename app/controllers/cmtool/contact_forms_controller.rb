@@ -43,7 +43,7 @@ module Cmtool
     # POST /contact_forms
     # POST /contact_forms.xml
     def create
-      @contact_form = Cmtool::ContactForm.new(params[:contact_form])
+      @contact_form = Cmtool::ContactForm.new(contact_form_params)
 
       respond_to do |format|
         if @contact_form.save
@@ -62,7 +62,7 @@ module Cmtool
       @contact_form = Cmtool::ContactForm.find(params[:id])
 
       respond_to do |format|
-        if @contact_form.update_attributes(params[:contact_form])
+        if @contact_form.update_attributes(contact_form_params)
           format.html { redirect_to([cmtool, @contact_form], :notice => I18n.t('cmtool.action.update.successful', :model => Cmtool::ContactForm.model_name.human)) }
           format.xml  { head :ok }
         else
@@ -85,12 +85,18 @@ module Cmtool
     end
 
     def add
-      @contact_form = Cmtool::ContactForm.new(params[:contact_form])
+      @contact_form = Cmtool::ContactForm.new(contact_form_params)
       if @contact_form.save
         redirect_to :back, notice: I18n.t('cmtool.contact_form.submitted')
       else
-        redirect_to :back, alert: I18n.t('cmtool.contact_form.submission_failed', reason: @contact_form.errors.full_messages.join(', '))
+        redirect_to :back, alert: I18n.t('cmtool.contact_form.submission_failed', reason: @contact_form.errors.full_messages.to_sentence )
       end
+    end
+
+    private
+
+    def contact_form_params
+      params.require(:contact_form).permit(:gender, :name, :email, :phone, :body)
     end
   end
 end

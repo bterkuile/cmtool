@@ -43,7 +43,7 @@ module Cmtool
     # POST /newsletter_subscriptions
     # POST /newsletter_subscriptions.xml
     def create
-      @newsletter_subscription = Cmtool::NewsletterSubscription.new(params[:newsletter_subscription])
+      @newsletter_subscription = Cmtool::NewsletterSubscription.new(newsletter_subscription_params)
 
       respond_to do |format|
         if @newsletter_subscription.save
@@ -62,7 +62,7 @@ module Cmtool
       @newsletter_subscription = Cmtool::NewsletterSubscription.find(params[:id])
 
       respond_to do |format|
-        if @newsletter_subscription.update_attributes(params[:newsletter_subscription])
+        if @newsletter_subscription.update_attributes(newsletter_subscription_params)
           format.html { redirect_to([cmtool, @newsletter_subscription], :notice => I18n.t('cmtool.action.update.successful', :model => Cmtool::NewsletterSubscription.model_name.human)) }
           format.xml  { head :ok }
         else
@@ -85,12 +85,18 @@ module Cmtool
     end
 
     def add
-      @newsletter_subscription = Cmtool::NewsletterSubscription.new(params[:newsletter_subscription])
+      @newsletter_subscription = Cmtool::NewsletterSubscription.new(newsletter_subscription_params)
       if @newsletter_subscription.save
         redirect_to :back, notice: I18n.t('cmtool.newsletter_subscription.subscribed')
       else
         redirect_to :back, alert: I18n.t('cmtool.newsletter_subscription.subscription_failed', reason: @newsletter_subscription.errors.full_messages.join(', '))
       end
+    end
+
+    private
+
+    def newsletter_subscription_params
+      params.require(:newsletter_subscription).permit(:email)
     end
   end
 end
