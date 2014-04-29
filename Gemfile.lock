@@ -37,7 +37,6 @@ PATH
       email_validator
       haml-rails
       jquery-rails
-      rails (>= 4.1.0)
       slim-rails
       tinymce-rails
 
@@ -251,6 +250,7 @@ DEPENDENCIES
   orm_adapter!
   paperclip (= 3.5.2)
   pry-rails
+  rails (>= 4.1.0)
   sass-rails
   simply_stored!
   slim-rails
