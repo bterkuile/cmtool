@@ -36,6 +36,7 @@ gem "jquery-ui-rails"
 # To use debugger
 group :test do
   gem 'steak'
+  gem 'rspec-its'
   gem 'pry-rails'
   gem 'factory_girl_rails'
 end

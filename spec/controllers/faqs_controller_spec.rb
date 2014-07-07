@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Cmtool::FaqsController do
+describe Cmtool::FaqsController, type: :controller do
   routes { Cmtool::Engine.routes }
   before :each do
     sign_in @user

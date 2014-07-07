@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Cmtool::PagesController do
+describe Cmtool::PagesController, type: :controller do
   routes { Cmtool::Engine.routes }
   describe 'GET index' do
     it "should render standard view when tree is available" do

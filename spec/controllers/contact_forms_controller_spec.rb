@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Cmtool::ContactFormsController do
+describe Cmtool::ContactFormsController, type: :controller do
   routes { Cmtool::Engine.routes }
   before :each do
     sign_in @user

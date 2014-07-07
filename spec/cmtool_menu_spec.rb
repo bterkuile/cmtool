@@ -13,21 +13,21 @@ describe Cmtool::Menu do
       base_element = Cmtool::Menu::ElementBase.new
       element_names = Cmtool::Menu::ElementBase.subclasses.map{|e| e.name.sub(/.*::/, '').underscore }
       for element_name in element_names
-        base_element.send("#{element_name}?").should be_false
+        base_element.send("#{element_name}?").should be false
       end
     end
   end
   describe Cmtool::Menu::Group do
     it "should identify itself as such" do
-      Cmtool::Menu::Group.new.group?.should be_true
+      Cmtool::Menu::Group.new.group?.should be true
     end
     it "should not identify as resource link" do
-      Cmtool::Menu::Group.new.resource_link?.should be_false
+      Cmtool::Menu::Group.new.resource_link?.should be false
     end
   end
   describe Cmtool::Menu::ResourceLink do
     it "should identify itself as such" do
-      Cmtool::Menu::ResourceLink.new(User).resource_link?.should be_true
+      Cmtool::Menu::ResourceLink.new(User).resource_link?.should be true
     end
   end
   describe :items do
@@ -105,10 +105,10 @@ describe Cmtool::Menu do
       end
     end
     it 'Should add a engine link' do
-      Cmtool::Menu.items.last.engine_link?.should be_true
+      Cmtool::Menu.items.last.engine_link?.should be true
     end
     it 'Should not identify as a resource link' do
-      Cmtool::Menu.items.last.resource_link?.should be_false
+      Cmtool::Menu.items.last.resource_link?.should be false
     end
 
     it 'should set the path when given as symbol' do

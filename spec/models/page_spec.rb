@@ -14,7 +14,7 @@ describe Page do
     it "should not be valid when the parent has a different locale then the page itself" do
       @nl12.parent_id = @en1.id
       @nl12.should_not be_valid
-      @nl12.error_on(:locale).should_not be_empty
+      @nl12.errors[:locale].should_not be_empty
     end
   end
 

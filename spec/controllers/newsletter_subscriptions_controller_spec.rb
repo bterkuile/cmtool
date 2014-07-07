@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Cmtool::NewsletterSubscriptionsController do
+describe Cmtool::NewsletterSubscriptionsController, type: :controller do
   routes { Cmtool::Engine.routes }
   before :each do
     sign_in @user
