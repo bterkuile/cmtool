@@ -3,14 +3,14 @@ module Cmtool
      module PagesController
         def home
           page_name = "home"
-          @page = ::Page.find_by_name_and_locale(page_name, I18n.locale) || ::Page.new(:name => page_name, locale: I18n.locale)
+          @page = ::Page.find_by_name_and_locale(page_name, I18n.locale.to_s) || ::Page.new(:name => page_name, locale: I18n.locale.to_s)
           @sub_pages = @page.children.select{|child| child.in_menu.present? }
           render :template => "pages/#{page_name}", :layout => @page.layout.presence || ::Page.layouts.first.to_s
         end
 
         # General catcher for pages
         def show
-          @page = ::Page.find_by_name_and_locale(params[:name], I18n.locale)
+          @page = ::Page.find_by_name_and_locale(params[:name], I18n.locale.to_s)
           not_found and return unless @page
 
           @sub_pages = [@page] + @page.children.select{|child| child.in_menu.present? }
@@ -24,7 +24,7 @@ module Cmtool
         end
 
         def not_found
-          @page = ::Page.find_by_name_and_locale('404', I18n.locale) || ::Page.new(name: '404', body: "404 Page Not Found")
+          @page = ::Page.find_by_name_and_locale('404', I18n.locale.to_s) || ::Page.new(name: '404', body: "404 Page Not Found")
           @sub_pages = []
           render template: 'pages/404', layout: @page.layout.presence || ::Page.layouts.first.to_s, status: 404
         end
