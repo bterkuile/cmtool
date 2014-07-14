@@ -45,4 +45,4 @@
     = render "cmtool/keywords/habtm", :subject => @page
   .actions
     = f.submit @submit || update_button_text(f.object)
-    = button_to_function 'Preview (unsupported)', %{$('form').attr('action', '/' + $('#page_name').val()).submit();}
+    -#= button_tag 'Preview (unsupported)', onclick: %{$('form').attr('action', '/' + $('#page_name').val()).submit();}
