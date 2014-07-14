@@ -5,9 +5,9 @@ source "http://rubygems.org"
 # development dependencies will be added by default to the :development group.
 gemspec
 
-gem "rails", ">= 4.1.0"
+gem "rails", ">= 4.1.4"
 group :assets do
-  gem 'sass-rails'
+  gem 'sass-rails', '4.0.2'
   gem 'bourbon'
   gem 'coffee-script'
   #gem 'therubyracer', :platforms => :ruby
@@ -23,7 +23,7 @@ gem 'devise_simply_stored', github: 'bterkuile/devise_simply_stored'
 gem 'tinymce-rails'
 gem 'haml-rails'
 gem 'slim-rails'
-gem 'paperclip', '3.5.2'
+gem 'paperclip'
 gem 'email_validator'
 # Declare any dependencies that are still in development here instead of in
 # your gemspec. These might include edge Rails or gems from your path or
