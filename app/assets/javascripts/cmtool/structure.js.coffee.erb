@@ -1,10 +1,10 @@
 <% cmtool = Cmtool::Engine.routes.url_helpers %>
 $( ->
   $('textarea.mceEditor, .editor_full').tinymce(
-    theme: 'advanced',
-    plugins: 'advimage',
+    theme: 'modern',
+    plugins: 'image',
     language: tinymce_language,
-    external_image_list_url: '<%= cmtool.images_path(format: :js) %>',
+    image_list: '<%= cmtool.images_path(format: :js) %>',
     relative_urls: false
   )
   $('.editor_basic').tinymce({theme: 'simple', language: tinymce_language})

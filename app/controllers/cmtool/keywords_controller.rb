@@ -41,7 +41,7 @@ module Cmtool
     # POST /keywords
     # POST /keywords.xml
     def create
-      @keyword = Cmtool::Keyword.new(params[:keyword])
+      @keyword = Cmtool::Keyword.new(keyword_params)
 
       respond_to do |format|
         if @keyword.save
@@ -60,7 +60,7 @@ module Cmtool
       @keyword = Cmtool::Keyword.find(params[:id])
 
       respond_to do |format|
-        if @keyword.update_attributes(params[:keyword])
+        if @keyword.update_attributes(keyword_params)
           format.html { redirect_to(cmtool.keywords_path, :notice => I18n.t('cmtool.action.update.successful', :model => Cmtool::Keyword.model_name.human)) }
           format.xml  { head :ok }
         else
@@ -80,6 +80,12 @@ module Cmtool
         format.html { redirect_to(cmtool.keywords_url, notice: I18n.t('cmtool.action.destroy.successful', model: Cmtool::Keyword.model_name.human)) }
         format.xml  { head :ok }
       end
+    end
+
+    private
+
+    def keyword_params
+      params.require(:keyword).permit(:name)
     end
   end
 end

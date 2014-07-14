@@ -42,7 +42,7 @@ module Cmtool
     # POST /images
     # POST /images.xml
     def create
-      @image = Cmtool::Image.new(params[:image])
+      @image = Cmtool::Image.new(image_params)
 
       respond_to do |format|
         if @image.save
@@ -61,7 +61,7 @@ module Cmtool
       @image = Cmtool::Image.find(params[:id])
 
       respond_to do |format|
-        if @image.update_attributes(params[:image])
+        if @image.update_attributes(image_params)
           format.html { redirect_to([cmtool, @image], :notice => I18n.t('cmtool.action.update.successful', :model => Cmtool::Image.model_name.human)) }
           format.xml  { head :ok }
         else
@@ -81,6 +81,10 @@ module Cmtool
         format.html { redirect_to(cmtool.images_url) }
         format.xml  { head :ok }
       end
+    end
+
+    def image_params
+      params.require(:image).permit(:file, :directory_id)
     end
   end
 end

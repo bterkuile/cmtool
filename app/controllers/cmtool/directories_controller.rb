@@ -41,7 +41,7 @@ module Cmtool
     # POST /directories
     # POST /directories.xml
     def create
-      @directory = Cmtool::Directory.new(params[:directory])
+      @directory = Cmtool::Directory.new(directory_params)
 
       respond_to do |format|
         if @directory.save
@@ -60,7 +60,7 @@ module Cmtool
       @directory = Cmtool::Directory.find(params[:id])
 
       respond_to do |format|
-        if @directory.update_attributes(params[:directory])
+        if @directory.update_attributes(directory_params)
           format.html { redirect_to([cmtool, @directory], :notice => I18n.t('cmtool.action.update.successful', :model => Cmtool::Directory.model_name.human)) }
           format.xml  { head :ok }
         else
@@ -85,6 +85,10 @@ module Cmtool
       @directory = Cmtool::Directory.find(params[:id])
       @directory.image = nil
       @directory.save
+    end
+
+    def directory_params
+      params.require(:directory).permit(:name, :parent_id)
     end
   end
 end
