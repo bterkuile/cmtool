@@ -2,10 +2,11 @@
 $ ->
   $('textarea.mceEditor, .editor_full').tinymce
     theme: 'modern'
-    plugins: ['image', 'link', 'table', 'fullscreen']
+    plugins: ['image', 'link', 'table', 'searchreplace', 'code']
     language: tinymce_language
     image_list: '<%= cmtool.images_path(format: :js) %>'
     relative_urls: false
+    removed_menuitems: 'newdocument'
   $('.editor_basic').tinymce
     theme: 'simple'
     language: tinymce_language
