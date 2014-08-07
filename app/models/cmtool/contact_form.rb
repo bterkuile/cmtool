@@ -6,5 +6,6 @@ module Cmtool
     property :email
     property :phone
     property :body
+    validates :email, presence: true
   end
 end
