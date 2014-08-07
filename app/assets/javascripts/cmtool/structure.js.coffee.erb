@@ -1,11 +1,11 @@
 <% cmtool = Cmtool::Engine.routes.url_helpers %>
-$( ->
-  $('textarea.mceEditor, .editor_full').tinymce(
-    theme: 'modern',
-    plugins: 'image',
-    language: tinymce_language,
-    image_list: '<%= cmtool.images_path(format: :js) %>',
+$ ->
+  $('textarea.mceEditor, .editor_full').tinymce
+    theme: 'modern'
+    plugins: ['image', 'link', 'table', 'fullscreen']
+    language: tinymce_language
+    image_list: '<%= cmtool.images_path(format: :js) %>'
     relative_urls: false
-  )
-  $('.editor_basic').tinymce({theme: 'simple', language: tinymce_language})
-)
+  $('.editor_basic').tinymce
+    theme: 'simple'
+    language: tinymce_language
