@@ -1,22 +1,21 @@
 = form_for [cmtool, @page] do |f|
   = render 'error_messages', :target => @page
-
   .field
     = f.label :name
     = f.text_field :name
-    %span Te zien in de url
+    span Te zien in de url
     - if @page.new_record?
-      = link_to_function 'Genereer vanuit titel', %{$.get('#{cmtool.generate_name_pages_path}', {name: $('#page_title').val()})}
+      a href="#" onclick="$.get('#{cmtool.generate_name_pages_path}', {name: $('#page_title').val()})" Genereer vanuit titel
     - else
-      = link_to_function 'Genereer vanuit titel', %{$.get('#{cmtool.generate_name_page_path(@page)}', {name: $('#page_title').val()})}
+      a href="#" onclick="$.get('#{cmtool.generate_name_page_path(@page)}', {name: $('#page_title').val()})" Genereer vanuit titel
   .field
     = f.label :menu_text
     = f.text_field :menu_text
-    %span Weergave in menu
+    span Weergave in menu
   .field
     = f.label :title
     = f.text_field :title
-    %span Titel op de pagina
+    span Titel op de pagina
   .field
     = f.label :locale
     = f.select :locale, Page.locales
