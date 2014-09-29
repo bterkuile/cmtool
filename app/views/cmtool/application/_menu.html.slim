@@ -31,4 +31,4 @@
               = current_user.email
               span.caret
             ul.dropdown-menu
-              li.log-out= link_to t('helpers.links.logout'), cmtool.destroy_user_session_path, method: :delete
+              li.log-out= link_to t('helpers.links.logout'), main_app.destroy_user_session_path, method: :delete
