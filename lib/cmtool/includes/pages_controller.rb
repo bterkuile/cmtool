@@ -1,6 +1,7 @@
 module Cmtool
    module Includes
      module PagesController
+       extend ActiveSupport::Concern
         def home
           page_name = "home"
           @page = ::Page.find_by_name_and_locale(page_name, I18n.locale.to_s) || ::Page.new(:name => page_name, locale: I18n.locale.to_s)
@@ -27,6 +28,22 @@ module Cmtool
           @page = ::Page.find_by_name_and_locale('404', I18n.locale.to_s) || ::Page.new(name: '404', body: "404 Page Not Found")
           @sub_pages = []
           render template: 'pages/404', layout: @page.layout.presence || ::Page.layouts.first.to_s, status: 404
+        end
+
+        def sitemap
+          respond_to do |format|
+            format.xml do
+              page_uris = ::Page.all.map{|p| page_path(p.name, locale: p.locale)}
+              pages_xml = page_uris.map{|uri| "<url><loc>#{uri}</loc></url>"}.join("\n")
+              result = <<-XML
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+#{pages_xml}
+</urlset>
+              XML
+              render xml: result
+            end
+          end
         end
      end
    end

@@ -10,6 +10,7 @@ Cmtool::Engine.routes.draw do
     end
     collection do
       get :generate_name
+      get :sitemap
     end
   end
   resources :news do
