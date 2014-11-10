@@ -84,7 +84,7 @@ get '/sitemap(.:format)' => 'pages#sitemap'
 scope '(/:locale)', constraints: {locale: /nl|be|de|fr|en/}, defaults: { locale: :nl } do
   get "/:name" => "pages#show", constraints: {name: /.*/},  as: :page
 end
-match "/*url" => "pages#not_found"
+get "/*url" => "pages#not_found"
 root :to => 'pages#home'
 ```
 
