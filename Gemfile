@@ -5,7 +5,7 @@ source "http://rubygems.org"
 # development dependencies will be added by default to the :development group.
 gemspec
 
-gem "rails", "4.2.0.beta4"
+gem "rails", "4.2.0.rc2"
 group :assets do
   gem 'sass-rails', '5.0.0.beta1'
   gem 'bourbon'
@@ -21,7 +21,6 @@ gem 'orm_adapter', github: 'bterkuile/orm_adapter'
 gem 'devise'
 gem 'devise_simply_stored', github: 'bterkuile/devise_simply_stored'
 gem 'tinymce-rails'
-gem 'haml-rails'
 gem 'slim-rails'
 gem 'paperclip'
 gem 'email_validator'

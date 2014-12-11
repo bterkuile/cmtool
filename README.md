@@ -31,7 +31,6 @@ This will add some gems you might like anyway, here a list:
 *   jquery-rails
 *   tinymce-rails
 *   sass-rails
-*   haml-rails
 *   paperclip
 *   email_validator (validates :email, email: true)
 
@@ -41,19 +40,8 @@ This will add some gems you might like anyway, here a list:
 in `app/controllers/pages_controller.rb`:
 
 ```ruby
-class PagesController
+class PagesController < ApplicationController
   include Cmtool::Includes::PagesController
-end
-```
-
-in `app/models/page.rb`:
-```ruby
-class Page
-  include Cmtool::Includes::Page
-
-  def self.layouts
-    %w[home application contact]
-  end
 end
 ```
 
@@ -102,22 +90,18 @@ goodies of your own. Remember that this is a SimplyStored model with almost
 all the ActiveModel features.
 
 ### Page model
-The page model allows you to control some interesting things. To create it
-(app/models/page.rb):
+The page model allows you to control some interesting things.
+
+in `app/models/page.rb`:
 ```ruby
 class Page
-  include Cmtool::Page
-
-  # Define the locales you want to use in your website
-  def self.locales
-    [:en]
-  end
+  include Cmtool::Includes::Page
 
   # Define the layouts you want to use in your website. Be sure to create them in
   # app/views/layouts/...
   # The first specified layout will become the default
   def self.layouts
-    [:application, :home, :contact]
+    %w[application home contact]
   end
 end
 ```
@@ -148,8 +132,9 @@ and changing this file will change all displayed pages without their own
 specific page. To create a specific page, create a page with the name of the
 page you created in the Admin section. If for example you have created a page
 with the name: about Then you can give this page a custom look using the view:
-`app/views/about.html.haml` You can also use erb, slim or your choice of
-templating engine
+`app/views/about.html.slim` 
+
+### The menu and getting pages
 
 ### Customize your 404
 You can customize what is shown when a page cannot be found. There is a

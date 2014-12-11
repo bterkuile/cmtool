@@ -1,7 +1,0 @@
-- title :edit, @faq
-= render 'form', :submit => update_button_text(@faq)
-
-- content_for :page_links do
-  %ul
-    %li= link_to link_to_show_content(@faq), cmtool.faq_path(@faq), class: ['btn', 'btn-info']
-    %li= link_to link_to_index_content(Cmtool::Faq), cmtool.faqs_path, class: [:btn]

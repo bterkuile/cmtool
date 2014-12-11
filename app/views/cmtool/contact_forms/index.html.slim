@@ -1,0 +1,26 @@
+- title :index, Cmtool::ContactForm
+- if @contact_forms.any?
+  table.index-table.table.table-striped.table-hover
+    thead
+      tr
+        th= Cmtool::ContactForm.human_attribute_name(:gender)
+        th= Cmtool::ContactForm.human_attribute_name(:name)
+        th= Cmtool::ContactForm.human_attribute_name(:email)
+        th= Cmtool::ContactForm.human_attribute_name(:phone)
+        th
+        th
+    tbody
+      - @contact_forms.each do |contact_form|
+        tr
+          td= contact_form.gender
+          td= link_to contact_form.name, cmtool.contact_form_path(contact_form)
+          td= contact_form.email
+          td= contact_form.phone
+          = edit_td contact_form
+          = destroy_td contact_form
+- else
+  = empty_result(Cmtool::ContactForm)
+
+- content_for :page_links do
+  ul
+    li= link_to link_to_new_content(Cmtool::ContactForm), cmtool.new_contact_form_path, class: ['btn', 'btn-primary']

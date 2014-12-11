@@ -1,9 +1,0 @@
-- title :edit, Cmtool::News
-- if @news.image?
-  = link_to image_tag(@news.image.url(:thumb)), @news.image.url
-= render 'form', :submit => update_button_text(@news)
-
-- content_for :page_links do
-  %ul
-    %li= link_to link_to_show_content(@news), cmtool.news_path(@news), class: ['btn', 'btn-info']
-    %li= link_to link_to_index_content(Cmtool::News), cmtool.news_index_path, class: [:btn]

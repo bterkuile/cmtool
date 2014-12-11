@@ -1,0 +1,22 @@
+- title :index, Cmtool::Faq
+- if @faqs.any?
+  table.index-table.table.table-striped.table-hover
+    thead
+      tr
+        th= Cmtool::Faq.human_attribute_name(:question)
+        th= Cmtool::Faq.human_attribute_name(:answer)
+        th
+        th
+    tbody
+      - @faqs.each do |faq|
+        tr
+          td= link_to raw(truncate(faq.question, :length => 40)), cmtool.faq_path(faq)
+          td= link_to raw(truncate(faq.answer, :length => 40)), cmtool.faq_path(faq)
+          = edit_td faq
+          = destroy_td faq
+- else
+  = empty_result(Cmtool::Faq)
+
+- content_for :page_links do
+  ul
+    li= link_to link_to_new_content(Cmtool::Faq), cmtool.new_faq_path, class: ['btn', 'btn-primary']

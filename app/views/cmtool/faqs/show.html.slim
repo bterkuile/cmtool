@@ -1,0 +1,13 @@
+- title :show, Cmtool::Faq
+.show_field
+  strong= Cmtool::Faq.human_attribute_name(:question)
+  =raw @faq.question
+.show_field
+  strong= Cmtool::Faq.human_attribute_name(:answer)
+  =raw @faq.answer
+
+- content_for :page_links do
+  ul
+    li= link_to link_to_edit_content(@faq), cmtool.edit_faq_path(@faq), class: ['btn', 'btn-warning']
+
+    li= link_to link_to_index_content(Cmtool::Faq), cmtool.faqs_path, class: [:btn]

@@ -1,0 +1,9 @@
+- title :show, Cmtool::Keyword
+.show_field
+  strong= Cmtool::Keyword.human_attribute_name(:name)
+  = @keyword.name
+
+- content_for :page_links do
+  ul
+    li= link_to link_to_edit_content(@keyword), cmtool.edit_keyword_path(@keyword), class: ['btn', 'btn-warning']
+    li= link_to link_to_index_content(Cmtool::Keyword), cmtool.keywords_path, class: [:btn]

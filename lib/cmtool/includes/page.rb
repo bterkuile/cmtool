@@ -68,6 +68,11 @@ module Cmtool
         end
 
         def top_menu
+          ActiveSupport::Deprecation.warn("Page.top_menu is a stupid name. Use Page.menu_roots instead")
+          menu_roots
+        end
+
+        def menu_roots
           ::Page.roots(I18n.locale.to_s).select(&:in_menu?)
         end
       end

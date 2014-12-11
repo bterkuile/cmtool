@@ -1,0 +1,6 @@
+- title :new, Cmtool::Image
+= render 'form', :submit => create_button_text(@image)
+
+- content_for :page_links do
+  ul
+    li= link_to link_to_index_content(Cmtool::Image), cmtool.images_path, class: [:btn]

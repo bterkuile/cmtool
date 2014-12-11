@@ -1,0 +1,7 @@
+- title :edit, Cmtool::Quote
+= render 'form', :submit => update_button_text(@quote)
+
+- content_for :page_links do
+  ul
+    li= link_to link_to_show_content(@quote), cmtool.quote_path(@quote), class: ['btn', 'btn-info']
+    li= link_to link_to_index_content(Cmtool::Quote), cmtool.quotes_path, class: [:btn]
