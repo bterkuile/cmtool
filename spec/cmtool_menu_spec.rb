@@ -46,11 +46,6 @@ describe Cmtool::Menu do
       Cmtool::Menu.items[1].items.size.should == 3
     end
 
-    it 'has a failing spec' do
-      value = 5
-      value.should == 9
-    end
-
   end
 
   describe 'New register block' do
