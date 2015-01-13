@@ -11,7 +11,7 @@ table.index-table.table.table-striped.table-hover
       th
       th
   tbody
-    - Rails.configuration.available_locales.each do |locale|
+    - Page.locales.each do |locale|
       = render 'nested_pages', pages: Page.full_tree(locale)
 
 - content_for :page_links do
