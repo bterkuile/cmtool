@@ -21,9 +21,16 @@ are:
 To start using Cmtool as website CMS add it to your Gemfile. Since it  depends
 on github gems and gem dependencies do not support those you have to
 explicitly add two dependencies to your Gemfile:
-    gem 'couch_potato' , :git => 'git://github.com/bterkuile/couch_potato.git'
-    gem 'simply_stored' , :git => 'git://github.com/bterkuile/simply_stored.git'
+    gem 'couch_potato' , github: 'bterkuile/couch_potato'
+    gem 'simply_stored' , github: 'bterkuile/simply_stored'
     gem 'cmtool'
+
+Make sure that the locales you want to work with are specified in
+```config/application.rb```.
+```ruby
+  config.i18n.default_locale = :en
+  config.i18n.available_locales = [:en, :nl]
+```
 
 This will add some gems you might like anyway, here a list:
 

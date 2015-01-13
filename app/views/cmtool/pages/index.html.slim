@@ -11,10 +11,8 @@ table.index-table.table.table-striped.table-hover
       th
       th
   tbody
-    = render 'nested_pages', pages: Page.full_tree(:nl)
-    = render 'nested_pages', pages: Page.full_tree(:en)
-    = render 'nested_pages', pages: Page.full_tree(:de)
-    = render 'nested_pages', pages: Page.full_tree(:es)
+    - Rails.configuration.available_locales.each do |locale|
+      = render 'nested_pages', pages: Page.full_tree(locale)
 
 - content_for :page_links do
   ul
