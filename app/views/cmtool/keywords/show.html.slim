@@ -5,5 +5,5 @@
 
 - content_for :page_links do
   ul
-    li= link_to link_to_edit_content(@keyword), cmtool.edit_keyword_path(@keyword), class: ['btn', 'btn-warning']
-    li= link_to link_to_index_content(Cmtool::Keyword), cmtool.keywords_path, class: [:btn]
+    li= link_to link_to_index_content(Cmtool::Keyword), cmtool.keywords_path, class: 'to-index-button'
+    li= link_to link_to_edit_content(@keyword), cmtool.edit_keyword_path(@keyword), class: 'record-edit-button'

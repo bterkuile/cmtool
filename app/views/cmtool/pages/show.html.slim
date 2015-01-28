@@ -35,5 +35,5 @@
 
 - content_for :page_links do
   ul
-    li= link_to link_to_index_content(Page), cmtool.pages_path, class: [:btn]
-    li= link_to link_to_edit_content(@page), cmtool.edit_page_path(@page), class: ['btn', 'btn-warning']
+    li= link_to link_to_index_content(Page), cmtool.pages_path, class: 'to-index-button'
+    li= link_to link_to_edit_content(@page), cmtool.edit_page_path(@page), class: 'record-edit-button'

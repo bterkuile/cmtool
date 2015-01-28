@@ -1,34 +1,31 @@
-.navbar.navbar-fixed-top
-  .navbar-inner
-    .container
-      a.btn.btn-navbar data-target=".nav-collapse" data-toggle="collapse"
-        span.icon-bar
-        span.icon-bar
-        span.icon-bar
-      a.brand href=cmtool.root_path = application_title
-      .nav-collapse
-        - if user_signed_in?
-          ul.nav
-            - Cmtool::Menu.items.each do |menu_item|
-              - if menu_item.group?
-                li.dropdown class=(menu_item.controller_names.include?(controller_name) ? 'active' : '')
-                  a.dropdown-toggle href="#" data-toggle="dropdown"
-                    span = menu_item.title
-                    b.caret
-                  ul.child-menu.dropdown-menu
-                    - menu_item.items.compact.each do |child_item|
-                      - if child_item.divider?
-                        li.divider
-                      - else
-                        li[ class=(controller_name == child_item.controller_name ? 'active' : '') ] = link_to child_item.title, child_item.path
-              - elsif menu_item.resource_link?
-                li[ class=(menu_item.controller_name == controller_name ? 'active' : '')]= link_to menu_item.title, menu_item.path
-              - elsif menu_item.engine_link?
-                li= link_to menu_item.title, menu_item.path
-          .btn-group.pull-right
-            a.btn.dropdown-toggle[data-toggle="dropdown" href="#"]
-              i.icon-user
-              = current_user.email
-              span.caret
-            ul.dropdown-menu
+.fixed
+  nav.top-bar data-topbar="" role="navigation" 
+    ul.title-area
+      li.name
+        h1
+          a href=cmtool.root_path = application_title
+      li.toggle-topbar.menu-icon
+        a href="#" 
+          span Menu
+    - if user_signed_in?
+      section.top-bar-section
+        ul.right
+          li.has-dropdown
+            a href="#" = current_user.email
+            ul.dropdown
               li.log-out= link_to t('helpers.links.logout'), main_app.destroy_user_session_path, method: :delete
+        ul.left
+          - Cmtool::Menu.items.each do |menu_item|
+            - if menu_item.group?
+              li.has-dropdown class=(menu_item.controller_names.include?(controller_name) ? 'active' : '')
+                a href="#" = menu_item.title
+                ul.dropdown
+                  - menu_item.items.compact.each do |child_item|
+                    - if child_item.divider?
+                      li.divider
+                    - else
+                      li class=(controller_name == child_item.controller_name ? 'active' : '') = link_to child_item.title, child_item.path
+            - elsif menu_item.resource_link?
+              li class=(menu_item.controller_name == controller_name ? 'active' : '') = link_to menu_item.title, menu_item.path
+            - elsif menu_item.engine_link?
+              li= link_to menu_item.title, menu_item.path

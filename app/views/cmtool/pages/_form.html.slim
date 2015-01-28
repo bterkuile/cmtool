@@ -1,25 +1,26 @@
 = form_for [cmtool, @page] do |f|
   = render 'error_messages', :target => @page
-  .field
-    = f.label :name
-    = f.text_field :name
-    span Te zien in de url
-    - if @page.new_record?
-      a href="#" onclick="$.get('#{cmtool.generate_name_pages_path}', {name: $('#page_title').val()})" Genereer vanuit titel
-    - else
-      a href="#" onclick="$.get('#{cmtool.generate_name_page_path(@page)}', {name: $('#page_title').val()})" Genereer vanuit titel
-  .field
-    = f.label :menu_text
-    = f.text_field :menu_text
-    span Weergave in menu
-  .field
-    = f.label :title
-    = f.text_field :title
-    span Titel op de pagina
-  .field
-    = f.label :locale
-    = f.select :locale, Page.locales
-  .field
+  .form-row
+    .form-label= f.label :name
+    .form-field.full
+      .row
+        .small-12.medium-6.columns= f.text_field :name
+        .small-12.medium-6.columns
+          span Te zien in de url
+          - if @page.new_record?
+            a href="#" onclick="$.get('#{cmtool.generate_name_pages_path}', {name: $('#page_title').val()})" Genereer vanuit titel
+          - else
+            a href="#" onclick="$.get('#{cmtool.generate_name_page_path(@page)}', {name: $('#page_title').val()})" Genereer vanuit titel
+  .form-row
+    .form-label= f.label :menu_text
+    .form-field= f.text_field :menu_text
+  .form-row
+    .form-label= f.label :title
+    .form-field= f.text_field :title
+  .form-row
+    .form-label= f.label :locale
+    .form-field= f.select :locale, Page.locales
+  .form-row
     = f.label :body
     = f.text_area :body, :rows => 30, :cols => 80, :class => 'editor_full'
   .field
@@ -28,20 +29,20 @@
   .field
     = f.label :sidebar
     = f.text_area :sidebar, :rows => 15, :cols => 80, :class => 'editor_full'
-  .field
-    = f.label :parent_id
-    = f.select :parent_id, tree_options_for_select(Page.full_tree(@page.locale || Page.locales.first), exclude: @page.id, selected: @page.parent_id), include_blank: ' -- '
-  .field
-    = f.label :position
-    = f.select :position, (0..20).to_a
-  .field
-    = f.label :layout
-    = f.select :layout, Page.layouts
-  .field
-    = f.label :in_menu
-    = f.check_box :in_menu
+  .form-row
+    .form-label= f.label :parent_id
+    .form-field= f.select :parent_id, tree_options_for_select(Page.full_tree(@page.locale || Page.locales.first), exclude: @page.id, selected: @page.parent_id), include_blank: ' -- '
+  .form-row
+    .form-label= f.label :position
+    .form-field= f.select :position, (0..20).to_a
+  .form-row
+    .form-label= f.label :layout
+    .form-field= f.select :layout, Page.layouts
+  .form-row
+    .form-label= f.label :in_menu
+    .form-field= f.check_box :in_menu
   .field
     = render "cmtool/keywords/habtm", :subject => @page
-  .actions
-    = f.submit @submit || update_button_text(f.object)
+  .form-row: .form-actions
+    = f.submit @submit || update_button_text(f.object), class: 'button'
     -#= button_tag 'Preview (unsupported)', onclick: %{$('form').attr('action', '/' + $('#page_name').val()).submit();}

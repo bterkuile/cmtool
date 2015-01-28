@@ -12,7 +12,7 @@ group :assets do
   gem 'coffee-script'
   #gem 'therubyracer', :platforms => :ruby
   #gem 'less-rails'
-  gem 'bootstrap-sass', '~> 2.3'
+  gem 'foundation-rails'
 end
 
 gem 'couch_potato' , github: 'bterkuile/couch_potato'

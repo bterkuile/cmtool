@@ -14,41 +14,31 @@ html lang="en"
     /[if lt IE 9]
       = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
     = stylesheet_link_tag "cmtool/application", :media => "all"
+    = javascript_include_tag 'vendor/modernizr'
     = javascript_include_tag "cmtool/application"
     = yield(:head)
     javascript:
       $(function(){
-        //Onload
         #{yield(:onload_javascript)}
       });
 
   body
     = render 'cmtool/application/menu'
-    .container
-
-      .content
-        - if flash[:alert].present?
-          .alert.alert-error
-            a.close data-dismiss="alert" &#215;
-            div= flash[:alert]
-        - if flash[:notice].present?
-          .alert.alert-success
-            a.close data-dismiss="alert" &#215;
-            div= flash[:notice]
-        .row
-          .span9
-            = content_for?(:content) ? yield(:content) : yield
-            - if content_for?(:page_links)
-              #sub-navigation-container.form-actions = yield(:page_links)
-          .span3
-            .well.sidebar-nav
-              h3= content_for?(:page_title) ? yield(:page_title) : application_title
-              ul.nav.nav-list
-                li.nav-header Links
-                li= link_to "Home", root_path
-                li= link_to 'Wiki', 'https://github.com/bterkuile/cmtool/wiki', target: :_blank
-            = yield :sidebar
-      footer
-        p &copy; Cmtool 2013
-    = yield :footer
+    = render 'cmtool/application/alerts'
+    .row
+      .small-12.large-9.columns
+        = content_for?(:content) ? yield(:content) : yield
+        - if content_for?(:page_links)
+          #sub-navigation-container= yield(:page_links)
+      .show-for-large-only.large-3.columns
+        .panel.sidebar-nav
+          h3= content_for?(:page_title) ? yield(:page_title) : application_title
+          ul.nav.nav-list
+            li.nav-header Links
+            li= link_to "Home", root_path
+            li= link_to 'Wiki', 'https://github.com/bterkuile/cmtool/wiki', target: :_blank
+        = yield :sidebar
+    footer
+      p &copy; Cmtool 2015
+      = yield :footer
     #hidden-html.hide= yield :hidden_html

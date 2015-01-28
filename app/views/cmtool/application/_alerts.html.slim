@@ -1,20 +1,16 @@
-- if alert
-  .message.error.ui-state-error
-    .icon
-    .text
-      =raw flash[:alert]
-- if notice
-  .message.notice.ui-state-highlight
-    .icon
-    .text
-      =raw flash[:notice]
+- if flash[:alert].present?
+  .row: .small-12.columns.alert-box.alert data-alert=true
+    = flash[:alert]
+    a.close href="" &#215;
+- if flash[:notice].present?
+  .row: .small-12.columns.alert-box.info data-alert=true
+    = flash[:notice]
+    a.close href="" &#215;
 - if warnings.any?
-  .message.warning.ui-state-highlight
-    .icon
-    .text
-      ul
-        - for warning in warnings
-          - if warning.is_a?(Hash)
-            li.warning= t("cmtool.warnings.# warning.delete(:message) ", warning)
-          - else
-            li.warning= t("cmtool.warnings.# warning ")
+  .row: .small-12.columns.alert-box.warning data-alert=true
+    ul
+      - for warning in warnings
+        - if warning.is_a?(Hash)
+          li.warning= t("cmtool.warnings.#{warning.delete(:message)}", warning)
+        - else
+          li.warning= t("cmtool.warnings.#{warning}")

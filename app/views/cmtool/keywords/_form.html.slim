@@ -1,8 +1,7 @@
 = form_for [cmtool, @keyword] do |f|
   = render 'error_messages', :target => @keyword
-
-  .field
-    = f.label :name
-    = f.text_field :name
-  .actions
-    = f.submit @submit || update_button_text(@keyword)
+  .form-row
+    .form-label= f.label :name
+    .form-field= f.text_field :name
+  .form-row: .form-actions
+    = f.submit @submit || update_button_text(@keyword), class: 'form-submit-button'
