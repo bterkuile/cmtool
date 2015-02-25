@@ -27,14 +27,14 @@ html lang="en"
     = render 'cmtool/application/alerts'
     .row
       .small-12.large-9.columns
+        h3= content_for?(:page_title) ? yield(:page_title) : application_title
         = content_for?(:content) ? yield(:content) : yield
         - if content_for?(:page_links)
           #sub-navigation-container= yield(:page_links)
       .show-for-large-up.large-3.columns
-        .panel.sidebar-nav
-          h3= content_for?(:page_title) ? yield(:page_title) : application_title
-          ul.nav.nav-list
-            li.nav-header Links
+        .panel
+          h4 Links
+          ul.side-nav
             li= link_to "Home", root_path
             li= link_to 'Wiki', 'https://github.com/bterkuile/cmtool/wiki', target: :_blank
         = yield :sidebar
