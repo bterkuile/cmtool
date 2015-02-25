@@ -8,8 +8,6 @@ table.index-table.table.table-striped.table-hover
       th= Page.human_attribute_name(:has_view)
       th= Page.human_attribute_name(:in_menu)
       th= Page.human_attribute_name(:position)
-      th
-      th
   tbody
     - Page.locales.each do |locale|
       = render 'nested_pages', pages: Page.full_tree(locale)

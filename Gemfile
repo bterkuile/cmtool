@@ -32,7 +32,6 @@ gem 'actionpack-page_caching'
 
 # jquery-rails is used by the dummy application
 gem "jquery-rails"
-gem "jquery-ui-rails"
 # To use debugger
 group :test do
   gem 'steak'
