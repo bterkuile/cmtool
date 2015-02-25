@@ -1,5 +1,5 @@
 = form_for [cmtool, @page] do |f|
-  = render 'error_messages', :target => @page
+  = render 'error_messages', target: @page
   .form-row
     .form-label= f.label :name
     .form-field.full
@@ -22,13 +22,13 @@
     .form-field= f.select :locale, Page.locales
   .form-row
     = f.label :body
-    = f.text_area :body, :rows => 30, :cols => 80, :class => 'editor_full'
+    = f.text_area :body, rows: 30, cols: 80, class: 'editor_full'
   .field
     = f.label :footer
-    = f.text_area :footer, :rows => 15, :cols => 80, :class => 'editor_full'
+    = f.text_area :footer, rows: 15, cols: 80, class: 'editor_full'
   .field
     = f.label :sidebar
-    = f.text_area :sidebar, :rows => 15, :cols => 80, :class => 'editor_full'
+    = f.text_area :sidebar, rows: 15, cols: 80, class: 'editor_full'
   .form-row
     .form-label= f.label :parent_id
     .form-field= f.select :parent_id, tree_options_for_select(Page.full_tree(@page.locale || Page.locales.first), exclude: @page.id, selected: @page.parent_id), include_blank: ' -- '
@@ -42,7 +42,7 @@
     .form-label= f.label :in_menu
     .form-field= f.check_box :in_menu
   .field
-    = render "cmtool/keywords/habtm", :subject => @page
+    = render "cmtool/keywords/habtm", subject: @page
   .form-row: .form-actions
     = f.submit @submit || update_button_text(f.object), class: 'button'
     -#= button_tag 'Preview (unsupported)', onclick: %{$('form').attr('action', '/' + $('#page_name').val()).submit();}

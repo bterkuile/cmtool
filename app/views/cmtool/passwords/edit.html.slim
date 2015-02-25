@@ -1,5 +1,5 @@
 h2= t('devise.passwords.edit.title')
-= form_for(resource, :as => resource_name, :url => password_path(resource_name), html: {class: 'form-horizontal', method: :put}) do |f| 
+= form_for(resource, :as => resource_name, :url => password_path(resource_name), html: {class: 'form-horizontal', method: :put}) do |f|
   = devise_error_messages!
   = f.hidden_field :reset_password_token
   .control-group
@@ -10,5 +10,5 @@ h2= t('devise.passwords.edit.title')
      .controls= f.password_field :password_confirmation
   .control-group
     .controls
-      = f.submit t('devise.passwords.edit.button'), class: 'btn btn-primary'
+      = f.submit t('devise.passwords.edit.button'), class: 'record-edit-button'
 = render "devise_links"

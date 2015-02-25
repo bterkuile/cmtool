@@ -30,7 +30,7 @@ html lang="en"
         = content_for?(:content) ? yield(:content) : yield
         - if content_for?(:page_links)
           #sub-navigation-container= yield(:page_links)
-      .show-for-large-only.large-3.columns
+      .show-for-large-up.large-3.columns
         .panel.sidebar-nav
           h3= content_for?(:page_title) ? yield(:page_title) : application_title
           ul.nav.nav-list

@@ -8,8 +8,8 @@
       = f.hidden_field :directory_id
       = f.file_field :file
     .modal-footer
-      a.btn.btn-inverse href: '#', role: :button, data: {dismiss: :modal}, 'aria-hidden' => true  x
-      = f.submit t('cmtool.directory.add_image.label', image: Cmtool::Image.model_name.human), class: ['btn', 'btn-success']
+      a.secondary.button href: '#', role: :button, data: {dismiss: :modal}, 'aria-hidden' => true  x
+      = f.submit t('cmtool.directory.add_image.label', image: Cmtool::Image.model_name.human), class: 'record-new-button'
 .directory.caption= "/# @directory.tree_path.map{|d| link_to(d.name, cmtool.directory_path(d))}.join('/') ".html_safe
 table#directory-view.table.table-striped.table-hover
   thead
@@ -31,6 +31,6 @@ table#directory-view.table.table-striped.table-hover
   ul
     - if @directory.parent
       li= link_to '..', cmtool.directory_path(@directory.parent)
-    li= link_to link_to_edit_content(@directory), cmtool.edit_directory_path(@directory), class: ['btn', 'btn-warning']
-    li= link_to link_to_index_content(Cmtool::Directory), cmtool.directories_path, class: [:btn]
-    li= link_to t('cmtool.directory.add_file'), '#add-image-container', class: ['btn', 'btn-success'], role: :button, data:  toggle: :modal 
+    li= link_to link_to_edit_content(@directory), cmtool.edit_directory_path(@directory), class: 'record-edit-button'
+    li= link_to link_to_index_content(Cmtool::Directory), cmtool.directories_path, class: 'to-index-button'
+    li= link_to t('cmtool.directory.add_file'), '#add-image-container', class: 'record-new-button', role: :button, data:  toggle: :modal 

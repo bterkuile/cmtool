@@ -1,5 +1,5 @@
-= form_for [cmtool, @news], :html => {:multipart => true} do |f|
-  = render 'error_messages', :target => @news
+= form_for [cmtool, @news], html: {multipart: true} do |f|
+  = render 'error_messages', target: @news
   .field
     = f.label :title
     = f.text_field :title
@@ -12,11 +12,11 @@
     | (yyyy-mm-dd)
   .field
     = f.label :body
-    = f.text_area :body, :class => 'editor_full'
+    = f.text_area :body, class: 'editor_full'
   .field
     = f.label :image
     = f.file_field :image
   .field
-    = render "cmtool/keywords/habtm", :subject => @news
+    = render "cmtool/keywords/habtm", subject: @news
   .actions
     = f.submit @submit || update_button_text(@news)

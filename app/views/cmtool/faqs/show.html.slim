@@ -8,6 +8,6 @@
 
 - content_for :page_links do
   ul
-    li= link_to link_to_edit_content(@faq), cmtool.edit_faq_path(@faq), class: ['btn', 'btn-warning']
+    li= link_to link_to_edit_content(@faq), cmtool.edit_faq_path(@faq), class: 'record-edit-button'
 
-    li= link_to link_to_index_content(Cmtool::Faq), cmtool.faqs_path, class: [:btn]
+    li= link_to link_to_index_content(Cmtool::Faq), cmtool.faqs_path, class: 'to-index-button'

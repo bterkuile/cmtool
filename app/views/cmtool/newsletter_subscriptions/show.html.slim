@@ -11,5 +11,5 @@
 
 - content_for :page_links do
   ul
-    li= link_to link_to_edit_content(@newsletter_subscription), cmtool.edit_newsletter_subscription_path(@newsletter_subscription), class: ['btn', 'btn-warning']
-    li= link_to link_to_index_content(Cmtool::NewsletterSubscription), cmtool.newsletter_subscriptions_path, class: [:btn]
+    li= link_to link_to_edit_content(@newsletter_subscription), cmtool.edit_newsletter_subscription_path(@newsletter_subscription), class: 'record-edit-button'
+    li= link_to link_to_index_content(Cmtool::NewsletterSubscription), cmtool.newsletter_subscriptions_path, class: 'to-index-button'

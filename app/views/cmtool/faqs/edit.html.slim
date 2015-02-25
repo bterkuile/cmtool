@@ -3,5 +3,5 @@
 
 - content_for :page_links do
   ul
-    li= link_to link_to_show_content(@faq), cmtool.faq_path(@faq), class: ['btn', 'btn-info']
-    li= link_to link_to_index_content(Cmtool::Faq), cmtool.faqs_path, class: [:btn]
+    li= link_to link_to_show_content(@faq), cmtool.faq_path(@faq), class: 'record-show-button'
+    li= link_to link_to_index_content(Cmtool::Faq), cmtool.faqs_path, class: 'to-index-button'

@@ -3,5 +3,5 @@
 
 - content_for :page_links do
   ul
-    li= link_to link_to_show_content(@contact_form), cmtool.contact_form_path(@contact_form), class: ['btn', 'btn-info']
-    li= link_to link_to_index_content(Cmtool::ContactForm), cmtool.contact_forms_path, class: [:btn]
+    li= link_to link_to_show_content(@contact_form), cmtool.contact_form_path(@contact_form), class: 'record-show-button'
+    li= link_to link_to_index_content(Cmtool::ContactForm), cmtool.contact_forms_path, class: 'to-index-button'

@@ -1,5 +1,5 @@
-= form_for [cmtool, @quote], :html => {:multipart => true} do |f|
-  = render 'error_messages', :target => @quote
+= form_for [cmtool, @quote], html: {multipart: true} do |f|
+  = render 'error_messages', target: @quote
   .field
     = f.label :owner
     = f.text_field :owner
@@ -14,7 +14,7 @@
     = f.file_field :image
   .field
     = f.label :body
-    = f.text_area :body, :rows => 8, :class => 'mceEditor'
+    = f.text_area :body, rows: 8, class: 'editor_basic'
   .field
     = f.label :active
     = f.check_box :active
