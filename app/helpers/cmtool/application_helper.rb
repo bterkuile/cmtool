@@ -113,6 +113,10 @@ module Cmtool
       format("%.2f",n) + %w(B KB MB GB TB)[count]
     end
 
+    def cmtool_user
+      controller.send :cmtool_user
+    end
+
     def edit_td(obj)
       content_tag(
         :td, 

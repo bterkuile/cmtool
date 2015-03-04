@@ -26,6 +26,7 @@ module Cmtool
         current_user
       end
     end
+    helper_method :cmtool_user
 
     def check_environment
       @cmtool_warnings ||= []
