@@ -35,10 +35,6 @@ module Cmtool
       end
       @user = ::User.find(params[:id])
       if @user.update_attributes(user)
-        if user['password']
-          # Sign in after changing current logged in password
-          sign_in(@user, :bypass => true) if @user == current_user
-        end
         redirect_to cmtool.users_path, :notice => I18n.t('cmtool.action.update.successful', :model => ::User.model_name.human)
       else
         render :action => 'edit'
