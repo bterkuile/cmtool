@@ -21,10 +21,8 @@ module Cmtool
       end
     end
 
-    unless method_defined? :cmtool_user
-      def cmtool_user
-        current_user
-      end
+    def cmtool_user
+      defined?(super) ? super : current_user
     end
     helper_method :cmtool_user
 
