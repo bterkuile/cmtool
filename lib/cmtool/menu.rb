@@ -64,7 +64,7 @@ module Cmtool
     ##
     class Divider < ElementBase
     end
-    
+
     ##
     # A group element, works as a new kind of menu, but then within another one
     ##
@@ -74,8 +74,9 @@ module Cmtool
         @register = Register.new
         @options = options
         @block = block
-        @register.instance_eval &block
+        @register.instance_eval(&block)
       end
+
       def title
         @register.title.respond_to?(:call) ? @register.title.call : @register.title
       end
@@ -108,10 +109,10 @@ module Cmtool
 
       def path
         case options[:path]
-          when Symbol then engine.routes.url_helpers.send(:"#{options[:path]}_path")
-          when String then options[:path]
-          else engine.routes.url_helpers.root_path
-          end
+        when Symbol then engine.routes.url_helpers.send(:"#{options[:path]}_path")
+        when String then options[:path]
+        else engine.routes.url_helpers.root_path
+        end
       end
     end
 
@@ -163,19 +164,24 @@ module Cmtool
     ##
     class Register
       attr_reader :items
+
       def initialize
         @items = []
       end
+
       def t(*args)
         -> { I18n.t(*args) }
       end
+
       def group(options = {}, &block)
         @items << Group.new(options, &block)
       end
+
       def title(*args)
         return @title if args.empty?
         @title = args.first
       end
+
       def resource_link(resource, options = {})
         @items << ResourceLink.new(resource, options)
       end
@@ -187,6 +193,7 @@ module Cmtool
       def resource_links
         @items.select{|i| i.is_a?(ResourceLink)}
       end
+
       def method_missing(*args)
         @items.send(*args).to_a
       end

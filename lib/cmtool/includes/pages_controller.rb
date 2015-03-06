@@ -33,7 +33,7 @@ module Cmtool
         def sitemap
           respond_to do |format|
             format.xml do
-              page_uris = ::Page.all.map{|p| page_path(p.name, locale: p.locale)}
+              page_uris = ::Page.for_sitemap.map{|p| page_path(p.name, locale: p.locale)}
               pages_xml = page_uris.map{|uri| "<url><loc>#{uri}</loc></url>"}.join("\n")
               result = <<-XML
 <?xml version="1.0" encoding="UTF-8"?>

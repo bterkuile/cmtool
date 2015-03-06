@@ -67,6 +67,10 @@ module Cmtool
           :en
         end
 
+        def for_sitemap
+          all
+        end
+
         def top_menu
           ActiveSupport::Deprecation.warn("Page.top_menu is a stupid name. Use Page.menu_roots instead")
           menu_roots
