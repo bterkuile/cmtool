@@ -7,10 +7,10 @@ module Cmtool
     property :file_content_type
     property :file_file_size, type: Fixnum
     property :file_updated_at, type: Time
-    has_attached_file :file, styles: { page: '675x10000>', medium: "354x1000>", thumb: "150x1250>" },
+    has_attached_file :file, styles: { page: '728x10000>', medium: "354x1000>", thumb: "160x1250>" },
       path: ":rails_root/public/system/:attachment/:id/:style.:extension",
       url: "/system/:attachment/:id/:style.:extension"
-   do_not_validate_attachment_file_type :file
+   validates_attachment :file, presence: true, content_type: { content_type: ["image/jpeg", "image/gif", "image/png"] }
 
     belongs_to :directory
 

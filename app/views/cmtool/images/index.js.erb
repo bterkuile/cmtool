@@ -1,8 +1,8 @@
 <%=raw Cmtool::Image.active.map{|i| 
   [
     {title: "#{i.clean_name} (Origineel)", value: i.file.url(:original)},
-    {title: "#{i.clean_name} (Pagina)", value: i.file.url(:page)},
-    {title: "#{i.clean_name} (Medium)", value: i.file.url(:medium)},
-    {title: "#{i.clean_name} (Thumb)", value: i.file.url(:thumb)}
+    {title: "#{i.clean_name} (728)", value: i.file.url(:page)},
+    {title: "#{i.clean_name} (354)", value: i.file.url(:medium)},
+    {title: "#{i.clean_name} (160)", value: i.file.url(:thumb)}
   ]
 }.flatten.to_json %>

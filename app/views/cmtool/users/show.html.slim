@@ -33,6 +33,5 @@
   span.show_value.boolean= boolean_text(@user.active?)
 - content_for :page_links do
   ul
-    li= link_to link_to_edit_content(@user), cmtool.edit_user_path(@user)
-
-    li= link_to link_to_index_content(User), cmtool.users_path
+    li= link_to link_to_edit_content(@user), cmtool.edit_user_path(@user), class: 'record-edit-button'
+    li= link_to link_to_index_content(User), cmtool.users_path, class: 'to-index-button'

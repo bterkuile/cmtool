@@ -1,12 +1,12 @@
-= form_for [cmtool, @image], :html => {:multipart => true} do |f|
-  = render 'error_messages', :target => @image
+= form_for [cmtool, @image], html: {multipart: true} do |f|
+  = render 'error_messages', target: @image
 
   .field
     = f.label :file, Cmtool::Image.model_name.human
     = f.file_field :file
   .field
     = f.label :directory_id, Cmtool::Directory.model_name.human
-    = f.select :directory_id, Cmtool::Directory.all.map{|d| ["-"*d.depth + ' ' + d.name.to_s, d.id]}
+    = f.select :directory_id, Cmtool::Directory.all.map{|d| ["-"*d.tree_depth + ' ' + d.name.to_s, d.id]}
 
   .actions
     = f.submit @submit || update_button_text(@image)

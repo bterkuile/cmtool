@@ -119,15 +119,15 @@ module Cmtool
 
     def edit_td(obj)
       content_tag(
-        :td, 
-        link_to((content_tag(:span, t('cmtool.table.index.edit'), class: [:edit, 'icon-pencil'])), cmtool.url_for([:edit, obj]), class: [:edit, :btn, 'btn-warning', 'btn-mini']), 
+        :td,
+        link_to((content_tag(:span, '', class: [:edit, 'fa fa-lg fa-pencil'])), cmtool.url_for([:edit, obj]), class: 'tiny warning button'),
         class: [:action, :edit]
       )
     end
     def destroy_td(obj)
       content_tag(
-        :td, 
-        link_to(content_tag(:span, t('cmtool.table.index.destroy'), class: [:destroy, 'icon-trash']), cmtool.url_for(obj), method: :delete, confirm: are_you_sure(obj), class: [:destroy, :btn, 'btn-danger', 'btn-mini']),
+        :td,
+        link_to(content_tag(:span, '', class: [:destroy, 'fa fa-lg fa-trash']), cmtool.url_for(obj), method: :delete, class: 'tiny alert button', data: {confirm: are_you_sure(obj) }),
         class: [:action, :destroy]
       )
     end

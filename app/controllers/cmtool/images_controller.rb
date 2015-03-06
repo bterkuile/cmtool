@@ -75,10 +75,11 @@ module Cmtool
     # DELETE /images/1.xml
     def destroy
       @image = Cmtool::Image.find(params[:id])
+      directory = @image.directory
       @image.destroy
 
       respond_to do |format|
-        format.html { redirect_to(cmtool.images_url) }
+        format.html { redirect_to([cmtool, directory || :images]) }
         format.xml  { head :ok }
       end
     end
