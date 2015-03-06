@@ -4,6 +4,10 @@ class ApplicationController < ActionController::Base
 private
 
   def authorize_cmtool
-    redirect_to new_user_session_path unless current_user.present?
+    redirect_to main_app.new_user_session_path unless current_user.present?
+  end
+
+  def cmtool_user
+    current_user
   end
 end
