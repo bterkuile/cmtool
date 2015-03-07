@@ -3,13 +3,14 @@ class HtmlEdit
     #ACE
     $('.html-content').each (i, el)->
       text_field = $(el)
-      ace_div = $('<div></div>').addClass('ace-div').html(text_field.val())
+      ace_div = $('<div></div>').addClass('ace-div')
       text_field.after ace_div
       ace_div.css
         width: '100%'
         height: '600px'
       editor = ace.edit(ace_div.get(0))
       editor.setTheme 'ace/theme/monokai'
+      editor.setValue text_field.val(), -1
       editor.getSession().setMode 'ace/mode/handlebars'
       editor.getSession().setTabSize(2)
       editor.getSession().setUseSoftTabs(true)
