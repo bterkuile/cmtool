@@ -102,6 +102,18 @@ module Cmtool
       iterator.call(options_ary, roots)
       options_for_select(options_ary, options[:selected])
     end
+
+    # This is a wrapper to create collapsible content. 
+    def collapsible_content(options = {}, &blk)
+      options = {title: options} if options.is_a?(String) # Single argument is title
+      content = capture(&blk) if blk.present?
+      content ||= options[:content]
+      options[:collapsed] = true unless options.has_key?(:collapsed)
+      classes = Array.wrap(options[:class]) | ["collapsible-container", options[:collapsed] ? 'collapsed' : nil]
+      title_tag = content_tag(:div, "<span></span>#{options[:title]}".html_safe, class: 'collapsible-title')
+      content_tag(:div, title_tag + content_tag(:div, content, class: 'collapsible-content'), class: classes)
+    end
+
     def human_size(n)
       return '0 MB' unless n
       n = n.to_i

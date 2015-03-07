@@ -1,0 +1,7 @@
+- title :new, Cmtool::YmlFile
+
+= render 'form', :submit => create_button_text(@yml_file)
+
+- content_for :page_links do
+  ul
+    li= link_to link_to_index_content(Cmtool::YmlFile), cmtool.yml_files_path, class: 'to-index-button'

@@ -1,3 +1,8 @@
+javascript:
+  page_vars = #{Cmtool::YmlFile.all_as_object.to_json.html_safe};
+#preview-modal.reveal-modal.large data-reveal=""
+  iframe allowfullscreen="" frameborder="0" height="720" src="about:blank" width="900"
+  a.close-reveal-modal ×
 = form_for [cmtool, @page] do |f|
   = render 'error_messages', target: @page
   .form-row
@@ -22,13 +27,16 @@
     .form-field= f.select :locale, Page.locales
   .form-row
     = f.label :body
-    = f.text_area :body, rows: 30, cols: 80, class: 'editor_full'
-  .field
-    = f.label :footer
-    = f.text_area :footer, rows: 15, cols: 80, class: 'editor_full'
-  .field
-    = f.label :sidebar
-    = f.text_area :sidebar, rows: 15, cols: 80, class: 'editor_full'
+    br
+    = f.text_area :body, rows: 30, cols: 80, class: 'html-content'
+  = collapsible_content 'Sidebar' do
+    .field
+      = f.label :sidebar
+      = f.text_area :sidebar, rows: 15, cols: 80, class: 'html-content'
+  = collapsible_content 'Footer' do
+    .field
+      = f.label :footer
+      = f.text_area :footer, rows: 15, cols: 80, class: 'html-content'
   .form-row
     .form-label= f.label :parent_id
     .form-field= f.select :parent_id, tree_options_for_select(Page.full_tree(@page.locale || Page.locales.first), exclude: @page.id, selected: @page.parent_id), include_blank: ' -- '

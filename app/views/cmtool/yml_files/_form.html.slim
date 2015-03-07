@@ -1,0 +1,9 @@
+= form_for [cmtool, @yml_file] do |f|
+  = render 'error_messages', :target => @yml_file
+  .form-row
+    .form-label= f.label :name
+    .form-field= f.text_field :name
+  .form-row
+    = f.text_area :body, class: 'yml-content'
+  .form-row: .form-actions
+    = f.submit @submit || update_button_text(@yml_file), class: 'form-submit-button'

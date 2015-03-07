@@ -13,12 +13,13 @@ module Cmtool
         klass.property :body
         klass.property :footer
         klass.property :sidebar
+        klass.property :wysiwyg, type: :boolean, default: false
         klass.property :priority, type: Float, default: 0.5
         klass.property :active, type: :boolean, default: true
         klass.property :layout
         klass.property :in_menu, type: :boolean, default: true
 
-        klass.has_ancestry :by_property => :locale
+        klass.has_ancestry by_property: :locale
 
         klass.validates :name, presence: true
         klass.validates :locale, presence: true

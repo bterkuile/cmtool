@@ -1,8 +1,8 @@
-en:
+nl:
   cmtool:
     general:
-      yes: Yes
-      no: No
+      yes: "Ja"
+      no: "Nee"
       are_you_sure: 'Are you sure?'
       are_you_sure_with_name: 'Are you sure you want to delete %{model} %{name}?'
       empty_result: No %{models} found
@@ -73,7 +73,6 @@ en:
         newsletter_subscription: Newsletter subscription
         image: Image
         directory: Directory
-        yml_file: Yml file
       plural:
         page: Pages
         user: Users
@@ -86,4 +85,3 @@ en:
           newsletter_subscription: Newsletter subscriptions
           image: Images
           directory: Directories
-          yml_file: Yml files

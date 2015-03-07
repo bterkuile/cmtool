@@ -26,6 +26,7 @@ module Cmtool
         group label: :site do
           title t('cmtool.menu.site.title')
           resource_link Page, scope: Cmtool
+          resource_link Cmtool::YmlFile
           resource_link Cmtool::Keyword
         end
         group label: :publications do

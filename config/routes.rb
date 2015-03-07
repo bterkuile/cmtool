@@ -7,6 +7,7 @@ Cmtool::Engine.routes.draw do
   resources :pages do
     member do
       get :generate_name
+      post :preview
     end
     collection do
       get :generate_name
@@ -18,6 +19,7 @@ Cmtool::Engine.routes.draw do
       delete :remove_image
     end
   end
+  resources :yml_files
   resources :keywords
   resources :faqs
   resources :quotes do

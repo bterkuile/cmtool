@@ -1,0 +1,13 @@
+.collapsible-container
+  .collapsible-title
+    font-size: 1.4em
+    font-weight: bold
+    cursor: pointer
+    span
+      @extend .fa, .fa-arrow-down
+  &.collapsed
+    .collapsible-title
+      span
+        @extend .fa, .fa-arrow-right
+    .collapsible-content
+      display: none

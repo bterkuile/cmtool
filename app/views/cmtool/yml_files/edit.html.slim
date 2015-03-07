@@ -1,0 +1,7 @@
+- title :edit, Cmtool::YmlFile
+= render 'form', submit: update_button_text(@yml_file)
+
+- content_for :page_links do
+  ul
+    li= link_to link_to_index_content(Cmtool::YmlFile), cmtool.yml_files_path, class: 'to-index-button'
+    li= link_to link_to_show_content(@yml_file), cmtool.yml_file_path(@yml_file), class: 'record-show-button'

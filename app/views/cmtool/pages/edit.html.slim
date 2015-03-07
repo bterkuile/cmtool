@@ -4,6 +4,6 @@
 - content_for :page_links do
   ul
     li= link_to link_to_index_content(Page), cmtool.pages_path, class: 'to-index-button'
-    li= link_to link_to_show_content(@page), cmtool.page_path(@page), class: 'record-show-button'
+    li= link_to link_to_show_content(@page), cmtool.preview_page_path(@page), class: 'record-show-button preview-page'
     li= link_to link_to_edit_content(@page), cmtool.edit_page_path(@page), class: 'record-edit-button'
     li= link_to link_to_destroy_content(@page), cmtool.page_path(@page), data: {confirm: are_you_sure?(@page)}, :method => :delete, class: 'record-destroy-button'

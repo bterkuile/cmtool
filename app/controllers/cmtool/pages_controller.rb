@@ -93,7 +93,8 @@ module Cmtool
     end
 
     def preview
-
+      @page = ::Page.new params.require(:page).permit!
+      render "pages/show", layout: @page.layout
     end
 
     private

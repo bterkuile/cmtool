@@ -4,7 +4,7 @@ module Cmtool
        extend ActiveSupport::Concern
         def home
           page_name = "home"
-          @page = ::Page.find_by_name_and_locale(page_name, I18n.locale.to_s) || ::Page.new(:name => page_name, locale: I18n.locale.to_s)
+          @page = find_page(page_name)
           @sub_pages = @page.children.select{|child| child.in_menu.present? }
           render :template => "pages/#{page_name}", :layout => @page.layout.presence || ::Page.layouts.first.to_s
         end
@@ -44,6 +44,12 @@ module Cmtool
               render xml: result
             end
           end
+        end
+
+        private
+
+        def find_page(name)
+          ::Page.find_by_name_and_locale(page_name, I18n.locale.to_s) || ::Page.new(:name => page_name, locale: I18n.locale.to_s)
         end
      end
    end

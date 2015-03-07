@@ -26,9 +26,9 @@
 .show_field
   strong= Page.human_attribute_name(:layout)
   = @page.layout
-.show_field
+/.show_field
   strong= Page.human_attribute_name(:has_view)
-  =# boolean_text template_exist?("pages/#{@page.name}")
+  = boolean_text template_exist?("pages/#{@page.name}")
 .show_field
   strong= Page.human_attribute_name(:in_menu)
   = boolean_text @page.in_menu?

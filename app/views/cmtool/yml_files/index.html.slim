@@ -1,0 +1,20 @@
+- title :index, Cmtool::YmlFile
+- if @yml_files.any?
+  table.index-table.table.table-striped.table-hover
+    thead
+      tr
+        th= Cmtool::YmlFile.human_attribute_name(:name)
+        th
+        th
+    tbody
+      - @yml_files.each do |yml_file|
+        tr
+          td= link_to yml_file.name, cmtool.yml_file_path(yml_file)
+          = edit_td yml_file
+          = destroy_td yml_file
+- else
+  = empty_result(Cmtool::YmlFile)
+
+- content_for :page_links do
+  ul
+    li= link_to link_to_new_content(Cmtool::YmlFile), cmtool.new_yml_file_path, class: 'record-new-button'

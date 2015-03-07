@@ -13,6 +13,7 @@ group :assets do
   #gem 'therubyracer', :platforms => :ruby
   #gem 'less-rails'
   gem 'foundation-rails'
+  gem 'ace-rails-ap'
 end
 
 gem 'couch_potato' , github: 'bterkuile/couch_potato'
