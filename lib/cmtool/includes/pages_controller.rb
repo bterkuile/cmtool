@@ -49,7 +49,7 @@ module Cmtool
         private
 
         def find_page(name)
-          ::Page.find_by_name_and_locale(page_name, I18n.locale.to_s) || ::Page.new(:name => page_name, locale: I18n.locale.to_s)
+          ::Page.find_by_name_and_locale(name, I18n.locale.to_s) || ::Page.new(:name => name, locale: I18n.locale.to_s)
         end
      end
    end
