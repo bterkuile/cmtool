@@ -6,6 +6,7 @@
 #= require ace/mode-coffee
 #= require ace/mode-handlebars
 #= require ace/mode-yaml
+#= require ace/mode-haml
 #= require tinymce-jquery
 #= require_directory .
 #= require_self

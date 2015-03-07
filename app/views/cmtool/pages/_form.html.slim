@@ -27,8 +27,8 @@ javascript:
     .form-field= f.select :locale, Page.locales
   .form-row
     = f.label :body
-    br
     = f.text_area :body, rows: 30, cols: 80, class: 'html-content'
+    = f.text_area :body_template
   = collapsible_content 'Sidebar' do
     .field
       = f.label :sidebar

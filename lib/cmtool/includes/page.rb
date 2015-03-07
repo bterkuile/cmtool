@@ -11,8 +11,11 @@ module Cmtool
         klass.property :menu_text
         klass.property :title
         klass.property :body
-        klass.property :footer
+        klass.property :body_template
         klass.property :sidebar
+        klass.property :sidebar_template
+        klass.property :footer
+        klass.property :footer_template
         klass.property :wysiwyg, type: :boolean, default: false
         klass.property :priority, type: Float, default: 0.5
         klass.property :active, type: :boolean, default: true
