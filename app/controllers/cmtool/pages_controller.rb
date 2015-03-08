@@ -93,8 +93,13 @@ module Cmtool
     end
 
     def preview
-      @page = ::Page.new params.require(:page).permit!
-      render "pages/show", layout: @page.layout
+      if request.post?
+        session[:preview_page] = params[:page].to_hash
+        head :ok
+      else
+        @page = ::Page.new session[:preview_page]
+        render "pages/show", layout: @page.layout
+      end
     end
 
     private

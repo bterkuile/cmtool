@@ -7,7 +7,7 @@ Cmtool::Engine.routes.draw do
   resources :pages do
     member do
       get :generate_name
-      post :preview
+      match :preview, via: [:get, :post]
     end
     collection do
       get :generate_name

@@ -19,11 +19,13 @@ $ ->
   $('.preview-page').click (ev)->
     ev.preventDefault()
     url = $(@).attr('href')
+    iframe = $('#preview-modal iframe')
     params =
       body: $('#page_body').val()
+      sidebar: $('#page_sidebar').val()
+      footer: $('#page_footer').val()
       layout: $('#page_layout').val()
     $.post url, page: params, (response)->
-      iframe = $('#preview-modal iframe').get(0)
-      iframe.src = "data:text/html;charset=utf-8,#{escape(response)}"
+      iframe.attr 'src', url
       $('#preview-modal').foundation('reveal', 'open')
     false

@@ -1,7 +1,7 @@
 javascript:
   page_vars = #{Cmtool::YmlFile.all_as_object.to_json.html_safe};
 #preview-modal.reveal-modal.large data-reveal=""
-  iframe allowfullscreen="" frameborder="0" height="720" src="about:blank" width="900"
+  iframe allowfullscreen="" frameborder="0" height="100%" src="about:blank" width="100%"
   a.close-reveal-modal ×
 = form_for [cmtool, @page] do |f|
   = render 'error_messages', target: @page
