@@ -21,6 +21,9 @@ $ ->
     url = $(@).attr('href')
     iframe = $('#preview-modal iframe')
     params =
+      name: $('#page_name').val()
+      menu_text: $('#page_menu_text').val()
+      title: $('#page_title').val()
       body: $('#page_body').val()
       sidebar: $('#page_sidebar').val()
       footer: $('#page_footer').val()
