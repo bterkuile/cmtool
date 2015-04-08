@@ -43,3 +43,17 @@ class HtmlEdit
       text_field.hide()
       template_field.hide()
 @html_edit = new HtmlEdit()
+Handlebars.registerHelper "link-to", (url, args..., options = {})->
+  unless not url or url.match(/^http|^\/\w{2}\//)
+    # Starts with http or /:locale/ explicitly
+    if options.hash and options.hash.hasOwnProperty 'locale'
+      if locale = options.hash.locale
+        url = "/#{locale}/#{url}".replace('//', '/')
+    else if locale = $('#page_locale').val()
+      url = "/#{locale}/#{url}".replace('//', '/')
+  if options.fn
+    text = options.fn(this)
+  else
+    text = args[0]
+  link = "<a href='#{url}'>#{text}</a>"
+  new Handlebars.SafeString(link)
