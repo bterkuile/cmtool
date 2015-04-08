@@ -3,7 +3,7 @@ class YmlEdit
     #ACE
     $('.yml-content').each (i, el)->
       text_field = $(el)
-      ace_div = $('<div></div>').addClass('ace-div').html(text_field.val())
+      ace_div = $('<div></div>').addClass('ace-div') #.html(text_field.val())
       text_field.after ace_div
       ace_div.css
         width: '100%'
@@ -11,6 +11,7 @@ class YmlEdit
       editor = ace.edit(ace_div.get(0))
       editor.setTheme 'ace/theme/monokai'
       editor.getSession().setMode 'ace/mode/yaml'
+      editor.getSession().setValue text_field.val()
       editor.getSession().setTabSize(2)
       editor.getSession().setUseSoftTabs(true)
       editor.getSession().on 'change', (e)->

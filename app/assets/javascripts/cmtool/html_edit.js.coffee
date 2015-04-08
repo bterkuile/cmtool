@@ -14,9 +14,11 @@ class HtmlEdit
       if template_field.length
         editor.setValue template_field.val(), -1
         editor.getSession().setMode 'ace/mode/haml'
+        console.log "Editing haml"
       else
         editor.setValue text_field.val(), -1
         editor.getSession().setMode 'ace/mode/handlebars'
+        console.log "Editing handlebars"
       editor.getSession().setTabSize(2)
       editor.getSession().setUseSoftTabs(true)
       editor.getSession().on 'change', (e)->
