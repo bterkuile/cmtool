@@ -14,6 +14,10 @@ group :assets do
   #gem 'less-rails'
   gem 'foundation-rails'
   gem 'ace-rails-ap'
+  gem "jquery-rails"
+  gem 'font-awesome-rails'
+  gem 'tinymce-rails'
+  gem 'pickadate-rails'
 end
 
 gem 'couch_potato' , github: 'bterkuile/couch_potato'
@@ -21,19 +25,15 @@ gem 'simply_stored' , github: 'bterkuile/simply_stored'
 gem 'orm_adapter', github: 'bterkuile/orm_adapter'
 gem 'devise'
 gem 'devise_simply_stored', github: 'bterkuile/devise_simply_stored'
-gem 'tinymce-rails'
 gem 'slim-rails'
 gem 'paperclip'
 gem 'email_validator'
 gem 'actionpack-page_caching'
-gem 'font-awesome-rails'
 # Declare any dependencies that are still in development here instead of in
 # your gemspec. These might include edge Rails or gems from your path or
 # Git. Remember to move these dependencies to your gemspec before releasing
 # your gem to rubygems.org.
 
-# jquery-rails is used by the dummy application
-gem "jquery-rails"
 # To use debugger
 group :test do
   gem 'steak'
