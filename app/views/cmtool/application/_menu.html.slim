@@ -7,25 +7,25 @@
       li.toggle-topbar.menu-icon
         a href="#" 
           span Menu
-    - if cmtool_user.present?
-      section.top-bar-section
+    section.top-bar-section
+      - if cmtool_user.present?
         ul.right
           li.has-dropdown
             a href="#" = cmtool_user.email
             ul.dropdown
               li.log-out= link_to t('helpers.links.logout'), main_app.root_path
-        ul.left
-          - Cmtool::Menu.items.each do |menu_item|
-            - if menu_item.group?
-              li.has-dropdown class=(menu_item.controller_names.include?(controller_name) ? 'active' : '')
-                a href="#" = menu_item.title
-                ul.dropdown
-                  - menu_item.items.compact.each do |child_item|
-                    - if child_item.divider?
-                      li.divider
-                    - else
-                      li class=(controller_name == child_item.controller_name ? 'active' : '') = link_to child_item.title, child_item.path
-            - elsif menu_item.resource_link?
-              li class=(menu_item.controller_name == controller_name ? 'active' : '') = link_to menu_item.title, menu_item.path
-            - elsif menu_item.engine_link?
-              li= link_to menu_item.title, menu_item.path
+      ul.left
+        - Cmtool::Menu.items.each do |menu_item|
+          - if menu_item.group?
+            li.has-dropdown class=(menu_item.controller_names.include?(controller_name) ? 'active' : '')
+              a href="#" = menu_item.title
+              ul.dropdown
+                - menu_item.items.compact.each do |child_item|
+                  - if child_item.divider?
+                    li.divider
+                  - else
+                    li class=(controller_name == child_item.controller_name ? 'active' : '') = link_to child_item.title, child_item.path
+          - elsif menu_item.resource_link?
+            li class=(menu_item.controller_name == controller_name ? 'active' : '') = link_to menu_item.title, menu_item.path
+          - elsif menu_item.engine_link?
+            li= link_to menu_item.title, menu_item.path
