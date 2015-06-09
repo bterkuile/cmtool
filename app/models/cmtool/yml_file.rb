@@ -9,7 +9,7 @@ module Cmtool
     def self.all_as_object
       all.each.with_object Hash.new do |yml_file, obj|
         yml_obj = YAML.load(yml_file.body) rescue nil
-        obj.merge!( yml_obj ) if yml_obj
+        obj.deep_merge!( yml_obj ) if yml_obj
       end
     end
   end

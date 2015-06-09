@@ -9,7 +9,7 @@
     tbody
       - @yml_files.each do |yml_file|
         tr
-          td= link_to yml_file.name, cmtool.yml_file_path(yml_file)
+          td= link_to yml_file.name, cmtool.edit_yml_file_path(yml_file)
           = edit_td yml_file
           = destroy_td yml_file
 - else
