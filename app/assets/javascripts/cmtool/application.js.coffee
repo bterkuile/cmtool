@@ -8,6 +8,9 @@
 #= require ace/mode-yaml
 #= require ace/mode-haml
 #= require tinymce-jquery
+#= require pickadate/picker
+#= require pickadate/picker.date
+#= require pickadate/picker.time
 #= require_directory .
 #= require_self
 
@@ -16,6 +19,7 @@ $ ->
   collapsible.setup()
   html_edit.setup()
   yml_edit.setup()
+  $('.datepicker').pickadate()
   $('.preview-page').click (ev)->
     ev.preventDefault()
     url = $(@).attr('href')
