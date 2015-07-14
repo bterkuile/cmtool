@@ -34,7 +34,7 @@ module Cmtool
           respond_to do |format|
             format.xml do
               pages_xml = ::Page.for_sitemap.map do |page|
-                uri = page_path(page.name, locale: page.locale)
+                uri = page_url(page.name, locale: page.locale)
                 "<url><loc>#{uri}</loc><lastmod>#{page.updated_at.strftime('%Y-%m-%d')}</lastmod></url>"
               end.join("\n")
               result = <<-XML
