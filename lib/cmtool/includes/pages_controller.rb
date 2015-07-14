@@ -33,8 +33,10 @@ module Cmtool
         def sitemap
           respond_to do |format|
             format.xml do
-              page_uris = ::Page.for_sitemap.map{|p| page_path(p.name, locale: p.locale)}
-              pages_xml = page_uris.map{|uri| "<url><loc>#{uri}</loc></url>"}.join("\n")
+              pages_xml = ::Page.for_sitemap.map do |page|
+                uri = page_path(page.name, locale: page.locale)
+                "<url><loc>#{uri}</loc><lastmod>#{page.updated_at.strftime('%Y-%m-%d')}</lastmod></url>"
+              end.join("\n")
               result = <<-XML
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

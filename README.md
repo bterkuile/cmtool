@@ -71,16 +71,18 @@ end
 
 ### Routing
 
-Add the following routes:
+Add the following routes with changes according to your application:
 ```ruby
+ALLOWED_LOCALES = /nl|de|fr|en|es/
 devise_for :users, :controllers => {:sessions => 'cmtool/sessions', :passwords => 'cmtool/passwords'}
 mount Cmtool::Engine => '/cmtool'
+get '/:locale' => 'pages#home', constraints: {locale: ALLOWED_LOCALES}, as: :go_to_locale
 get '/sitemap(.:format)' => 'pages#sitemap'
-scope '(/:locale)', constraints: {locale: /nl|be|de|fr|en/}, defaults: { locale: :nl } do
+scope '(/:locale)', constraints: {locale: ALLOWED_LOCALES}, defaults: { locale: :nl } do
+  root to: 'pages#home'
   get "/:name" => "pages#show", constraints: {name: /.*/},  as: :page
 end
 get "/*url" => "pages#not_found"
-root :to => 'pages#home'
 ```
 
 ### User model

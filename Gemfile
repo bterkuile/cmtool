@@ -5,9 +5,9 @@ source "http://rubygems.org"
 # development dependencies will be added by default to the :development group.
 gemspec
 
-gem "rails", "4.2.0"
+gem "rails", " ~> 4.2.3"
 group :assets do
-  gem 'sass-rails', ' ~> 5.0.0'
+  gem 'sass-rails' #, ' ~> 5.0.0'
   gem 'bourbon'
   gem 'coffee-script'
   #gem 'therubyracer', :platforms => :ruby
@@ -26,7 +26,7 @@ gem 'orm_adapter', github: 'bterkuile/orm_adapter'
 gem 'devise'
 gem 'devise_simply_stored', github: 'bterkuile/devise_simply_stored'
 gem 'slim-rails'
-gem 'paperclip'
+gem 'paperclip', ['>= 3.4', '!= 4.3.0']
 gem 'email_validator'
 gem 'actionpack-page_caching'
 # Declare any dependencies that are still in development here instead of in
@@ -35,14 +35,16 @@ gem 'actionpack-page_caching'
 # your gem to rubygems.org.
 
 # To use debugger
-group :test do
-  gem 'steak'
-  gem 'rspec-its'
+group :development, :test do
+  gem 'rspec-rails'
   gem 'pry-rails'
+end
+group :test do
   gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'rspec-its'
 end
 group :development do
-  gem 'pry-rails'
   gem 'thin'
   #gem 'ruby-debug19', :require => 'ruby-debug'
 end

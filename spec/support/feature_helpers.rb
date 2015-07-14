@@ -1,4 +1,4 @@
-module HelperMethods
+module FeatureHelpers
   # Put helper methods you need to be available in all acceptance specs here.
   def create_user(email, password='secret')
     @user = User.find_by_email(email) || FactoryGirl.create(:user, email: email, password: password)
@@ -14,6 +14,8 @@ module HelperMethods
   def submit_form
     find("[type=submit]").click
   end
-end
 
-RSpec.configuration.include HelperMethods, :type => :acceptance
+  def homepage
+    "/"
+  end
+end

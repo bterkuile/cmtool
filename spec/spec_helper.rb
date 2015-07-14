@@ -3,7 +3,6 @@ ENV["RAILS_ENV"] = "test"
 require File.expand_path("../dummy/config/environment.rb",  __FILE__)
 
 require 'rspec/rails'
-require 'rspec/autorun'
 require 'factory_girl'
 require 'capybara/rspec'
 
@@ -23,9 +22,12 @@ RSpec.configure do |config|
   #config.include CompanyFactory
   config.include Cmtool::Engine.routes.url_helpers
   config.include Devise::TestHelpers, type: :controller
+  config.include FeatureHelpers, type: :feature
   #config.use_transactional_fixtures = true
   config.infer_base_class_for_anonymous_controllers = true
   config.render_views = true
+
+  config.expect_with(:rspec) { |c| c.syntax = [:expect, :should] }
 
   config.before :each do
     CouchPotato.couchrest_database.recreate!

@@ -1,11 +1,6 @@
-require 'acceptance/acceptance_helper'
+require 'spec_helper'
 
-feature 'Pages index', %q{
-  In order have pages
-  As a user
-  I want to see pages 
-} do
-
+feature 'Pages index' do
   scenario 'visit root' do
     visit '/cmtool'
     page.current_path.should == '/users/sign_in'
