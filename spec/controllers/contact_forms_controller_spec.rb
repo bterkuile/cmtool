@@ -84,7 +84,7 @@ describe Cmtool::ContactFormsController, type: :controller do
         # specifies that the Cmtool::ContactForm created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Cmtool::ContactForm.any_instance.should_receive(:update_attributes).with({'name' => 'Zeikurt'})
+        expect_any_instance_of( Cmtool::ContactForm ).to receive(:update_attributes).with({'name' => 'Zeikurt'})
         put :update, :id => contact_form.id, :contact_form => {'name' => 'Zeikurt'}
       end
 

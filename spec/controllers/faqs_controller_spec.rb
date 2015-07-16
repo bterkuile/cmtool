@@ -78,7 +78,7 @@ describe Cmtool::FaqsController, type: :controller do
         # specifies that the Cmtool::Faq created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Cmtool::Faq.any_instance.should_receive(:update_attributes).with({'question' => 'meaning of life'})
+        expect_any_instance_of( Cmtool::Faq ).to receive(:update_attributes).with({'question' => 'meaning of life'})
         put :update, :id => faq.id, :faq => {'question' => 'meaning of life'}
       end
 

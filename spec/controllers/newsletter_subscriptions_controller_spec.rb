@@ -78,14 +78,14 @@ describe Cmtool::NewsletterSubscriptionsController, type: :controller do
     describe "with invalid params" do
       it "assigns a newly created but unsaved newsletter_subscription as @newsletter_subscription" do
         # Trigger the behavior that occurs when invalid params are submitted
-        Cmtool::NewsletterSubscription.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of( Cmtool::NewsletterSubscription ).to receive(:save).and_return(false)
         post :create, :newsletter_subscription => {email: ''}
         assigns(:newsletter_subscription).should be_a_new(Cmtool::NewsletterSubscription)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
-        Cmtool::NewsletterSubscription.any_instance.stub(:save).and_return(false)
+        allow_any_instance_of( Cmtool::NewsletterSubscription ).to receive(:save).and_return(false)
         post :create, :newsletter_subscription => {email: ''}
         response.should render_template("new")
       end
