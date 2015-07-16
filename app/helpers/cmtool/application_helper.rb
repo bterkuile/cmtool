@@ -125,6 +125,7 @@ module Cmtool
       format("%.2f",n) + %w(B KB MB GB TB)[count]
     end
 
+    # Add extra helper method since cmtool layouts may be used outside the cmtool scope
     def cmtool_user
       controller.send :cmtool_user
     end

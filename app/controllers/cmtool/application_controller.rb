@@ -1,5 +1,6 @@
 module Cmtool
   class ApplicationController < ::ApplicationController
+    include Cmtool::ControllerGlue
     before_filter :authorize_user, :check_environment, :set_locale
     layout 'cmtool/application'
 
@@ -20,11 +21,6 @@ module Cmtool
         render text: 'Please define authorize_cmtool in your application controller. This area needs to be secured!<br/>Visit<a href="https://github.com/bterkuile/cmtool">GitHub</a> for more info', status: 403
       end
     end
-
-    def cmtool_user
-      defined?(super) ? super : current_user
-    end
-    helper_method :cmtool_user
 
     def check_environment
       @cmtool_warnings ||= []
