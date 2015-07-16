@@ -43,6 +43,7 @@ group :test do
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'rspec-its'
+  gem 'launchy'
 end
 group :development do
   gem 'thin'
