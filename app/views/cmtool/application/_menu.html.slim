@@ -1,3 +1,4 @@
+- user = defined?(cmtool_user) ? cmtool_user : (defined?(current_user) ? current_user : nil)
 .fixed
   nav.top-bar data-topbar="" role="navigation" 
     ul.title-area
@@ -8,10 +9,10 @@
         a href="#" 
           span Menu
     section.top-bar-section
-      - if cmtool_user.present?
+      - if user.present?
         ul.right
           li.has-dropdown
-            a href="#" = cmtool_user.email
+            a href="#" = user.email
             ul.dropdown
               li.log-out= link_to t('helpers.links.logout'), main_app.root_path
       ul.left
