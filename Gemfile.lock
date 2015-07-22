@@ -23,7 +23,7 @@ GIT
 PATH
   remote: .
   specs:
-    cmtool (1.0.0)
+    cmtool (2.0.0)
       ace-rails-ap
       bourbon
       email_validator
