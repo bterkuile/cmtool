@@ -5,6 +5,7 @@ require File.expand_path("../dummy/config/environment.rb",  __FILE__)
 require 'rspec/rails'
 require 'factory_girl'
 require 'capybara/rspec'
+require 'capybara/poltergeist'
 
 ENGINE_RAILS_ROOT=File.join(File.dirname(__FILE__), '../')
 # Requires supporting ruby files with custom matchers and macros, etc,
@@ -14,7 +15,8 @@ Dir[File.join(ENGINE_RAILS_ROOT, "spec/factories/**/*.rb")].each {|f| require f 
 
 I18n.locale = :en
 Devise.stretches = 1
-#Capybara.default_driver = :selenium
+Capybara.javascript_driver = :poltergeist
+
 RSpec.configure do |config|
   config.mock_with :rspec
   config.include FactoryGirl::Syntax::Methods
@@ -23,6 +25,7 @@ RSpec.configure do |config|
   config.include Cmtool::Engine.routes.url_helpers
   config.include Devise::TestHelpers, type: :controller
   config.include FeatureHelpers, type: :feature
+  config.include JsHelpers, type: :feature
   #config.use_transactional_fixtures = true
   config.infer_base_class_for_anonymous_controllers = true
   config.render_views = true

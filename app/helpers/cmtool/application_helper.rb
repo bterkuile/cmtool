@@ -127,7 +127,7 @@ module Cmtool
 
     # Add extra helper method since cmtool layouts may be used outside the cmtool scope
     def cmtool_user
-      controller.send :cmtool_user
+      controller.respond_to?(:cmtool_user) ? controller.send(:cmtool_user) :nil
     end
 
     def edit_td(obj)

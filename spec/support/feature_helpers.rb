@@ -6,8 +6,8 @@ module FeatureHelpers
 
   def login_as(email)
     visit "/users/sign_in"
-    fill_in "user_email", with: email
-    fill_in "user_password", with: "secret"
+    find("#user_email").set email
+    find("#user_password").set "secret"
     submit_form
   end
 

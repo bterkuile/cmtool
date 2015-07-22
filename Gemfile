@@ -20,7 +20,6 @@ group :assets do
   gem 'pickadate-rails'
 end
 
-gem 'couch_potato' , github: 'bterkuile/couch_potato'
 gem 'simply_stored' , github: 'bterkuile/simply_stored'
 gem 'orm_adapter', github: 'bterkuile/orm_adapter'
 gem 'devise'
@@ -42,6 +41,7 @@ end
 group :test do
   gem 'factory_girl_rails'
   gem 'capybara'
+  gem 'poltergeist'
   gem 'rspec-its'
   gem 'launchy'
 end
