@@ -131,16 +131,27 @@ module Cmtool
     end
 
     def edit_td(obj)
+      path = case obj
+        when Array then edit_polymorphic_path(obj)
+        when SimplyStored::Couch then edit_polymorphic_path([cmtool, obj])
+        else obj
+      end
       content_tag(
         :td,
-        link_to((content_tag(:span, '', class: [:edit, 'fa fa-lg fa-pencil'])), cmtool.url_for([:edit, obj]), class: 'tiny warning button'),
+        link_to((content_tag(:span, '', class: [:edit, 'fa fa-lg fa-pencil'])), path, class: 'tiny warning button'),
         class: [:action, :edit]
       )
     end
+
     def destroy_td(obj)
+      path = case obj
+        when Array then polymorphic_path(obj)
+        when SimplyStored::Couch then polymorphic_path([cmtool, obj])
+        else obj
+      end
       content_tag(
         :td,
-        link_to(content_tag(:span, '', class: [:destroy, 'fa fa-lg fa-trash']), cmtool.url_for(obj), method: :delete, class: 'tiny alert button', data: {confirm: are_you_sure(obj) }),
+        link_to(content_tag(:span, '', class: [:destroy, 'fa fa-lg fa-trash']), path, method: :delete, class: 'tiny alert button', data: {confirm: are_you_sure(obj) }),
         class: [:action, :destroy]
       )
     end

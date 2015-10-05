@@ -27,7 +27,6 @@ gem 'devise_simply_stored', github: 'bterkuile/devise_simply_stored'
 gem 'slim-rails'
 gem 'paperclip', ['>= 3.4', '!= 4.3.0']
 gem 'email_validator'
-gem 'actionpack-page_caching'
 # Declare any dependencies that are still in development here instead of in
 # your gemspec. These might include edge Rails or gems from your path or
 # Git. Remember to move these dependencies to your gemspec before releasing
@@ -38,6 +37,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'pry-rails'
 end
+
 group :test do
   gem 'factory_girl_rails'
   gem 'capybara'
@@ -45,6 +45,7 @@ group :test do
   gem 'rspec-its'
   gem 'launchy'
 end
+
 group :development do
   gem 'thin'
   #gem 'ruby-debug19', :require => 'ruby-debug'
