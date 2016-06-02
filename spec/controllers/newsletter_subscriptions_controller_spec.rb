@@ -35,7 +35,7 @@ describe Cmtool::NewsletterSubscriptionsController, type: :controller do
   describe "GET show" do
     it "assigns the requested newsletter_subscription as @newsletter_subscription" do
       newsletter_subscription = create :newsletter_subscription
-      get :show, :id => newsletter_subscription.id
+      get :show, id: newsletter_subscription.id
       assigns(:newsletter_subscription).should eq(newsletter_subscription)
     end
   end
@@ -50,7 +50,7 @@ describe Cmtool::NewsletterSubscriptionsController, type: :controller do
   describe "GET edit" do
     it "assigns the requested newsletter_subscription as @newsletter_subscription" do
       newsletter_subscription = create :newsletter_subscription
-      get :edit, :id => newsletter_subscription.id
+      get :edit, id: newsletter_subscription.id
       assigns(:newsletter_subscription).should eq(newsletter_subscription)
     end
   end
@@ -59,18 +59,18 @@ describe Cmtool::NewsletterSubscriptionsController, type: :controller do
     describe "with valid params" do
       it "creates a new Cmtool::NewsletterSubscription" do
         expect {
-          post :create, :newsletter_subscription => build(:newsletter_subscription).attributes
+          post :create, newsletter_subscription: build(:newsletter_subscription).attributes
         }.to change(Cmtool::NewsletterSubscription, :count).by(1)
       end
 
       it "assigns a newly created newsletter_subscription as @newsletter_subscription" do
-        post :create, :newsletter_subscription => build(:newsletter_subscription).attributes
+        post :create, newsletter_subscription: build(:newsletter_subscription).attributes
         assigns(:newsletter_subscription).should be_a(Cmtool::NewsletterSubscription)
         assigns(:newsletter_subscription).should be_persisted
       end
 
       it "redirects to the newsletter_subscriptions newsletter_subscription" do
-        post :create, :newsletter_subscription => build(:newsletter_subscription).attributes
+        post :create, newsletter_subscription: build(:newsletter_subscription).attributes
         response.should redirect_to(Cmtool::NewsletterSubscription.last)
       end
     end
@@ -79,14 +79,14 @@ describe Cmtool::NewsletterSubscriptionsController, type: :controller do
       it "assigns a newly created but unsaved newsletter_subscription as @newsletter_subscription" do
         # Trigger the behavior that occurs when invalid params are submitted
         allow_any_instance_of( Cmtool::NewsletterSubscription ).to receive(:save).and_return(false)
-        post :create, :newsletter_subscription => {email: ''}
+        post :create, newsletter_subscription: {email: ''}
         assigns(:newsletter_subscription).should be_a_new(Cmtool::NewsletterSubscription)
       end
 
       it "re-renders the 'new' template" do
         # Trigger the behavior that occurs when invalid params are submitted
         allow_any_instance_of( Cmtool::NewsletterSubscription ).to receive(:save).and_return(false)
-        post :create, :newsletter_subscription => {email: ''}
+        post :create, newsletter_subscription: {email: ''}
         response.should render_template("new")
       end
     end
@@ -100,19 +100,19 @@ describe Cmtool::NewsletterSubscriptionsController, type: :controller do
         # specifies that the Cmtool::NewsletterSubscription created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Cmtool::NewsletterSubscription.any_instance.should_receive(:update_attributes).with({'email' => 'test44@cmtool.nl'})
-        put :update, :id => newsletter_subscription.id, :newsletter_subscription => {'email' => 'test44@cmtool.nl'}
+        Cmtool::NewsletterSubscription.any_instance.should_receive(:update_attributes).with('email' => 'test44@cmtool.nl')
+        put :update, id: newsletter_subscription.id, newsletter_subscription: {'email' => 'test44@cmtool.nl'}
       end
 
       it "assigns the requested newsletter_subscription as @newsletter_subscription" do
         newsletter_subscription = create(:newsletter_subscription)
-        put :update, :id => newsletter_subscription.id, :newsletter_subscription => newsletter_subscription.attributes
-        assigns(:newsletter_subscription).should eq(newsletter_subscription)
+        put :update, id: newsletter_subscription.id, newsletter_subscription: newsletter_subscription.attributes
+        assigns(:newsletter_subscription).id.should eq newsletter_subscription.id
       end
 
       it "redirects to the newsletter_subscription" do
         newsletter_subscription = create(:newsletter_subscription)
-        put :update, :id => newsletter_subscription.id, :newsletter_subscription => newsletter_subscription.attributes
+        put :update, id: newsletter_subscription.id, newsletter_subscription: newsletter_subscription.attributes
         response.should redirect_to(newsletter_subscription)
       end
     end
@@ -122,7 +122,7 @@ describe Cmtool::NewsletterSubscriptionsController, type: :controller do
         newsletter_subscription = create(:newsletter_subscription)
         # Trigger the behavior that occurs when invalid params are submitted
         Cmtool::NewsletterSubscription.any_instance.stub(:save).and_return(false)
-        put :update, :id => newsletter_subscription.id, :newsletter_subscription => {email: ''}
+        put :update, id: newsletter_subscription.id, newsletter_subscription: {email: ''}
         assigns(:newsletter_subscription).should eq(newsletter_subscription)
       end
 
@@ -130,7 +130,7 @@ describe Cmtool::NewsletterSubscriptionsController, type: :controller do
         newsletter_subscription = create(:newsletter_subscription)
         # Trigger the behavior that occurs when invalid params are submitted
         Cmtool::NewsletterSubscription.any_instance.stub(:save).and_return(false)
-        put :update, :id => newsletter_subscription.id, :newsletter_subscription => {email: ''}
+        put :update, id: newsletter_subscription.id, newsletter_subscription: {email: ''}
         response.should render_template("edit")
       end
     end
@@ -141,20 +141,20 @@ describe Cmtool::NewsletterSubscriptionsController, type: :controller do
       @request.env['HTTP_REFERER'] = newsletter_subscriptions_path
       newsletter_subscription = create(:newsletter_subscription)
       expect {
-        delete :destroy, :id => newsletter_subscription.id
+        delete :destroy, id: newsletter_subscription.id
       }.to change(Cmtool::NewsletterSubscription, :count).by(-1)
     end
 
     it "redirects to the newsletter_subscriptions list" do
       @request.env['HTTP_REFERER'] = newsletter_subscriptions_path
       newsletter_subscription = create(:newsletter_subscription)
-      delete :destroy, :id => newsletter_subscription.id
+      delete :destroy, id: newsletter_subscription.id
       response.should redirect_to(newsletter_subscriptions_path)
     end
     it "redirects to the newsletter_subscriptions list when called from edit page" do
       newsletter_subscription = create(:newsletter_subscription)
       @request.env['HTTP_REFERER'] = edit_newsletter_subscription_path(newsletter_subscription)
-      delete :destroy, :id => newsletter_subscription.id
+      delete :destroy, id: newsletter_subscription.id
       response.should redirect_to(newsletter_subscriptions_path)
     end
   end

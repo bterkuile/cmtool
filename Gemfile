@@ -12,7 +12,7 @@ group :assets do
   gem 'coffee-script'
   #gem 'therubyracer', :platforms => :ruby
   #gem 'less-rails'
-  gem 'foundation-rails'
+  gem 'foundation-rails', '~> 5.5'
   gem 'ace-rails-ap'
   gem "jquery-rails"
   gem 'font-awesome-rails'

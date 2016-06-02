@@ -6,7 +6,7 @@ module Cmtool
           page_name = "home"
           @page = find_page(page_name)
           @sub_pages = @page.children.select{|child| child.in_menu.present? }
-          render :template => "pages/#{page_name}", :layout => @page.layout.presence || ::Page.layouts.first.to_s
+          render template: "pages/#{page_name}", layout: @page.layout.presence || ::Page.layouts.first.to_s, formats: [:html]
         end
 
         # General catcher for pages
@@ -17,10 +17,10 @@ module Cmtool
           @sub_pages = [@page] + @page.children.select{|child| child.in_menu.present? }
           template = "pages/#{@page.name}"
           if template_exists?(template)
-            render :template => template, :layout => @page.layout.presence || ::Page.layouts.first
+            render template: template, formats: [:html], layout: @page.layout.presence || ::Page.layouts.first
             return
           else
-            render :layout => @page.layout.presence || ::Page.layouts.first
+            render formats: [:html], layout: @page.layout.presence || ::Page.layouts.first
           end
         end
 
@@ -51,7 +51,7 @@ module Cmtool
         private
 
         def find_page(name)
-          ::Page.find_by_name_and_locale(name, I18n.locale.to_s) || ::Page.new(:name => name, locale: I18n.locale.to_s)
+          ::Page.find_by_name_and_locale(name, I18n.locale.to_s) || ::Page.new(name: name, locale: I18n.locale.to_s)
         end
      end
    end
