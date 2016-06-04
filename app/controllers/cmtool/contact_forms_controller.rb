@@ -9,7 +9,7 @@ module Cmtool
 
       respond_to do |format|
         format.html # index.html.erb
-        format.xml  { render :xml => @contact_forms }
+        format.xml  { render xml: @contact_forms }
       end
     end
 
@@ -20,7 +20,7 @@ module Cmtool
 
       respond_to do |format|
         format.html # show.html.erb
-        format.xml  { render :xml => @contact_form }
+        format.xml  { render xml: @contact_form }
       end
     end
 
@@ -31,7 +31,7 @@ module Cmtool
 
       respond_to do |format|
         format.html # new.html.erb
-        format.xml  { render :xml => @contact_form }
+        format.xml  { render xml: @contact_form }
       end
     end
 
@@ -47,11 +47,11 @@ module Cmtool
 
       respond_to do |format|
         if @contact_form.save
-          format.html { redirect_to([cmtool, @contact_form], :notice => I18n.t('cmtool.action.create.successful', :model => Cmtool::ContactForm.model_name.human)) }
-          format.xml  { render :xml => @contact_form, :status => :created, :location => @contact_form }
+          format.html { redirect_to([cmtool, @contact_form], notice: I18n.t('cmtool.action.create.successful', model: Cmtool::ContactForm.model_name.human)) }
+          format.xml  { render xml: @contact_form, status: :created, location: @contact_form }
         else
-          format.html { render :action => "new" }
-          format.xml  { render :xml => @contact_form.errors, :status => :unprocessable_entity }
+          format.html { render action: "new" }
+          format.xml  { render xml: @contact_form.errors, status: :unprocessable_entity }
         end
       end
     end
@@ -63,11 +63,11 @@ module Cmtool
 
       respond_to do |format|
         if @contact_form.update_attributes(contact_form_params)
-          format.html { redirect_to([cmtool, @contact_form], :notice => I18n.t('cmtool.action.update.successful', :model => Cmtool::ContactForm.model_name.human)) }
+          format.html { redirect_to([cmtool, @contact_form], notice: I18n.t('cmtool.action.update.successful', model: Cmtool::ContactForm.model_name.human)) }
           format.xml  { head :ok }
         else
-          format.html { render :action => "edit" }
-          format.xml  { render :xml => @contact_form.errors, :status => :unprocessable_entity }
+          format.html { render action: "edit" }
+          format.xml  { render xml: @contact_form.errors, status: :unprocessable_entity }
         end
       end
     end
