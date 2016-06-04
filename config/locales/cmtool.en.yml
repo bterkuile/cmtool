@@ -87,3 +87,9 @@ en:
           image: Images
           directory: Directories
           yml_file: Yml files
+    errors:
+      models:
+        cmtool/contact_form:
+          attributes:
+            base:
+              bad_intentions: This message contains unwanted content

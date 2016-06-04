@@ -85,3 +85,9 @@ nl:
           newsletter_subscription: Newsletter subscriptions
           image: Images
           directory: Directories
+    errors:
+      models:
+        cmtool/contact_form:
+          attributes:
+            base:
+              bad_intentions: Dit bericht bevat ongewenste inhoud
