@@ -21,7 +21,7 @@ group :assets do
 end
 
 gem 'simply_stored' , github: 'bterkuile/simply_stored'
-gem 'orm_adapter', github: 'bterkuile/orm_adapter'
+#gem 'orm_adapter', github: 'bterkuile/orm_adapter'
 gem 'devise'
 gem 'devise_simply_stored', github: 'bterkuile/devise_simply_stored'
 gem 'slim-rails'
