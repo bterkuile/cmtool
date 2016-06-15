@@ -27,7 +27,16 @@ module Cmtool
         def not_found
           @page = ::Page.find_by_name_and_locale('404', I18n.locale.to_s) || ::Page.new(name: '404', body: "404 Page Not Found")
           @sub_pages = []
-          render template: 'pages/404', layout: @page.layout.presence || ::Page.layouts.first.to_s, status: 404
+          page_name_extension = params[:name].to_s[/(?<=\.)\w{2,4}$/]
+          format = %w[html css js json].find{|f| f == request.format.symbol.to_s or f == page_name_extension }.try(:to_sym) || :html
+          case format
+          when :json
+            render json: {}, status: 404
+          when :html
+            render template: 'pages/404', formats: [:html], layout: @page.layout.presence || ::Page.layouts.first.to_s, status: 404
+          else
+            render nothing: true, status: 404
+          end
         end
 
         def sitemap
