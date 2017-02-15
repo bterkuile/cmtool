@@ -14,6 +14,7 @@ module Cmtool
     def if_there_are_bad_intentions
       has_bad_intentions = false
       has_bad_intentions = true if "#{email}#{body}" =~ /funded\.com/i
+      has_bad_intentions = true if email.to_s =~ /capital|funding|funded/i
       errors.add(:base, :bad_intentions) if has_bad_intentions
     end
   end
