@@ -5,7 +5,7 @@ module Cmtool
 
     property :file_file_name
     property :file_content_type
-    property :file_file_size, type: Fixnum
+    property :file_file_size, type: Integer
     property :file_updated_at, type: Time
     has_attached_file :file, styles: { page: '728x10000>', medium: "354x1000>", thumb: "160x1250>" },
       path: ":rails_root/public/system/:attachment/:id/:style.:extension",
