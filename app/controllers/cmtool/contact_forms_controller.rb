@@ -1,6 +1,6 @@
 module Cmtool
   class Cmtool::ContactFormsController < Cmtool::ApplicationController
-    skip_before_action :authenticate_user!, :authorize_user, only: :add
+    skip_before_action :authorize_user, only: :add
 
     # GET /contact_forms
     # GET /contact_forms.xml

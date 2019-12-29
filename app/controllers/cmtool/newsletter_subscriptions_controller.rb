@@ -1,6 +1,6 @@
 module Cmtool
   class Cmtool::NewsletterSubscriptionsController < Cmtool::ApplicationController
-    skip_before_action :authenticate_user!, :authorize_user, only: :add
+    skip_before_action :authorize_user, only: :add
 
     # GET /newsletter_subscriptions
     # GET /newsletter_subscriptions.xml
