@@ -8,7 +8,7 @@ gemspec
 gem "rails", " ~> 4.2.3"
 group :assets do
   gem 'sass-rails' #, ' ~> 5.0.0'
-  gem 'bourbon'
+  gem 'bourbon', '~> 4.3.1'
   gem 'coffee-script'
   #gem 'therubyracer', :platforms => :ruby
   #gem 'less-rails'

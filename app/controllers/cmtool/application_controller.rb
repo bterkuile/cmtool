@@ -1,7 +1,7 @@
 module Cmtool
   class ApplicationController < ::ApplicationController
     include Cmtool::ControllerGlue
-    before_filter :authorize_user, :check_environment, :set_locale
+    before_action :authorize_user, :check_environment, :set_locale
     layout 'cmtool/application'
 
     private
