@@ -6,8 +6,8 @@
         th= Cmtool::NewsletterSubscription.human_attribute_name(:email)
         th= Cmtool::NewsletterSubscription.human_attribute_name(:deactivation_token)
         th= Cmtool::NewsletterSubscription.human_attribute_name(:active)
-        th
-        th
+        th.action-header
+        th.action-header
     tbody
       - @newsletter_subscriptions.each do |newsletter_subscription|
         tr

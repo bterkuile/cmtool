@@ -39,6 +39,8 @@ html lang="en"
             li= link_to 'Wiki', 'https://github.com/bterkuile/cmtool/wiki', target: :_blank
         = yield :sidebar
     footer
-      p &copy; Cmtool 2015
+      p
+        span &copy; Cmtool 
+        span= Date.today.year
       = yield :footer
     #hidden-html.hide= yield :hidden_html

@@ -2,6 +2,7 @@
 #= require jquery_ujs
 #= require foundation
 #= require ace/ace
+#= require moment
 #= require ace/theme-monokai
 #= require ace/mode-coffee
 #= require ace/mode-handlebars
@@ -36,3 +37,6 @@ $ ->
       iframe.attr 'src', url
       $('#preview-modal').foundation('reveal', 'open')
     false
+
+  $("[data-time]").each ->
+    $(this).text moment($(this).data("time")).format($(this).data("timeFormat") or "dd D MMM HH:mm")

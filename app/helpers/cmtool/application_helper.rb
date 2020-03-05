@@ -31,7 +31,7 @@ module Cmtool
     # or normal text behaviour:
     #   - title "Home"
     def title(*args)
-      content_for :title do
+      res = content_tag :h1, class: 'page-title' do
         if args.first.is_a?(Symbol) && (args[1].respond_to?(:model_name) || args[1].class.respond_to?(:model_name))
           model = args[1].respond_to?(:model_name) ? args[1] : args[1].class
           if args.first == :index
@@ -40,11 +40,13 @@ module Cmtool
             t("cmtool.action.#{args.first}.title", model: model.model_name.human)
           end
         else
-          raise 'Imporoper title declaration'
           args.first
         end
       end
+      content_for :page_title, res
+      res
     end
+
     def are_you_sure(obj = nil)
       if name = obj && obj.respond_to?(:name) && obj.name.presence
         t('cmtool.general.are_you_sure_with_name', name: name, model: obj.class.model_name.human)
@@ -130,10 +132,10 @@ module Cmtool
       controller.respond_to?(:cmtool_user) ? controller.send(:cmtool_user) :nil
     end
 
-    def edit_td(obj)
-      path = case obj
+    def edit_td(obj, options = {})
+      path = options[:path] || case obj
         when Array then edit_polymorphic_path(obj)
-        when SimplyStored::Couch then edit_polymorphic_path([cmtool, obj])
+        when SimplyStored::Couch then edit_polymorphic_path([options[:scope] || cmtool, obj])
         else obj
       end
       content_tag(
@@ -143,12 +145,13 @@ module Cmtool
       )
     end
 
-    def destroy_td(obj)
-      path = case obj
+    def destroy_td(obj, options = {})
+      path = options[:path] || case obj
         when Array then polymorphic_path(obj)
-        when SimplyStored::Couch then polymorphic_path([cmtool, obj])
+        when SimplyStored::Couch then polymorphic_path([options[:scope] || cmtool, obj])
         else obj
       end
+
       content_tag(
         :td,
         link_to(content_tag(:span, '', class: [:destroy, 'fa fa-lg fa-trash']), path, method: :delete, class: 'tiny alert button', data: {confirm: are_you_sure(obj) }),

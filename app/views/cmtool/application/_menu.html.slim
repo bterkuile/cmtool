@@ -1,12 +1,12 @@
 - user = defined?(cmtool_user) ? cmtool_user : (defined?(current_user) ? current_user : nil)
 .fixed
-  nav.top-bar data-topbar="" role="navigation" 
+  nav.top-bar data-topbar="" role="navigation"
     ul.title-area
       li.name
         h1
           a href=cmtool.root_path = application_title
       li.toggle-topbar.menu-icon
-        a href="#" 
+        a href="#"
           span Menu
     section.top-bar-section
       - if user.present?

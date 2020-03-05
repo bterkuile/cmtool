@@ -141,18 +141,22 @@ module Cmtool
 
       def engine
         return @options[:engine] if @options[:engine].present?
-        base = @options[:scope].presence
-        base ||= @resource.name.split('::').first if @resource.name.index('::')
+        if @options[:scope].present?
+          base = options[:scope].to_s.camelize
+        else
+          base = @resource.name.split('::').first if @resource.name.index('::')
+        end
         return Rails.application unless base
-        return base if base.is_a?(Rails::Engine)
+        return base if base.is_a?(Rails::Engine) # WTF?
         if e = "#{base}::Engine".safe_constantize
           return e
         end
         return Rails.application
       end
+
       def nested_controller_name
         if @options[:scope].present?
-          "#{@options[:scope]}::#{@resource.name.split('::').last}".underscore.pluralize
+          "#{@options[:scope].to_s.camelize}::#{@resource.name.split('::').last}".underscore.pluralize
         else
           @resource.name.underscore.pluralize
         end
