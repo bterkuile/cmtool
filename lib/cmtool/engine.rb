@@ -13,15 +13,28 @@ require 'tinymce-rails'
 module Cmtool
   class Engine < ::Rails::Engine
     isolate_namespace Cmtool
-    initializer "cmtool.build_menu" do
+    initializer 'cmtool.build_menu', after: 'load_config_initializers' do |app|
       require 'email_validator'
-      require 'bourbon'
+      #require 'bourbon'
       require 'slim-rails'
       require 'paperclip'
       require 'devise'
       require 'devise_simply_stored'
       require 'jquery-rails'
       require 'tinymce-rails'
+
+      require 'page' # app/models/page.rb
+      require 'user' # app/models/user.rb
+      require 'cmtool/yml_file'
+      require 'cmtool/keyword'
+      require 'cmtool/news'
+      require 'cmtool/faq'
+      require 'cmtool/quote'
+      require 'cmtool/contact_form'
+      require 'cmtool/newsletter_subscription'
+      require 'cmtool/image'
+      require 'cmtool/directory'
+
       Cmtool::Menu.register do
         group label: :site do
           title t('cmtool.menu.site.title')

@@ -5,7 +5,7 @@ source "http://rubygems.org"
 # development dependencies will be added by default to the :development group.
 gemspec
 
-gem "rails", " ~> 4.2.3"
+gem "rails", " ~> 7.0.1"
 group :assets do
   gem 'sass-rails' #, ' ~> 5.0.0'
   gem 'bourbon', '~> 4.3.1'

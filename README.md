@@ -120,7 +120,7 @@ If you add a method `cmtool_locale` to your application controller Cmtool will
 take this value:
 ```ruby
 class ApplicationController
-  before_filter :set_locale
+  before_action :set_locale
 
   private
 
