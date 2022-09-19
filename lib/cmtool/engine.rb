@@ -34,7 +34,9 @@ module Cmtool
       require 'cmtool/newsletter_subscription'
       require 'cmtool/image'
       require 'cmtool/directory'
+    end
 
+    config.after_initialize do
       Cmtool::Menu.register do
         group label: :site do
           title t('cmtool.menu.site.title')
