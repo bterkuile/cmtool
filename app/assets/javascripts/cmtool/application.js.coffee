@@ -9,7 +9,7 @@
 #= require ace/mode-yaml
 #= require ace/mode-haml
 # require tinymce-jquery
-#= require tinymce
+# require tinymce
 #= require pickadate/picker
 #= require pickadate/picker.date
 #= require pickadate/picker.time

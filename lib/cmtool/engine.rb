@@ -9,7 +9,7 @@ require 'paperclip'
 require 'jquery-rails'
 require 'bourbon'
 =end
-require 'tinymce-rails'
+# require 'tinymce-rails'
 module Cmtool
   class Engine < ::Rails::Engine
     isolate_namespace Cmtool
@@ -21,7 +21,7 @@ module Cmtool
       require 'devise'
       require 'devise_simply_stored'
       require 'jquery-rails'
-      require 'tinymce-rails'
+      # require 'tinymce-rails'
 
       require 'page' # app/models/page.rb
       require 'user' # app/models/user.rb

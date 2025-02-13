@@ -19,9 +19,9 @@ Gem::Specification.new do |s|
   s.test_files = `git ls-files -- {test,spec,features}/*`.split("\n")
 
   s.add_runtime_dependency "email_validator", ">= 0"
-  s.add_runtime_dependency "bourbon", ">= 0"
+  # s.add_runtime_dependency "bourbon", ">= 0"
   s.add_runtime_dependency "slim-rails", ">= 0"
-  s.add_runtime_dependency "tinymce-rails", ">= 0"
+  # s.add_runtime_dependency "tinymce-rails", ">= 0"
   s.add_runtime_dependency "jquery-rails", ">= 0"
   s.add_runtime_dependency "paperclip", ">= 0"
   s.add_runtime_dependency "foundation-rails", ">= 0"

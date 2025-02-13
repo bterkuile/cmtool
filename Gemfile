@@ -5,10 +5,10 @@ source "http://rubygems.org"
 # development dependencies will be added by default to the :development group.
 gemspec
 
-gem "rails", " ~> 7.0.1"
+gem "rails", " ~> 8.0.1"
 group :assets do
   gem 'sass-rails' #, ' ~> 5.0.0'
-  gem 'bourbon', '~> 4.3.1'
+  # gem 'bourbon', '~> 4.3.1'
   gem 'coffee-script'
   #gem 'therubyracer', :platforms => :ruby
   #gem 'less-rails'
@@ -16,7 +16,7 @@ group :assets do
   gem 'ace-rails-ap'
   gem "jquery-rails"
   gem 'font-awesome-rails'
-  gem 'tinymce-rails'
+  # gem 'tinymce-rails'
   gem 'pickadate-rails'
 end
 

@@ -34,7 +34,7 @@ Make sure that the locales you want to work with are specified in
 
 This will add some gems you might like anyway, here a list:
 
-*   bourbon
+*   bourbon # NOOOOOO
 *   jquery-rails
 *   tinymce-rails
 *   sass-rails
