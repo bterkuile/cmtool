@@ -8,6 +8,7 @@
 #= require ace/mode-handlebars
 #= require ace/mode-yaml
 #= require ace/mode-haml
+#= require ace/mode-slim
 # require tinymce-jquery
 # require tinymce
 #= require pickadate/picker

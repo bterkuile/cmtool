@@ -1,3 +1,5 @@
+require 'momentjs-rails'
+
 require "cmtool/engine"
 require 'cmtool/includes/user'
 require 'cmtool/includes/page'

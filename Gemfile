@@ -18,6 +18,7 @@ group :assets do
   gem 'font-awesome-rails'
   # gem 'tinymce-rails'
   gem 'pickadate-rails'
+  gem 'momentjs-rails'
 end
 
 gem 'simply_stored' , github: 'bterkuile/simply_stored'

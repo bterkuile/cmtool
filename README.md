@@ -36,7 +36,6 @@ This will add some gems you might like anyway, here a list:
 
 *   bourbon # NOOOOOO
 *   jquery-rails
-*   tinymce-rails
 *   sass-rails
 *   paperclip
 *   email_validator (validates :email, email: true)
