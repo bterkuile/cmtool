@@ -66,7 +66,7 @@ module Cmtool
         end
 
         def locales
-          Rails.configuration.i18n.available_locales.presence || []
+          Rails.configuration.i18n.available_locales.presence || [:en]
         end
 
         def default_locale

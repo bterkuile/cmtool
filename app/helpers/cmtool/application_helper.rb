@@ -15,9 +15,9 @@ module Cmtool
     end
 
     # overwrite i18n l, to handle nil values
-    def l(*args)
+    def l(*args, **options)
       return '' unless args.first
-      super(*args)
+      super(*args, **options)
     end
 
     def site_title
