@@ -13,7 +13,7 @@ module Cmtool
       # General catcher for pages
       def show
         @page = ::Page.find_by_name_and_locale(params[:name], I18n.locale.to_s)
-        not_found and return unless @page
+        return not_found  unless @page
 
         @sub_pages = [@page] + @page.children.select{|child| child.in_menu.present? }
         template = "pages/#{@page.name}"
