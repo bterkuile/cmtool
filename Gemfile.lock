@@ -152,7 +152,7 @@ GEM
     drb (2.2.3)
     email_validator (2.2.4)
       activemodel
-    erb (6.0.2)
+    erb (6.0.4)
     erubi (1.13.1)
     eventmachine (1.2.7)
     execjs (2.10.0)
