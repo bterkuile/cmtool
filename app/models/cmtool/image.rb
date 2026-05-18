@@ -2,6 +2,10 @@ module Cmtool
   class Image
     include SimplyStored::Couch
     include Paperclip::Glue
+    # TODO: Replace Paperclip with SimplyStored::HasAttachment
+    # 1. Change `include Paperclip::Glue` to `include SimplyStored::HasAttachment`
+    # 2. Replace `has_attached_file :file, styles: {...}` with `has_attachment :file, styles: {...}`
+    # 3. Replace `validates_attachment` with standard Rails validations
 
     property :file_file_name
     property :file_content_type

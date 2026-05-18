@@ -2,6 +2,9 @@ module Cmtool
   class Quote
     include SimplyStored::Couch
     include Paperclip::Glue
+    # TODO: Replace Paperclip with SimplyStored::HasAttachment
+    # 1. Change `include Paperclip::Glue` to `include SimplyStored::HasAttachment`
+    # 2. Replace `has_attached_file :image, styles: {...}` with `has_attachment :image, styles: {...}`
 
     property :owner
     property :function
