@@ -23,6 +23,12 @@ module Cmtool
         klass.property :in_menu, type: :boolean, default: true
         klass.property :page_settings, type: Hash, default: {}
 
+        # JSON string parsing (safety net until couch_potato type: Hash handles this)
+        klass.send(:define_method, :page_settings=) do |val|
+          val = JSON.parse(val) if val.is_a?(String)
+          super(val)
+        end
+
         klass.has_ancestry by_property: :locale
 
         klass.validates :name, presence: true
