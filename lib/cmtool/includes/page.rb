@@ -21,13 +21,7 @@ module Cmtool
         klass.property :active, type: :boolean, default: true
         klass.property :layout
         klass.property :in_menu, type: :boolean, default: true
-        klass.property :page_settings, default: {}
-
-        # Parse JSON string from form submission
-        klass.send(:define_method, :page_settings=) do |val|
-          val = JSON.parse(val) if val.is_a?(String)
-          super(val)
-        end
+        klass.property :page_settings, type: Hash, default: {}
 
         klass.has_ancestry by_property: :locale
 
