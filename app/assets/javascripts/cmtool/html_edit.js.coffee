@@ -17,6 +17,10 @@ class HtmlEdit
         editor.setValue template_field.val(), -1
         editor.getSession().setMode 'ace/mode/slim'
         console.log "Editing Emblem using Slim mode for ACE editor"
+      else if data_mode = text_field.data('mode')
+        editor.setValue text_field.val(), -1
+        editor.getSession().setMode "ace/mode/#{data_mode}"
+        console.log "Editing #{data_mode} using ACE editor"
       else
         editor.setValue text_field.val(), -1
         editor.getSession().setMode 'ace/mode/handlebars'
