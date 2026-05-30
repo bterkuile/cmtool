@@ -41,7 +41,7 @@ javascript:
     .field
       = f.label :page_settings
       p.help-text JSON configuration for this page. Use Ace editor in JSON mode.
-      = f.text_area :page_settings, rows: 12, cols: 80, class: 'html-content', 'data-mode' => 'json',
+      = f.text_area :page_settings, rows: 12, cols: 80, class: 'html-content', data: { mode: 'json' },
         value: (f.object.page_settings.presence || {}).to_json
   .form-row
     .form-label= f.label :parent_id
