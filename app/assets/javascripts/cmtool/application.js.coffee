@@ -6,6 +6,7 @@
 #= require ace/theme-monokai
 #= require ace/mode-coffee
 #= require ace/mode-handlebars
+#= require ace/mode-json
 #= require ace/mode-yaml
 #= require ace/mode-haml
 #= require ace/mode-slim
