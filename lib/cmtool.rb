@@ -11,7 +11,7 @@ require 'email_validator'
 # handles thumbnail generation via MiniMagick.
 # Replace `include Paperclip::Glue` + `has_attached_file` with
 # `include SimplyStored::HasAttachment` + `has_attachment`
-require 'simply_stored/has_attachment'
+# has_attachment now in simply_stored gem
 
 module Cmtool
 end
