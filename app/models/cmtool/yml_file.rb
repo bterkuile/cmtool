@@ -1,6 +1,6 @@
 module Cmtool
   class YmlFile
-    include SimplyStored::Couch
+    include SimplyCouch::Model
 
     property :name
     property :body

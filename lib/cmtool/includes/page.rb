@@ -2,7 +2,7 @@ module Cmtool
   module Includes
     module Page
       def self.included(klass)
-        klass.send :include, SimplyStored::Couch
+        klass.send :include, SimplyCouch::Model
         klass.send :include, InstanceMethods
         klass.send :extend, ClassMethods
 

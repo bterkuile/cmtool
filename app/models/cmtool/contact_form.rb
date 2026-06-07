@@ -1,6 +1,6 @@
 module Cmtool
   class ContactForm
-    include SimplyStored::Couch
+    include SimplyCouch::Model
     property :gender
     property :name
     property :email

@@ -22,7 +22,7 @@ To start using Cmtool as website CMS add it to your Gemfile. Since it  depends
 on github gems and gem dependencies do not support those you have to
 explicitly add two dependencies to your Gemfile:
     gem 'couch_potato' , github: 'bterkuile/couch_potato'
-    gem 'simply_stored' , github: 'bterkuile/simply_stored'
+    gem 'simply_couch' , github: 'bterkuile/simply_couch'
     gem 'cmtool'
 
 Make sure that the locales you want to work with are specified in
@@ -94,7 +94,7 @@ end
 ```
 
 This is enough to start using Cmtool. But probably you want to add some
-goodies of your own. Remember that this is a SimplyStored model with almost
+goodies of your own. Remember that this is a SimplyCouch model with almost
 all the ActiveModel features.
 
 ### Page model

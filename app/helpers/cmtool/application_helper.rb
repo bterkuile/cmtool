@@ -135,7 +135,7 @@ module Cmtool
     def edit_td(obj, options = {})
       path = options[:path] || case obj
         when Array then edit_polymorphic_path(obj)
-        when SimplyStored::Couch then edit_polymorphic_path([options[:scope] || cmtool, obj])
+        when SimplyCouch::Model then edit_polymorphic_path([options[:scope] || cmtool, obj])
         else obj
       end
       content_tag(
@@ -148,7 +148,7 @@ module Cmtool
     def destroy_td(obj, options = {})
       path = options[:path] || case obj
         when Array then polymorphic_path(obj)
-        when SimplyStored::Couch then polymorphic_path([options[:scope] || cmtool, obj])
+        when SimplyCouch::Model then polymorphic_path([options[:scope] || cmtool, obj])
         else obj
       end
 

@@ -1,6 +1,6 @@
 module Cmtool
   class Keyword
-    include SimplyStored::Couch
+    include SimplyCouch::Model
 
     property :name
 

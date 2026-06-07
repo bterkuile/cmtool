@@ -1,6 +1,6 @@
 module Cmtool
   class Faq
-    include SimplyStored::Couch
+    include SimplyCouch::Model
 
     property :question
     property :answer

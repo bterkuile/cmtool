@@ -19,8 +19,8 @@ Devise.setup do |config|
   # Load and configure the ORM. Supports :active_record (default) and
   # :mongoid (bson_ext recommended) by default. Other ORMs may be
   # available as additional gems.
-  #require 'devise/orm/simply_stored'
-  require 'orm_adapter/adapters/simply_stored'
+  #require 'devise/orm/simply_couch'
+  require 'orm_adapter/adapters/simply_couch'
 
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is

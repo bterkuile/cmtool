@@ -1,6 +1,6 @@
 module Cmtool
   class Directory
-    include SimplyStored::Couch
+    include SimplyCouch::Model
 
     property :name
 

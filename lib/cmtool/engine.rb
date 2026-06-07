@@ -1,9 +1,8 @@
 =begin
-require 'couch_potato'
-require 'simply_stored'
+require 'simply_couch'
 require 'email_validator'
 require 'devise'
-require 'devise_simply_stored'
+require 'devise_simply_couch'
 require 'sass-rails'
 require 'paperclip'
 require 'jquery-rails'
@@ -19,7 +18,7 @@ module Cmtool
     #   require 'slim-rails'
     #   require 'paperclip'
     #   require 'devise'
-    #   require 'devise_simply_stored'
+    #   require 'devise_simply_couch'
     #   require 'jquery-rails'
     #   # require 'tinymce-rails'
     #

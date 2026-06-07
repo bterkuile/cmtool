@@ -2,8 +2,8 @@ module Cmtool
   module Includes
     module User
       def self.included(klass)
-        klass.send :include, SimplyStored::Couch
-        #klass.send :include, Devise::Orm::SimplyStored
+        klass.send :include, SimplyCouch::Model
+        #klass.send :include, Devise::Orm::SimplyCouch
         klass.send :include, InstanceMethods
         klass.send :extend, ClassMethods
 

@@ -21,10 +21,10 @@ group :assets do
   gem 'momentjs-rails'
 end
 
-gem 'simply_stored' , github: 'bterkuile/simply_stored', branch: 'master'
+gem 'simply_couch' , github: 'bterkuile/simply_couch', branch: 'master'
 #gem 'orm_adapter', github: 'bterkuile/orm_adapter'
 gem 'devise'
-gem 'devise_simply_stored', github: 'bterkuile/devise_simply_stored', branch: 'master'
+gem 'devise_simply_couch', github: 'bterkuile/devise_simply_couch', branch: 'master'
 gem 'slim-rails'
 gem 'paperclip', ['>= 3.4', '!= 4.3.0']
 gem 'email_validator'

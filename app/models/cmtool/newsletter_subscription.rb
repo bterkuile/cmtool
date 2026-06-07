@@ -1,6 +1,6 @@
 module Cmtool
   class NewsletterSubscription
-    include SimplyStored::Couch
+    include SimplyCouch::Model
 
     # PROPERTIES
     property :email
