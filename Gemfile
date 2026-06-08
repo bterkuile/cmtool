@@ -26,7 +26,6 @@ gem 'simply_couch' , github: 'bterkuile/simply_couch', branch: 'master'
 gem 'devise'
 gem 'devise_simply_couch', github: 'bterkuile/devise_simply_couch', branch: 'master'
 gem 'slim-rails'
-gem 'paperclip', ['>= 3.4', '!= 4.3.0']
 gem 'email_validator'
 # Declare any dependencies that are still in development here instead of in
 # your gemspec. These might include edge Rails or gems from your path or

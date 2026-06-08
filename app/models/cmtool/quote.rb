@@ -1,11 +1,6 @@
 module Cmtool
   class Quote
     include SimplyCouch::Model
-    include Paperclip::Glue
-    # TODO: Replace Paperclip with SimplyCouch::HasAttachment
-    # 1. Change `include Paperclip::Glue` to `include SimplyCouch::HasAttachment`
-    # 2. Replace `has_attached_file :image, styles: {...}` with `has_attachment :image, styles: {...}`
-
     property :owner
     property :function
     property :state
@@ -13,12 +8,9 @@ module Cmtool
     property :active, type: :boolean, default: true
     property :locale
 
-    property :image_file_name
-    property :image_content_type
-    property :image_file_size, type: Integer
-    property :image_updated_at, type: Time
-
-    has_attached_file :image, styles: {medium: "300x1000>", thumb: "137x1250>" }
+    # Paperclip → has_local_attached migration
+    has_local_attached :image,
+      styles: { medium: '300x1000>', thumb: '137x1250>' }
 
     view :for_sidebar_view, key: [:state, :created_at], conditions: %{doc['active']}
     STATES = %w[page sidebar]

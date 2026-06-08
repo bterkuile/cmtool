@@ -23,7 +23,6 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency "slim-rails", ">= 0"
   # s.add_runtime_dependency "tinymce-rails", ">= 0"
   s.add_runtime_dependency "jquery-rails", ">= 0"
-  s.add_runtime_dependency "paperclip", ">= 0"
   s.add_runtime_dependency "foundation-rails", ">= 0"
   s.add_runtime_dependency "ace-rails-ap", ">= 0"
   s.add_runtime_dependency "font-awesome-rails", ">= 0"
