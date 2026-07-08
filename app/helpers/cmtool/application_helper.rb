@@ -61,7 +61,7 @@ module Cmtool
     end
 
     def boolean_text(yes)
-      yes.present? ? t('cmtool.general.yes') : t('cmtool.general.no')
+      ActiveModel::Type::Boolean.new.cast(yes) ? t('cmtool.general.yes') : t('cmtool.general.no')
     end
     def empty_result(model)
       t('cmtool.general.empty_result', models: model.model_name.human_plural.downcase )
@@ -132,6 +132,30 @@ module Cmtool
       controller.respond_to?(:cmtool_user) ? controller.send(:cmtool_user) :nil
     end
 
+    # Path prefixes matching how the consuming app's translations.js.coffee.erb
+    # builds $translations: each top-level JS key is sourced from a different
+    # Rails i18n scope. Keep in sync with that file.
+    TSPAN_NAMESPACE_PREFIXES = {
+      'models'     => 'activemodel.models',
+      'attributes' => 'activemodel.attributes',
+      'helpers'    => 'helpers',
+      'pagination' => 'views.pagination',
+      'errors'     => 'errors',
+    }.freeze
+
+    # Client-resolved translation span, mirroring the JS `tspan` helper in
+    # translations.js.coffee.erb. Renders the raw (possibly ${...}-templated)
+    # server-side translation as initial content, tagged with data-t so the
+    # page's on-load JS can resolve nested ${...} references client-side.
+    #   tspan 'attributes.supplier.name' # => <span data-t="attributes.supplier.name" class="translation">${models.supplier} name</span>
+    def tspan(path, vars = {})
+      namespace, rest = path.split('.', 2)
+      prefix = TSPAN_NAMESPACE_PREFIXES.fetch(namespace, namespace)
+      full_key = rest ? "#{prefix}.#{rest}" : prefix
+      text = I18n.t(full_key, **vars)
+      content_tag(:span, text, class: 'translation', data: { t: path, t_attributes: vars.to_json })
+    end
+
     def edit_td(obj, options = {})
       path = options[:path] || case obj
         when Array then edit_polymorphic_path(obj)
@@ -140,7 +164,7 @@ module Cmtool
       end
       content_tag(
         :td,
-        link_to((content_tag(:span, '', class: [:edit, 'fa fa-lg fa-pencil'])), path, class: 'tiny warning button'),
+        link_to(content_tag(:i, nil, class: 'write icon'), path, class: 'edit ui mini basic yellow icon button'),
         class: [:action, :edit]
       )
     end
@@ -154,7 +178,7 @@ module Cmtool
 
       content_tag(
         :td,
-        link_to(content_tag(:span, '', class: [:destroy, 'fa fa-lg fa-trash']), path, method: :delete, class: 'tiny alert button', data: {confirm: are_you_sure(obj) }),
+        link_to(content_tag(:i, nil, class: 'trash icon'), path, method: :delete, class: 'destroy ui mini negative icon button', data: {confirm: are_you_sure(obj) }),
         class: [:action, :destroy]
       )
     end

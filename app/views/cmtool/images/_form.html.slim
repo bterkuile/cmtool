@@ -1,4 +1,4 @@
-= form_for [cmtool, @image], html: {multipart: true} do |f|
+= form_for [cmtool, @image], html: {multipart: true, class: 'ui form'} do |f|
   = render 'error_messages', target: @image
 
   .field
@@ -9,4 +9,4 @@
     = f.select :directory_id, Cmtool::Directory.all.map{|d| ["-"*d.tree_depth + ' ' + d.name.to_s, d.id]}
 
   .actions
-    = f.submit @submit || update_button_text(@image)
+    = f.submit @submit || update_button_text(@image), class: 'ui primary button'

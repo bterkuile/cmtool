@@ -1,6 +1,6 @@
 - title :index, Cmtool::Faq
 - if @faqs.any?
-  table.index-table.table.table-striped.table-hover
+  table.ui.celled.table
     thead
       tr
         th= Cmtool::Faq.human_attribute_name(:question)

@@ -1,4 +1,4 @@
-= form_for [cmtool, @faq] do |f|
+= form_for [cmtool, @faq], html: {class: 'ui form'} do |f|
   = render 'error_messages', :target => @faq
 
   .field
@@ -8,4 +8,4 @@
     = f.label :answer
     = f.text_area :answer, :rows => 6, :class => 'editor_basic'
   .actions
-    = f.submit @submit || update_button_text(@faq)
+    = f.submit @submit || update_button_text(@faq), class: 'ui primary button'

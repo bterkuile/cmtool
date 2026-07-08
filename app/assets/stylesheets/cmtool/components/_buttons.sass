@@ -1,12 +1,25 @@
+// Legacy button hooks kept for cmtool scaffold views not yet converted to
+// Fomantic `ui button` classes. Colors match Fomantic's default palette.
+=legacy-button($bg: #1b1c1d)
+  display: inline-block
+  padding: 0.78571429em 1.5em
+  background: $bg
+  color: white
+  border: none
+  border-radius: 0.28571429rem
+  cursor: pointer
+  &:hover
+    opacity: 0.85
+
 .to-index-button
-  +button($bg: $secondary-color)
+  +legacy-button($bg: #767676)
 .record-show-button
-  +button($bg: $info-color)
+  +legacy-button($bg: #31ccec)
 .record-new-button
-  +button
+  +legacy-button
 .record-edit-button
-  +button($bg: $warning-color)
+  +legacy-button($bg: #fbbd08)
 .record-destroy-button
-  +button($bg: $alert-color)
+  +legacy-button($bg: #db2828)
 .form-submit-button
-  +button
+  +legacy-button

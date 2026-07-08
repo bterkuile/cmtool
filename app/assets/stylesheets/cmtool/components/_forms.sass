@@ -1,30 +1,20 @@
 .form-row
-  +grid-row
+  display: flex
+  flex-wrap: wrap
+  align-items: flex-start
+  gap: 1em
+  margin-bottom: 0.5em
   .form-label
-    @media #{$small-only}
-      +grid-column($columns:10, $center:true)
-    @media #{$medium-only}
-      +grid-column($columns:4, $offset:1)
-    @media #{$large-up}
-      +grid-column(3)
-    &.half
-      +grid-column(6)
+    flex: 0 0 200px
+    max-width: 100%
+    padding-top: 0.5em
   .form-field
-    @media #{$small-only}
-      +grid-column($columns:10, $center:true, $last-column:true)
-    @media #{$medium-only}
-      +grid-column($columns:4, $last-column:true)
-    @media #{$large-up}
-      +grid-column($columns: 3, $last-column:true)
+    flex: 1 1 300px
+    max-width: 100%
     &.full
-      @media #{$small-only}
-        +grid-column($columns:10, $center:true, $last-column:true)
-      @media #{$medium-only}
-        +grid-column($columns:6, $last-column:true)
-      @media #{$large-up}
-        +grid-column($columns: 9, $last-column:true)
+      flex-basis: 100%
     &.half
-      +grid-column(6)
+      flex-basis: 45%
   &.form-actions
     padding-top: 12px
 body
@@ -37,9 +27,17 @@ body
       width: 60px
       display: inline-block
   .apply-filter
-    +button($bg: $primary-color, $padding: $button-tny)
+    display: inline-block
+    padding: 0.5em 1em
+    background: #2185d0
+    color: white
+    border: none
+    border-radius: 0.28571429rem
+    cursor: pointer
+    &:hover
+      opacity: 0.85
   .error
     input, textarea
-      border-color: $alert-color
+      border-color: #db2828
   input[type="number"]
     text-align: right

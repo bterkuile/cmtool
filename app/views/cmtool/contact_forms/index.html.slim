@@ -1,6 +1,6 @@
 - title :index, Cmtool::ContactForm
 - if @contact_forms.any?
-  table.index-table.table.table-striped.table-hover
+  table.ui.celled.table
     thead
       tr
         th= Cmtool::ContactForm.human_attribute_name(:gender)

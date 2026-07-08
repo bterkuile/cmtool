@@ -4,10 +4,13 @@
     font-weight: bold
     cursor: pointer
     span
-      @extend .fa, .fa-arrow-down
+      &:before
+        content: "\25BC"
+        margin-right: 0.5em
   &.collapsed
     .collapsible-title
       span
-        @extend .fa, .fa-arrow-right
+        &:before
+          content: "\25B6"
     .collapsible-content
       display: none

@@ -1,4 +1,4 @@
-= form_for [cmtool, @quote], html: {multipart: true} do |f|
+= form_for [cmtool, @quote], html: {multipart: true, class: 'ui form'} do |f|
   = render 'error_messages', target: @quote
   .field
     = f.label :owner
@@ -19,4 +19,4 @@
     = f.label :active
     = f.check_box :active
   .actions
-    = f.submit @submit || update_button_text(@quote)
+    = f.submit @submit || update_button_text(@quote), class: 'ui primary button'

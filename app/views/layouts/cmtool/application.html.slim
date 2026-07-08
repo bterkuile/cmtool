@@ -24,23 +24,24 @@ html lang="en"
 
   body
     = render 'cmtool/application/menu'
-    = render 'cmtool/application/alerts'
-    .row
-      .small-12.large-9.columns
-        h3= content_for?(:page_title) ? yield(:page_title) : application_title
-        = content_for?(:content) ? yield(:content) : yield
-        - if content_for?(:page_links)
-          #sub-navigation-container= yield(:page_links)
-      .show-for-large-up.large-3.columns
-        .panel
-          h4 Links
-          ul.side-nav
-            li= link_to "Home", cmtool.root_path
-            li= link_to 'Wiki', 'https://github.com/bterkuile/cmtool/wiki', target: :_blank
-        = yield :sidebar
-    footer
-      p
-        span &copy; Cmtool 
-        span= Date.today.year
-      = yield :footer
+    .ui.container
+      = render 'cmtool/application/alerts'
+      .ui.grid
+        .twelve.wide.column
+          h3.ui.header= content_for?(:page_title) ? yield(:page_title) : application_title
+          = content_for?(:content) ? yield(:content) : yield
+          - if content_for?(:page_links)
+            #sub-navigation-container= yield(:page_links)
+        .four.wide.column
+          .ui.segment
+            h4.ui.header Links
+            .ui.link.list
+              a.item href=cmtool.root_path Home
+              a.item href="https://github.com/bterkuile/cmtool/wiki" target="_blank" Wiki
+          = yield :sidebar
+      footer.ui.footer
+        p
+          span &copy; Cmtool
+          span= Date.today.year
+        = yield :footer
     #hidden-html.hide= yield :hidden_html

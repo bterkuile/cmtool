@@ -1,6 +1,6 @@
 - title :index, Cmtool::Quote
 - if @quotes.any?
-  table.index-table.table.table-striped.table-hover
+  table.ui.celled.table
     thead
       tr
         th= Cmtool::Quote.human_attribute_name(:owner)

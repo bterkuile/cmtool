@@ -1,6 +1,6 @@
 - title :index, Cmtool::NewsletterSubscription
 - if @newsletter_subscriptions.any?
-  table.index-table.table.table-striped.table-hover
+  table.ui.celled.table
     thead
       tr
         th= Cmtool::NewsletterSubscription.human_attribute_name(:email)

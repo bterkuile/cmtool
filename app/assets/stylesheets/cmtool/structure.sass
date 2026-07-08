@@ -1,10 +1,25 @@
 .clear
   clear: both
 
+// Generic scaffold show pages: `.show_field > strong + value`
+.show_field
+  padding: 0.5em 0
+  border-bottom: 1px solid rgba(34, 36, 38, 0.1)
+  strong
+    display: inline-block
+    min-width: 160px
+    margin-right: 1em
+
 #sub-navigation-container
   margin-top: 20px
-  +panel()
-  +clearfix()
+  padding: 1em
+  background: #f8f8f8
+  border: 1px solid rgba(34, 36, 38, 0.15)
+  border-radius: 0.28571429rem
+  &:after
+    content: ""
+    display: table
+    clear: both
   ul
     list-style: none
     margin: 0

@@ -1,6 +1,6 @@
 - title :index, Cmtool::News
 - if @news.any?
-  table.index-table.table.table-striped.table-hover
+  table.ui.celled.table
     thead
       tr
         th= Cmtool::News.human_attribute_name(:title)

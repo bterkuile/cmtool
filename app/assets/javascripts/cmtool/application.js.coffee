@@ -1,6 +1,6 @@
 #= require jquery
 #= require jquery_ujs
-#= require foundation
+#= require semantic-ui
 #= require ace/ace
 #= require moment
 #= require ace/theme-monokai
@@ -19,7 +19,9 @@
 #= require_self
 
 $ ->
-  $(document).foundation()
+  $('.ui.dropdown').dropdown()
+  $('.ui.checkbox').checkbox()
+  $('.message .close.icon').on 'click', -> $(@).closest('.message').transition('fade')
   collapsible.setup()
   html_edit.setup()
   yml_edit.setup()
@@ -38,7 +40,7 @@ $ ->
       layout: $('#page_layout').val()
     $.post url, page: params, (response)->
       iframe.attr 'src', url
-      $('#preview-modal').foundation('reveal', 'open')
+      $('#preview-modal').modal('show')
     false
 
   $("[data-time]").each ->

@@ -1,32 +1,25 @@
 - user = defined?(cmtool_user) ? cmtool_user : (defined?(current_user) ? current_user : nil)
-.fixed
-  nav.top-bar data-topbar="" role="navigation"
-    ul.title-area
-      li.name
-        h1
-          a href=cmtool.root_path = application_title
-      li.toggle-topbar.menu-icon
-        a href="#"
-          span Menu
-    section.top-bar-section
-      - if user.present?
-        ul.right
-          li.has-dropdown
-            a href="#" = user.email
-            ul.dropdown
-              li.log-out= link_to t('helpers.links.logout'), main_app.root_path
-      ul.left
-        - Cmtool::Menu.items.each do |menu_item|
-          - if menu_item.group?
-            li.has-dropdown class=(menu_item.controller_names.include?(controller_name) ? 'active' : '')
-              a href="#" = menu_item.title
-              ul.dropdown
-                - menu_item.items.compact.each do |child_item|
-                  - if child_item.divider?
-                    li.divider
-                  - else
-                    li class=(controller_name == child_item.controller_name ? 'active' : '') = link_to child_item.title, child_item.path
-          - elsif menu_item.resource_link?
-            li class=(menu_item.controller_name == controller_name ? 'active' : '') = link_to menu_item.title, menu_item.path
-          - elsif menu_item.engine_link?
-            li= link_to menu_item.title, menu_item.path
+.ui.inverted.menu
+  = link_to application_title, cmtool.root_path, class: 'header item'
+  - Cmtool::Menu.items.each do |menu_item|
+    - if menu_item.group?
+      .ui.dropdown.item class=(menu_item.controller_names.include?(controller_name) ? 'active' : nil)
+        = menu_item.title
+        i.dropdown.icon
+        .menu
+          - menu_item.items.compact.each do |child_item|
+            - if child_item.divider?
+              .divider
+            - else
+              = link_to child_item.title, child_item.path, class: ['item', (controller_name == child_item.controller_name ? 'active' : nil)]
+    - elsif menu_item.resource_link?
+      = link_to menu_item.title, menu_item.path, class: ['item', (menu_item.controller_name == controller_name ? 'active' : nil)]
+    - elsif menu_item.engine_link?
+      = link_to menu_item.title, menu_item.path, class: 'item'
+  .right.menu
+    - if user.present?
+      .ui.dropdown.item
+        span= user.email
+        i.dropdown.icon
+        .menu
+          = link_to t('helpers.links.logout'), main_app.root_path, class: 'item'
